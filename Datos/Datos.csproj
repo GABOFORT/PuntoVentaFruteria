@@ -45,6 +45,7 @@
     <Compile Include="Conexion.cs" />
     <Compile Include="D_Categorias.cs" />
     <Compile Include="D_Compras.cs" />
+    <Compile Include="D_Gastos.cs" />
     <Compile Include="D_Inventarios.cs" />
     <Compile Include="D_Permisos.cs" />
     <Compile Include="D_Productos.cs" />

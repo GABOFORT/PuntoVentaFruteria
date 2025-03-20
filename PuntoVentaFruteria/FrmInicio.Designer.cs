@@ -49,7 +49,6 @@
             this.submenureportecompras = new System.Windows.Forms.ToolStripMenuItem();
             this.submenureporteventas = new System.Windows.Forms.ToolStripMenuItem();
             this.MenuAcercaDe = new FontAwesome.Sharp.IconMenuItem();
-            this.iconMenuItem1 = new FontAwesome.Sharp.IconMenuItem();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.Contenedor = new System.Windows.Forms.Panel();
             this.label2 = new System.Windows.Forms.Label();
@@ -323,8 +322,6 @@
             // MenuAcercaDe
             // 
             this.MenuAcercaDe.AutoSize = false;
-            this.MenuAcercaDe.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.iconMenuItem1});
             this.MenuAcercaDe.Font = new System.Drawing.Font("Arial Narrow", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.MenuAcercaDe.IconChar = FontAwesome.Sharp.IconChar.Info;
             this.MenuAcercaDe.IconColor = System.Drawing.Color.Black;
@@ -336,15 +333,6 @@
             this.MenuAcercaDe.Text = "Información";
             this.MenuAcercaDe.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.MenuAcercaDe.Click += new System.EventHandler(this.MenuAcercaDe_Click);
-            // 
-            // iconMenuItem1
-            // 
-            this.iconMenuItem1.IconChar = FontAwesome.Sharp.IconChar.None;
-            this.iconMenuItem1.IconColor = System.Drawing.Color.Black;
-            this.iconMenuItem1.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.iconMenuItem1.Name = "iconMenuItem1";
-            this.iconMenuItem1.Size = new System.Drawing.Size(168, 36);
-            this.iconMenuItem1.Text = "Negocio";
             // 
             // toolStripMenuItem1
             // 
@@ -427,7 +415,6 @@
         private System.Windows.Forms.ToolStripMenuItem submenureportecompras;
         private System.Windows.Forms.ToolStripMenuItem submenureporteventas;
         private FontAwesome.Sharp.IconMenuItem MenuAcercaDe;
-        private FontAwesome.Sharp.IconMenuItem iconMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
         private System.Windows.Forms.Panel Contenedor;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem2;

@@ -46,7 +46,7 @@ namespace PuntoVentaFruteria.Modales
                     item.oProductosID.descripciones,
                     item.stockActual,
                     item.stockMinimo,
-                    item.fechaActualizacion
+                    item.fechaActualizacion.ToString("yyyy-MM-dd HH:mm:ss")
                 });
             }
         }

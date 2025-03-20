@@ -249,7 +249,8 @@
             // DgvDataDetallesVentas
             // 
             this.DgvDataDetallesVentas.AllowUserToAddRows = false;
-            this.DgvDataDetallesVentas.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
+            this.DgvDataDetallesVentas.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
             this.DgvDataDetallesVentas.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.DgvDataDetallesVentas.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCellsExceptHeaders;
             this.DgvDataDetallesVentas.BackgroundColor = System.Drawing.Color.White;
@@ -273,7 +274,7 @@
             this.Sub_Total});
             this.DgvDataDetallesVentas.EnableHeadersVisualStyles = false;
             this.DgvDataDetallesVentas.GridColor = System.Drawing.Color.Black;
-            this.DgvDataDetallesVentas.Location = new System.Drawing.Point(46, 220);
+            this.DgvDataDetallesVentas.Location = new System.Drawing.Point(5, 219);
             this.DgvDataDetallesVentas.MultiSelect = false;
             this.DgvDataDetallesVentas.Name = "DgvDataDetallesVentas";
             this.DgvDataDetallesVentas.ReadOnly = true;
@@ -290,15 +291,15 @@
             this.DgvDataDetallesVentas.RowsDefaultCellStyle = dataGridViewCellStyle2;
             this.DgvDataDetallesVentas.RowTemplate.DividerHeight = 3;
             this.DgvDataDetallesVentas.RowTemplate.Height = 100;
-            this.DgvDataDetallesVentas.Size = new System.Drawing.Size(772, 448);
+            this.DgvDataDetallesVentas.Size = new System.Drawing.Size(889, 448);
             this.DgvDataDetallesVentas.TabIndex = 67;
             // 
             // Producto
             // 
+            this.Producto.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.Producto.HeaderText = "Producto";
             this.Producto.Name = "Producto";
             this.Producto.ReadOnly = true;
-            this.Producto.Width = 126;
             // 
             // Descricipciones
             // 

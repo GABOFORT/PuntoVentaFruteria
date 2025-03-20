@@ -189,46 +189,35 @@ namespace PuntoVentaFruteria
         }
         private void TextPrecioCompra_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (char.IsDigit(e.KeyChar))
+            if (char.IsDigit(e.KeyChar) || e.KeyChar == '.')
+            {
+                if (e.KeyChar == '.' && TextPrecioCompra.Text.Contains("."))
+                    e.Handled = true;
+            }
+            else if (e.KeyChar == (char)Keys.Back)
             {
                 e.Handled = false;
             }
             else
             {
-                if (TextPrecioCompra.Text.Trim().Length == 0 && e.KeyChar.ToString() == ".")
-                {
-                    e.Handled = false;
-                }
-                else
-                {
-                    if (!char.IsDigit(e.KeyChar) || e.KeyChar.ToString() == ".")
-                    {
-                        e.Handled = true;
-                    }
-                }
+                e.Handled = true;
             }
         }
         private void TextPrecioVenta_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (char.IsDigit(e.KeyChar))
+            if (char.IsDigit(e.KeyChar) || e.KeyChar == '.')
+            {
+                if (e.KeyChar == '.' && TextPrecioVenta.Text.Contains("."))
+                    e.Handled = true;
+            }
+            else if (e.KeyChar == (char)Keys.Back)
             {
                 e.Handled = false;
             }
             else
             {
-                if (TextPrecioVenta.Text.Trim().Length == 0 && e.KeyChar.ToString() == ".")
-                {
-                    e.Handled = false;
-                }
-                else
-                {
-                    if (!char.IsDigit(e.KeyChar) || e.KeyChar.ToString() == ".")
-                    {
-                        e.Handled = true;
-                    }
-                }
+                e.Handled = true;
             }
-
         }
         private void BtnRegister_Click(object sender, EventArgs e)
         {

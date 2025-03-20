@@ -211,7 +211,8 @@
             // DgvDataDetallesCompras
             // 
             this.DgvDataDetallesCompras.AllowUserToAddRows = false;
-            this.DgvDataDetallesCompras.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
+            this.DgvDataDetallesCompras.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
             this.DgvDataDetallesCompras.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.DgvDataDetallesCompras.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCellsExceptHeaders;
             this.DgvDataDetallesCompras.BackgroundColor = System.Drawing.Color.White;
@@ -235,7 +236,7 @@
             this.Sub_Total});
             this.DgvDataDetallesCompras.EnableHeadersVisualStyles = false;
             this.DgvDataDetallesCompras.GridColor = System.Drawing.Color.Black;
-            this.DgvDataDetallesCompras.Location = new System.Drawing.Point(50, 333);
+            this.DgvDataDetallesCompras.Location = new System.Drawing.Point(12, 333);
             this.DgvDataDetallesCompras.MultiSelect = false;
             this.DgvDataDetallesCompras.Name = "DgvDataDetallesCompras";
             this.DgvDataDetallesCompras.ReadOnly = true;
@@ -252,15 +253,15 @@
             this.DgvDataDetallesCompras.RowsDefaultCellStyle = dataGridViewCellStyle2;
             this.DgvDataDetallesCompras.RowTemplate.DividerHeight = 3;
             this.DgvDataDetallesCompras.RowTemplate.Height = 100;
-            this.DgvDataDetallesCompras.Size = new System.Drawing.Size(768, 340);
+            this.DgvDataDetallesCompras.Size = new System.Drawing.Size(889, 340);
             this.DgvDataDetallesCompras.TabIndex = 50;
             // 
             // Producto
             // 
+            this.Producto.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.Producto.HeaderText = "Producto";
             this.Producto.Name = "Producto";
             this.Producto.ReadOnly = true;
-            this.Producto.Width = 126;
             // 
             // Descripciones
             // 

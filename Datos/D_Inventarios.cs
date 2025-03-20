@@ -21,6 +21,7 @@ namespace Datos
                     StringBuilder query = new StringBuilder();
                     query.AppendLine("SELECT p.productosID, p.nombresProductos, p.descripciones, i.inventariosID, i.stockActual, i.stockMinimo, i.fechaActualizacion FROM Productos p");
                     query.AppendLine("JOIN Inventarios i ON p.productosID = i.productosID");
+                    query.AppendLine("ORDER BY i.stockActual ASC");
                     SqlCommand cmd = new SqlCommand(query.ToString(), oconexion);
                     cmd.CommandType = CommandType.Text;
                     oconexion.Open();

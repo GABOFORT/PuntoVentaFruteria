@@ -33,15 +33,15 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(mdProductosDesplazados));
             this.label10 = new System.Windows.Forms.Label();
             this.DgvDataMDMasVendidos = new System.Windows.Forms.DataGridView();
-            this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Nombre_Producto = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.descripcion = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Total_Vendido = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.DateTimePicker2 = new System.Windows.Forms.DateTimePicker();
             this.BtnBuscarFechas = new FontAwesome.Sharp.IconButton();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
+            this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Nombre_Producto = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.descripcion = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Total_Vendido = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.DgvDataMDMasVendidos)).BeginInit();
             this.SuspendLayout();
             // 
@@ -80,9 +80,10 @@
             this.Nombre_Producto,
             this.descripcion,
             this.Total_Vendido});
+            this.DgvDataMDMasVendidos.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.DgvDataMDMasVendidos.EnableHeadersVisualStyles = false;
             this.DgvDataMDMasVendidos.GridColor = System.Drawing.Color.Black;
-            this.DgvDataMDMasVendidos.Location = new System.Drawing.Point(31, 103);
+            this.DgvDataMDMasVendidos.Location = new System.Drawing.Point(0, 103);
             this.DgvDataMDMasVendidos.MultiSelect = false;
             this.DgvDataMDMasVendidos.Name = "DgvDataMDMasVendidos";
             this.DgvDataMDMasVendidos.ReadOnly = true;
@@ -102,37 +103,8 @@
             this.DgvDataMDMasVendidos.RowTemplate.DividerHeight = 3;
             this.DgvDataMDMasVendidos.RowTemplate.Height = 100;
             this.DgvDataMDMasVendidos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.DgvDataMDMasVendidos.Size = new System.Drawing.Size(534, 492);
+            this.DgvDataMDMasVendidos.Size = new System.Drawing.Size(565, 492);
             this.DgvDataMDMasVendidos.TabIndex = 45;
-            // 
-            // ID
-            // 
-            this.ID.HeaderText = "ID";
-            this.ID.Name = "ID";
-            this.ID.ReadOnly = true;
-            this.ID.Visible = false;
-            this.ID.Width = 62;
-            // 
-            // Nombre_Producto
-            // 
-            this.Nombre_Producto.HeaderText = "Nombre Producto";
-            this.Nombre_Producto.Name = "Nombre_Producto";
-            this.Nombre_Producto.ReadOnly = true;
-            this.Nombre_Producto.Width = 193;
-            // 
-            // descripcion
-            // 
-            this.descripcion.HeaderText = "Descripción";
-            this.descripcion.Name = "descripcion";
-            this.descripcion.ReadOnly = true;
-            this.descripcion.Width = 146;
-            // 
-            // Total_Vendido
-            // 
-            this.Total_Vendido.HeaderText = "Total Vendido";
-            this.Total_Vendido.Name = "Total_Vendido";
-            this.Total_Vendido.ReadOnly = true;
-            this.Total_Vendido.Width = 162;
             // 
             // DateTimePicker1
             // 
@@ -204,6 +176,35 @@
             this.label3.TabIndex = 68;
             this.label3.Text = "Fecha Fin";
             // 
+            // ID
+            // 
+            this.ID.HeaderText = "ID";
+            this.ID.Name = "ID";
+            this.ID.ReadOnly = true;
+            this.ID.Visible = false;
+            this.ID.Width = 61;
+            // 
+            // Nombre_Producto
+            // 
+            this.Nombre_Producto.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Nombre_Producto.HeaderText = "Nombre Producto";
+            this.Nombre_Producto.Name = "Nombre_Producto";
+            this.Nombre_Producto.ReadOnly = true;
+            // 
+            // descripcion
+            // 
+            this.descripcion.HeaderText = "Descripción";
+            this.descripcion.Name = "descripcion";
+            this.descripcion.ReadOnly = true;
+            this.descripcion.Width = 146;
+            // 
+            // Total_Vendido
+            // 
+            this.Total_Vendido.HeaderText = "Total Vendido";
+            this.Total_Vendido.Name = "Total_Vendido";
+            this.Total_Vendido.ReadOnly = true;
+            this.Total_Vendido.Width = 162;
+            // 
             // mdProductosDesplazados
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -232,14 +233,14 @@
 
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.DataGridView DgvDataMDMasVendidos;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ID;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Nombre_Producto;
-        private System.Windows.Forms.DataGridViewTextBoxColumn descripcion;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Total_Vendido;
         private System.Windows.Forms.DateTimePicker DateTimePicker1;
         private System.Windows.Forms.DateTimePicker DateTimePicker2;
         private FontAwesome.Sharp.IconButton BtnBuscarFechas;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Nombre_Producto;
+        private System.Windows.Forms.DataGridViewTextBoxColumn descripcion;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Total_Vendido;
     }
 }

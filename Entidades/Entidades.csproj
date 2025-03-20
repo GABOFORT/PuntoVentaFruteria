@@ -44,7 +44,9 @@
     <Compile Include="Categorias.cs" />
     <Compile Include="Compras.cs" />
     <Compile Include="DetallesCompras.cs" />
+    <Compile Include="DetallesGastos.cs" />
     <Compile Include="DetallesVentas.cs" />
+    <Compile Include="Gastos.cs" />
     <Compile Include="Inventarios.cs" />
     <Compile Include="Permisos.cs" />
     <Compile Include="Productos.cs" />

@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label11 = new System.Windows.Forms.Label();
             this.BtnRegister = new FontAwesome.Sharp.IconButton();
             this.label12 = new System.Windows.Forms.Label();
@@ -40,6 +40,14 @@
             this.label9 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.DgvDataCompras = new System.Windows.Forms.DataGridView();
+            this.productoID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Producto = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Descripciones = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Precio_Compra = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Precio_Venta = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Cantidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Sub_Total = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnEliminar = new System.Windows.Forms.DataGridViewButtonColumn();
             this.TextNombreProductos = new System.Windows.Forms.TextBox();
             this.TextIDProducto = new System.Windows.Forms.TextBox();
             this.BtnBuscarProducto = new FontAwesome.Sharp.IconButton();
@@ -61,14 +69,6 @@
             this.TextClaveProveedor = new System.Windows.Forms.TextBox();
             this.label13 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
-            this.productoID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Producto = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Descripciones = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Precio_Compra = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Precio_Venta = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Cantidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Sub_Total = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.btnEliminar = new System.Windows.Forms.DataGridViewButtonColumn();
             ((System.ComponentModel.ISupportInitialize)(this.DgvDataCompras)).BeginInit();
             this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.TextCantidad)).BeginInit();
@@ -78,7 +78,7 @@
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(1125, 34);
+            this.label11.Location = new System.Drawing.Point(1197, 34);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(88, 25);
             this.label11.TabIndex = 33;
@@ -147,7 +147,7 @@
             // TextPrecioVenta
             // 
             this.TextPrecioVenta.Font = new System.Drawing.Font("Arial Narrow", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TextPrecioVenta.Location = new System.Drawing.Point(918, 62);
+            this.TextPrecioVenta.Location = new System.Drawing.Point(990, 62);
             this.TextPrecioVenta.Name = "TextPrecioVenta";
             this.TextPrecioVenta.Size = new System.Drawing.Size(185, 32);
             this.TextPrecioVenta.TabIndex = 35;
@@ -156,7 +156,7 @@
             // TextPrecioCompra
             // 
             this.TextPrecioCompra.Font = new System.Drawing.Font("Arial Narrow", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TextPrecioCompra.Location = new System.Drawing.Point(701, 62);
+            this.TextPrecioCompra.Location = new System.Drawing.Point(773, 62);
             this.TextPrecioCompra.Name = "TextPrecioCompra";
             this.TextPrecioCompra.Size = new System.Drawing.Size(185, 32);
             this.TextPrecioCompra.TabIndex = 34;
@@ -165,7 +165,7 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(913, 34);
+            this.label9.Location = new System.Drawing.Point(985, 34);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(119, 25);
             this.label9.TabIndex = 32;
@@ -174,7 +174,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(696, 34);
+            this.label8.Location = new System.Drawing.Point(768, 34);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(137, 25);
             this.label8.TabIndex = 31;
@@ -189,15 +189,15 @@
             this.DgvDataCompras.BackgroundColor = System.Drawing.Color.White;
             this.DgvDataCompras.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.DgvDataCompras.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Arial Narrow", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle1.Padding = new System.Windows.Forms.Padding(6);
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.DgvDataCompras.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Arial Narrow", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle3.Padding = new System.Windows.Forms.Padding(6);
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.DgvDataCompras.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.DgvDataCompras.ColumnHeadersHeight = 40;
             this.DgvDataCompras.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.productoID,
@@ -210,34 +210,94 @@
             this.btnEliminar});
             this.DgvDataCompras.EnableHeadersVisualStyles = false;
             this.DgvDataCompras.GridColor = System.Drawing.Color.Black;
-            this.DgvDataCompras.Location = new System.Drawing.Point(356, 258);
+            this.DgvDataCompras.Location = new System.Drawing.Point(204, 264);
             this.DgvDataCompras.MultiSelect = false;
             this.DgvDataCompras.Name = "DgvDataCompras";
             this.DgvDataCompras.ReadOnly = true;
             this.DgvDataCompras.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Sunken;
             this.DgvDataCompras.RowHeadersVisible = false;
             this.DgvDataCompras.RowHeadersWidth = 50;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Arial Narrow", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle2.Padding = new System.Windows.Forms.Padding(8);
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Black;
-            this.DgvDataCompras.RowsDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Arial Narrow", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle4.Padding = new System.Windows.Forms.Padding(8);
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.Black;
+            this.DgvDataCompras.RowsDefaultCellStyle = dataGridViewCellStyle4;
             this.DgvDataCompras.RowTemplate.DividerHeight = 3;
             this.DgvDataCompras.RowTemplate.Height = 100;
-            this.DgvDataCompras.Size = new System.Drawing.Size(778, 415);
+            this.DgvDataCompras.Size = new System.Drawing.Size(939, 409);
             this.DgvDataCompras.TabIndex = 52;
             this.DgvDataCompras.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgvDataCompras_CellContentClick);
             this.DgvDataCompras.CellPainting += new System.Windows.Forms.DataGridViewCellPaintingEventHandler(this.DgvDataCompras_CellPainting);
             // 
+            // productoID
+            // 
+            this.productoID.HeaderText = "productoID";
+            this.productoID.Name = "productoID";
+            this.productoID.ReadOnly = true;
+            this.productoID.Visible = false;
+            this.productoID.Width = 144;
+            // 
+            // Producto
+            // 
+            this.Producto.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Producto.HeaderText = "Producto";
+            this.Producto.Name = "Producto";
+            this.Producto.ReadOnly = true;
+            // 
+            // Descripciones
+            // 
+            this.Descripciones.HeaderText = "Descripciones";
+            this.Descripciones.Name = "Descripciones";
+            this.Descripciones.ReadOnly = true;
+            this.Descripciones.Width = 170;
+            // 
+            // Precio_Compra
+            // 
+            this.Precio_Compra.HeaderText = "Precio Compra";
+            this.Precio_Compra.Name = "Precio_Compra";
+            this.Precio_Compra.ReadOnly = true;
+            this.Precio_Compra.Width = 173;
+            // 
+            // Precio_Venta
+            // 
+            this.Precio_Venta.HeaderText = "Precio Venta";
+            this.Precio_Venta.Name = "Precio_Venta";
+            this.Precio_Venta.ReadOnly = true;
+            this.Precio_Venta.Visible = false;
+            this.Precio_Venta.Width = 156;
+            // 
+            // Cantidad
+            // 
+            this.Cantidad.HeaderText = "Cantidad";
+            this.Cantidad.Name = "Cantidad";
+            this.Cantidad.ReadOnly = true;
+            this.Cantidad.Width = 124;
+            // 
+            // Sub_Total
+            // 
+            this.Sub_Total.HeaderText = "Sub Total";
+            this.Sub_Total.Name = "Sub_Total";
+            this.Sub_Total.ReadOnly = true;
+            this.Sub_Total.Width = 129;
+            // 
+            // btnEliminar
+            // 
+            this.btnEliminar.HeaderText = "";
+            this.btnEliminar.Name = "btnEliminar";
+            this.btnEliminar.ReadOnly = true;
+            this.btnEliminar.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.btnEliminar.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.btnEliminar.Width = 30;
+            // 
             // TextNombreProductos
             // 
             this.TextNombreProductos.Font = new System.Drawing.Font("Arial Narrow", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TextNombreProductos.Location = new System.Drawing.Point(283, 62);
+            this.TextNombreProductos.Location = new System.Drawing.Point(283, 61);
             this.TextNombreProductos.Name = "TextNombreProductos";
-            this.TextNombreProductos.Size = new System.Drawing.Size(185, 32);
+            this.TextNombreProductos.Size = new System.Drawing.Size(259, 32);
             this.TextNombreProductos.TabIndex = 30;
             // 
             // TextIDProducto
@@ -314,9 +374,9 @@
             this.groupBox3.Controls.Add(this.label7);
             this.groupBox3.Font = new System.Drawing.Font("Arial Narrow", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox3.ForeColor = System.Drawing.Color.Black;
-            this.groupBox3.Location = new System.Drawing.Point(89, 158);
+            this.groupBox3.Location = new System.Drawing.Point(48, 158);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(1330, 100);
+            this.groupBox3.Size = new System.Drawing.Size(1407, 100);
             this.groupBox3.TabIndex = 47;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Productos";
@@ -324,7 +384,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(486, 34);
+            this.label3.Location = new System.Drawing.Point(558, 34);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(114, 25);
             this.label3.TabIndex = 38;
@@ -333,7 +393,7 @@
             // TextDescripcion
             // 
             this.TextDescripcion.Font = new System.Drawing.Font("Arial Narrow", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TextDescripcion.Location = new System.Drawing.Point(491, 62);
+            this.TextDescripcion.Location = new System.Drawing.Point(563, 62);
             this.TextDescripcion.Name = "TextDescripcion";
             this.TextDescripcion.Size = new System.Drawing.Size(185, 32);
             this.TextDescripcion.TabIndex = 37;
@@ -341,7 +401,7 @@
             // TextCantidad
             // 
             this.TextCantidad.Font = new System.Drawing.Font("Arial Narrow", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TextCantidad.Location = new System.Drawing.Point(1130, 62);
+            this.TextCantidad.Location = new System.Drawing.Point(1202, 62);
             this.TextCantidad.Maximum = new decimal(new int[] {
             10000,
             0,
@@ -482,66 +542,6 @@
             this.label14.Size = new System.Drawing.Size(152, 25);
             this.label14.TabIndex = 23;
             this.label14.Text = "Clave Proveedor";
-            // 
-            // productoID
-            // 
-            this.productoID.HeaderText = "productoID";
-            this.productoID.Name = "productoID";
-            this.productoID.ReadOnly = true;
-            this.productoID.Visible = false;
-            this.productoID.Width = 143;
-            // 
-            // Producto
-            // 
-            this.Producto.HeaderText = "Producto";
-            this.Producto.Name = "Producto";
-            this.Producto.ReadOnly = true;
-            this.Producto.Width = 126;
-            // 
-            // Descripciones
-            // 
-            this.Descripciones.HeaderText = "Descripciones";
-            this.Descripciones.Name = "Descripciones";
-            this.Descripciones.ReadOnly = true;
-            this.Descripciones.Width = 170;
-            // 
-            // Precio_Compra
-            // 
-            this.Precio_Compra.HeaderText = "Precio Compra";
-            this.Precio_Compra.Name = "Precio_Compra";
-            this.Precio_Compra.ReadOnly = true;
-            this.Precio_Compra.Width = 173;
-            // 
-            // Precio_Venta
-            // 
-            this.Precio_Venta.HeaderText = "Precio Venta";
-            this.Precio_Venta.Name = "Precio_Venta";
-            this.Precio_Venta.ReadOnly = true;
-            this.Precio_Venta.Visible = false;
-            this.Precio_Venta.Width = 155;
-            // 
-            // Cantidad
-            // 
-            this.Cantidad.HeaderText = "Cantidad";
-            this.Cantidad.Name = "Cantidad";
-            this.Cantidad.ReadOnly = true;
-            this.Cantidad.Width = 124;
-            // 
-            // Sub_Total
-            // 
-            this.Sub_Total.HeaderText = "Sub Total";
-            this.Sub_Total.Name = "Sub_Total";
-            this.Sub_Total.ReadOnly = true;
-            this.Sub_Total.Width = 129;
-            // 
-            // btnEliminar
-            // 
-            this.btnEliminar.HeaderText = "";
-            this.btnEliminar.Name = "btnEliminar";
-            this.btnEliminar.ReadOnly = true;
-            this.btnEliminar.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.btnEliminar.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.btnEliminar.Width = 30;
             // 
             // FrmCompras
             // 

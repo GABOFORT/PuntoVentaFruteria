@@ -74,7 +74,7 @@
             this.label11.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Arial Narrow", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.Location = new System.Drawing.Point(928, 28);
+            this.label11.Location = new System.Drawing.Point(957, 28);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(88, 25);
             this.label11.TabIndex = 33;
@@ -84,7 +84,7 @@
             // 
             this.TextCantidad.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.TextCantidad.Font = new System.Drawing.Font("Arial Narrow", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TextCantidad.Location = new System.Drawing.Point(933, 56);
+            this.TextCantidad.Location = new System.Drawing.Point(962, 56);
             this.TextCantidad.Maximum = new decimal(new int[] {
             10000,
             0,
@@ -108,7 +108,7 @@
             // 
             this.TextPrecioVenta.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.TextPrecioVenta.Font = new System.Drawing.Font("Arial Narrow", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TextPrecioVenta.Location = new System.Drawing.Point(716, 56);
+            this.TextPrecioVenta.Location = new System.Drawing.Point(757, 56);
             this.TextPrecioVenta.Name = "TextPrecioVenta";
             this.TextPrecioVenta.Size = new System.Drawing.Size(185, 32);
             this.TextPrecioVenta.TabIndex = 34;
@@ -119,7 +119,7 @@
             this.label8.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Arial Narrow", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(711, 28);
+            this.label8.Location = new System.Drawing.Point(752, 28);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(119, 25);
             this.label8.TabIndex = 31;
@@ -129,16 +129,16 @@
             // 
             this.TextNombreProductos.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.TextNombreProductos.Font = new System.Drawing.Font("Arial Narrow", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TextNombreProductos.Location = new System.Drawing.Point(238, 56);
+            this.TextNombreProductos.Location = new System.Drawing.Point(236, 56);
             this.TextNombreProductos.Name = "TextNombreProductos";
-            this.TextNombreProductos.Size = new System.Drawing.Size(185, 32);
+            this.TextNombreProductos.Size = new System.Drawing.Size(259, 32);
             this.TextNombreProductos.TabIndex = 30;
             // 
             // TextIDProductos
             // 
             this.TextIDProductos.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.TextIDProductos.Font = new System.Drawing.Font("Arial Narrow", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TextIDProductos.Location = new System.Drawing.Point(189, 18);
+            this.TextIDProductos.Location = new System.Drawing.Point(187, 18);
             this.TextIDProductos.Name = "TextIDProductos";
             this.TextIDProductos.Size = new System.Drawing.Size(32, 32);
             this.TextIDProductos.TabIndex = 29;
@@ -178,7 +178,7 @@
             this.btnBuscarProducto.IconColor = System.Drawing.Color.Black;
             this.btnBuscarProducto.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnBuscarProducto.IconSize = 25;
-            this.btnBuscarProducto.Location = new System.Drawing.Point(441, 55);
+            this.btnBuscarProducto.Location = new System.Drawing.Point(511, 56);
             this.btnBuscarProducto.Name = "btnBuscarProducto";
             this.btnBuscarProducto.Size = new System.Drawing.Size(33, 33);
             this.btnBuscarProducto.TabIndex = 29;
@@ -189,7 +189,7 @@
             // 
             this.TextCodigoProductos.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.TextCodigoProductos.Font = new System.Drawing.Font("Arial Narrow", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TextCodigoProductos.Location = new System.Drawing.Point(22, 56);
+            this.TextCodigoProductos.Location = new System.Drawing.Point(20, 56);
             this.TextCodigoProductos.Name = "TextCodigoProductos";
             this.TextCodigoProductos.Size = new System.Drawing.Size(185, 32);
             this.TextCodigoProductos.TabIndex = 25;
@@ -299,7 +299,7 @@
             this.btnEliminar});
             this.DgvDataVentas.EnableHeadersVisualStyles = false;
             this.DgvDataVentas.GridColor = System.Drawing.Color.Black;
-            this.DgvDataVentas.Location = new System.Drawing.Point(374, 236);
+            this.DgvDataVentas.Location = new System.Drawing.Point(218, 236);
             this.DgvDataVentas.MultiSelect = false;
             this.DgvDataVentas.Name = "DgvDataVentas";
             this.DgvDataVentas.ReadOnly = true;
@@ -316,7 +316,7 @@
             this.DgvDataVentas.RowsDefaultCellStyle = dataGridViewCellStyle4;
             this.DgvDataVentas.RowTemplate.DividerHeight = 3;
             this.DgvDataVentas.RowTemplate.Height = 100;
-            this.DgvDataVentas.Size = new System.Drawing.Size(794, 437);
+            this.DgvDataVentas.Size = new System.Drawing.Size(939, 437);
             this.DgvDataVentas.TabIndex = 50;
             this.DgvDataVentas.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgvDataVentas_CellContentClick);
             this.DgvDataVentas.CellPainting += new System.Windows.Forms.DataGridViewCellPaintingEventHandler(this.DgvDataVentas_CellPainting);
@@ -331,10 +331,10 @@
             // 
             // Producto
             // 
+            this.Producto.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.Producto.HeaderText = "Producto";
             this.Producto.Name = "Producto";
             this.Producto.ReadOnly = true;
-            this.Producto.Width = 126;
             // 
             // descripciones
             // 
@@ -378,7 +378,7 @@
             this.label6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Arial Narrow", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(233, 28);
+            this.label6.Location = new System.Drawing.Point(231, 28);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(90, 25);
             this.label6.TabIndex = 24;
@@ -401,7 +401,7 @@
             this.label7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Arial Narrow", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(17, 28);
+            this.label7.Location = new System.Drawing.Point(15, 28);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(166, 25);
             this.label7.TabIndex = 23;
@@ -427,9 +427,9 @@
             this.groupBox3.Controls.Add(this.label6);
             this.groupBox3.Controls.Add(this.label7);
             this.groupBox3.Font = new System.Drawing.Font("Arial Narrow", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox3.Location = new System.Drawing.Point(80, 46);
+            this.groupBox3.Location = new System.Drawing.Point(61, 46);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(1347, 100);
+            this.groupBox3.Size = new System.Drawing.Size(1374, 100);
             this.groupBox3.TabIndex = 62;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Información";
@@ -446,7 +446,7 @@
             this.BtnCamara.IconColor = System.Drawing.Color.Black;
             this.BtnCamara.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.BtnCamara.IconSize = 25;
-            this.BtnCamara.Location = new System.Drawing.Point(441, 18);
+            this.BtnCamara.Location = new System.Drawing.Point(511, 17);
             this.BtnCamara.Name = "BtnCamara";
             this.BtnCamara.Size = new System.Drawing.Size(33, 33);
             this.BtnCamara.TabIndex = 39;
@@ -456,7 +456,7 @@
             // 
             this.TextDescripcion.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.TextDescripcion.Font = new System.Drawing.Font("Arial Narrow", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TextDescripcion.Location = new System.Drawing.Point(495, 57);
+            this.TextDescripcion.Location = new System.Drawing.Point(554, 56);
             this.TextDescripcion.Name = "TextDescripcion";
             this.TextDescripcion.Size = new System.Drawing.Size(185, 32);
             this.TextDescripcion.TabIndex = 38;
@@ -466,7 +466,7 @@
             this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Arial Narrow", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(490, 28);
+            this.label3.Location = new System.Drawing.Point(550, 28);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(114, 25);
             this.label3.TabIndex = 37;
@@ -476,7 +476,7 @@
             // 
             this.TextFecha.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.TextFecha.Font = new System.Drawing.Font("Arial Narrow", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TextFecha.Location = new System.Drawing.Point(1148, 55);
+            this.TextFecha.Location = new System.Drawing.Point(1167, 55);
             this.TextFecha.Name = "TextFecha";
             this.TextFecha.Size = new System.Drawing.Size(185, 32);
             this.TextFecha.TabIndex = 25;
@@ -487,7 +487,7 @@
             this.label2.AutoSize = true;
             this.label2.BackColor = System.Drawing.Color.White;
             this.label2.Font = new System.Drawing.Font("Arial Narrow", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(1143, 28);
+            this.label2.Location = new System.Drawing.Point(1162, 28);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(64, 25);
             this.label2.TabIndex = 23;
@@ -571,6 +571,9 @@
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox TextFecha;
+        private System.Windows.Forms.TextBox TextDescripcion;
+        private System.Windows.Forms.Label label3;
+        private FontAwesome.Sharp.IconButton BtnCamara;
         private System.Windows.Forms.DataGridViewTextBoxColumn productoID;
         private System.Windows.Forms.DataGridViewTextBoxColumn Producto;
         private System.Windows.Forms.DataGridViewTextBoxColumn descripciones;
@@ -578,8 +581,5 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Cantidad;
         private System.Windows.Forms.DataGridViewTextBoxColumn Sub_Total;
         private System.Windows.Forms.DataGridViewButtonColumn btnEliminar;
-        private System.Windows.Forms.TextBox TextDescripcion;
-        private System.Windows.Forms.Label label3;
-        private FontAwesome.Sharp.IconButton BtnCamara;
     }
 }
