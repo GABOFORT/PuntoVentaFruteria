@@ -52,7 +52,6 @@ namespace PuntoVentaFruteria
                 row.Visible = true;
             }
         }
-
         private void BtnBtnBuscarFechas_Click(object sender, EventArgs e)
         {
             List<ReportesVentas> lista = new List<ReportesVentas>();
@@ -84,12 +83,24 @@ namespace PuntoVentaFruteria
             }
             TextMontoVenta.Text = totalVentas.ToString("F2");
         }
-
         private void BtnVerMasVendidos_Click(object sender, EventArgs e)
         {
             using (var modal = new mdProductosDesplazados())
             {
                 var result = modal.ShowDialog();
+            }
+        }
+        private void TextBusquedas_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                BtnBuscar.PerformClick();
+                e.SuppressKeyPress = true;
+            }
+            else if (e.KeyCode == Keys.Escape)
+            {
+                BtnLimpiarBuscador.PerformClick();
+                e.SuppressKeyPress = true;
             }
         }
     }

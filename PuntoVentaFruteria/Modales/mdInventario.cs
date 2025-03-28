@@ -134,5 +134,19 @@ namespace PuntoVentaFruteria.Modales
                 MessageBox.Show("Selecciona un producto del inventario para eliminar", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
+
+        private void TextBusquedas_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                BtnBuscar.PerformClick();
+                e.SuppressKeyPress = true;
+            }
+            else if (e.KeyCode == Keys.Escape)
+            {
+                BtnLimpiar.PerformClick();
+                e.SuppressKeyPress = true;
+            }
+        }
     }
 }

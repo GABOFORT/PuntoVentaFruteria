@@ -86,5 +86,18 @@ namespace PuntoVentaFruteria.Modales
                 this.Close();
             }
         }
+        private void TextBusquedas_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                BtnBuscar.PerformClick();
+                e.SuppressKeyPress = true;
+            }
+            else if (e.KeyCode == Keys.Escape)
+            {
+                BtnLimpiarBuscador.PerformClick();
+                e.SuppressKeyPress = true;
+            }
+        }
     }
 }

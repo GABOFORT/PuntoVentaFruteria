@@ -95,7 +95,7 @@ namespace Datos
                                 montosPagos = Convert.ToDecimal(dr["montosPagos"].ToString()),
                                 montosCambios = Convert.ToDecimal(dr["montosCambios"].ToString()),
                                 montosTotales = Convert.ToDecimal(dr["montosTotales"].ToString()),
-                                fechaRegistros = dr["FechaRegistros"].ToString()
+                                fechaRegistros = dr["fechaRegistros"].ToString()
                             };
                         }
                     }

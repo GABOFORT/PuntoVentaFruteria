@@ -15,13 +15,16 @@ using Negocios;
 using Negocio;
 using static System.Net.Mime.MediaTypeNames;
 using System.Reflection;
+using PuntoVentaFruteria.Modales;
 
 namespace PuntoVentaFruteria
 {
     public partial class FrmUsuarios : Form
     {
-        public FrmUsuarios()
+        private Usuarios _Usuarios;
+        public FrmUsuarios(Usuarios ousuarios)
         {
+            _Usuarios = ousuarios;
             InitializeComponent();
         }
         private void FrmUsuarios_Load(object sender, EventArgs e)
@@ -222,11 +225,31 @@ namespace PuntoVentaFruteria
         {
             if (TextClave.PasswordChar == '*')
             {
-                TextClave.PasswordChar = '\0'; // Muestra la contraseña
+                TextClave.PasswordChar = '\0'; 
             }
             else
             {
-                TextClave.PasswordChar = '*'; // Oculta la contraseña
+                TextClave.PasswordChar = '*'; 
+            }
+        }
+        private void BtnGastos_Click(object sender, EventArgs e)
+        {
+            using (var modal = new mdGastosPersonales(_Usuarios))
+            {
+                var result = modal.ShowDialog();
+            }
+        }
+        private void TextBusquedas_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                BtnBuscar.PerformClick();
+                e.SuppressKeyPress = true;
+            }
+            else if (e.KeyCode == Keys.Escape)
+            {
+                BtnLimpiarBuscador.PerformClick();
+                e.SuppressKeyPress = true;
             }
         }
     }

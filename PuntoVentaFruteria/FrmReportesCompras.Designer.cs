@@ -219,6 +219,7 @@
             this.TextBusquedas.Size = new System.Drawing.Size(207, 32);
             this.TextBusquedas.TabIndex = 40;
             this.TextBusquedas.TextChanged += new System.EventHandler(this.TextBusquedas_TextChanged);
+            this.TextBusquedas.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TextBusquedas_KeyDown);
             // 
             // CboBuscar
             // 

@@ -64,6 +64,8 @@
             this.BtnLimpiar = new FontAwesome.Sharp.IconButton();
             this.BtnGuardar = new FontAwesome.Sharp.IconButton();
             this.BtnVerContraseña = new FontAwesome.Sharp.IconButton();
+            this.label9 = new System.Windows.Forms.Label();
+            this.BtnGastos = new FontAwesome.Sharp.IconButton();
             ((System.ComponentModel.ISupportInitialize)(this.DgvDataUsuario)).BeginInit();
             this.SuspendLayout();
             // 
@@ -84,6 +86,7 @@
             this.TextBusquedas.Name = "TextBusquedas";
             this.TextBusquedas.Size = new System.Drawing.Size(207, 32);
             this.TextBusquedas.TabIndex = 49;
+            this.TextBusquedas.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TextBusquedas_KeyDown);
             // 
             // CboBuscar
             // 
@@ -489,11 +492,44 @@
             this.BtnVerContraseña.UseVisualStyleBackColor = false;
             this.BtnVerContraseña.Click += new System.EventHandler(this.BtnVerContraseña_Click);
             // 
+            // label9
+            // 
+            this.label9.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label9.AutoSize = true;
+            this.label9.BackColor = System.Drawing.Color.White;
+            this.label9.Font = new System.Drawing.Font("Arial Narrow", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.Location = new System.Drawing.Point(1248, 93);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(178, 25);
+            this.label9.TabIndex = 88;
+            this.label9.Text = "Gastos Personales:";
+            // 
+            // BtnGastos
+            // 
+            this.BtnGastos.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.BtnGastos.BackColor = System.Drawing.Color.LightSalmon;
+            this.BtnGastos.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.BtnGastos.FlatAppearance.BorderColor = System.Drawing.Color.Black;
+            this.BtnGastos.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BtnGastos.ForeColor = System.Drawing.Color.White;
+            this.BtnGastos.IconChar = FontAwesome.Sharp.IconChar.MoneyBill;
+            this.BtnGastos.IconColor = System.Drawing.Color.Black;
+            this.BtnGastos.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.BtnGastos.IconSize = 25;
+            this.BtnGastos.Location = new System.Drawing.Point(1432, 92);
+            this.BtnGastos.Name = "BtnGastos";
+            this.BtnGastos.Size = new System.Drawing.Size(33, 33);
+            this.BtnGastos.TabIndex = 87;
+            this.BtnGastos.UseVisualStyleBackColor = false;
+            this.BtnGastos.Click += new System.EventHandler(this.BtnGastos_Click);
+            // 
             // FrmUsuarios
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1508, 673);
+            this.Controls.Add(this.label9);
+            this.Controls.Add(this.BtnGastos);
             this.Controls.Add(this.BtnVerContraseña);
             this.Controls.Add(this.TextIndice);
             this.Controls.Add(this.BtnLimpiarBuscador);
@@ -558,5 +594,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Rol;
         private System.Windows.Forms.DataGridViewTextBoxColumn Estado_Valor;
         private System.Windows.Forms.DataGridViewTextBoxColumn Estado;
+        private System.Windows.Forms.Label label9;
+        private FontAwesome.Sharp.IconButton BtnGastos;
     }
 }

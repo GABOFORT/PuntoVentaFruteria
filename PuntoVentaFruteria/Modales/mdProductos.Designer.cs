@@ -91,6 +91,7 @@
             this.TextBusquedas.Name = "TextBusquedas";
             this.TextBusquedas.Size = new System.Drawing.Size(200, 32);
             this.TextBusquedas.TabIndex = 46;
+            this.TextBusquedas.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TextBusquedas_KeyDown);
             // 
             // CboBuscar
             // 
@@ -186,7 +187,7 @@
             this.ID.Name = "ID";
             this.ID.ReadOnly = true;
             this.ID.Visible = false;
-            this.ID.Width = 61;
+            this.ID.Width = 62;
             // 
             // Codigo
             // 
@@ -222,7 +223,7 @@
             this.Precio_Compra.Name = "Precio_Compra";
             this.Precio_Compra.ReadOnly = true;
             this.Precio_Compra.Visible = false;
-            this.Precio_Compra.Width = 174;
+            this.Precio_Compra.Width = 175;
             // 
             // Precio_Venta
             // 
@@ -230,7 +231,7 @@
             this.Precio_Venta.Name = "Precio_Venta";
             this.Precio_Venta.ReadOnly = true;
             this.Precio_Venta.Visible = false;
-            this.Precio_Venta.Width = 156;
+            this.Precio_Venta.Width = 157;
             // 
             // mdProductos
             // 

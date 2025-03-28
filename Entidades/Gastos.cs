@@ -10,7 +10,8 @@ namespace Entidades
     {
         public int gastosID { get; set; }
         public Usuarios oUsuarios { get; set; }
+        public string concepto { get; set; }
         public decimal montosTotales { get; set; }
-        public string fechaRegistros { get; set; }
+        public DateTime fechaRegistros { get; set; }
     }
 }

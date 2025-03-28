@@ -109,7 +109,7 @@ namespace PuntoVentaFruteria
         }
         private void MenuUsuarios_Click(object sender, EventArgs e)
         {
-            AbrirFormulario((IconMenuItem)sender, new FrmUsuarios());
+            AbrirFormulario((IconMenuItem)sender, new FrmUsuarios(usuariosActual));
         }
         private void RegistrarVenta_Click(object sender, EventArgs e)
         {

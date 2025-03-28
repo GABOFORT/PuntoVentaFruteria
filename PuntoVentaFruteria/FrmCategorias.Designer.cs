@@ -44,17 +44,17 @@
             this.BtnEliminar = new FontAwesome.Sharp.IconButton();
             this.BtnLimpiar = new FontAwesome.Sharp.IconButton();
             this.DgvDataCategorias = new System.Windows.Forms.DataGridView();
+            this.btnSeleccionar = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Descripcion = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Estado_Valor = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Estado = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnGuardar = new FontAwesome.Sharp.IconButton();
             this.label8 = new System.Windows.Forms.Label();
             this.CboEstados = new System.Windows.Forms.ComboBox();
             this.TextNombreCategorias = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.btnSeleccionar = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Descripcion = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Estado_Valor = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Estado = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.DgvDataCategorias)).BeginInit();
             this.SuspendLayout();
             // 
@@ -113,6 +113,7 @@
             this.TextBusqueda.Name = "TextBusqueda";
             this.TextBusqueda.Size = new System.Drawing.Size(207, 32);
             this.TextBusqueda.TabIndex = 69;
+            this.TextBusqueda.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TextBusqueda_KeyDown);
             // 
             // CboBuscar
             // 
@@ -269,6 +270,43 @@
             this.DgvDataCategorias.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgvDataCategorias_CellContentClick);
             this.DgvDataCategorias.CellPainting += new System.Windows.Forms.DataGridViewCellPaintingEventHandler(this.DgvDataCategorias_CellPainting);
             // 
+            // btnSeleccionar
+            // 
+            this.btnSeleccionar.HeaderText = "";
+            this.btnSeleccionar.Name = "btnSeleccionar";
+            this.btnSeleccionar.ReadOnly = true;
+            this.btnSeleccionar.Width = 14;
+            // 
+            // ID
+            // 
+            this.ID.HeaderText = "ID";
+            this.ID.Name = "ID";
+            this.ID.ReadOnly = true;
+            this.ID.Visible = false;
+            this.ID.Width = 66;
+            // 
+            // Descripcion
+            // 
+            this.Descripcion.HeaderText = "Nombre Categoria";
+            this.Descripcion.Name = "Descripcion";
+            this.Descripcion.ReadOnly = true;
+            this.Descripcion.Width = 201;
+            // 
+            // Estado_Valor
+            // 
+            this.Estado_Valor.HeaderText = "Estado_Valor";
+            this.Estado_Valor.Name = "Estado_Valor";
+            this.Estado_Valor.ReadOnly = true;
+            this.Estado_Valor.Visible = false;
+            this.Estado_Valor.Width = 162;
+            // 
+            // Estado
+            // 
+            this.Estado.HeaderText = "Estado";
+            this.Estado.Name = "Estado";
+            this.Estado.ReadOnly = true;
+            this.Estado.Width = 107;
+            // 
             // btnGuardar
             // 
             this.btnGuardar.BackColor = System.Drawing.Color.Green;
@@ -339,43 +377,6 @@
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(224, 546);
             this.label2.TabIndex = 55;
-            // 
-            // btnSeleccionar
-            // 
-            this.btnSeleccionar.HeaderText = "";
-            this.btnSeleccionar.Name = "btnSeleccionar";
-            this.btnSeleccionar.ReadOnly = true;
-            this.btnSeleccionar.Width = 14;
-            // 
-            // ID
-            // 
-            this.ID.HeaderText = "ID";
-            this.ID.Name = "ID";
-            this.ID.ReadOnly = true;
-            this.ID.Visible = false;
-            this.ID.Width = 65;
-            // 
-            // Descripcion
-            // 
-            this.Descripcion.HeaderText = "Nombre Categoria";
-            this.Descripcion.Name = "Descripcion";
-            this.Descripcion.ReadOnly = true;
-            this.Descripcion.Width = 201;
-            // 
-            // Estado_Valor
-            // 
-            this.Estado_Valor.HeaderText = "Estado_Valor";
-            this.Estado_Valor.Name = "Estado_Valor";
-            this.Estado_Valor.ReadOnly = true;
-            this.Estado_Valor.Visible = false;
-            this.Estado_Valor.Width = 161;
-            // 
-            // Estado
-            // 
-            this.Estado.HeaderText = "Estado";
-            this.Estado.Name = "Estado";
-            this.Estado.ReadOnly = true;
-            this.Estado.Width = 107;
             // 
             // FrmCategorias
             // 

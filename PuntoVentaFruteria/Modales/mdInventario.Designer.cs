@@ -128,7 +128,7 @@
             this.inventariosID.Name = "inventariosID";
             this.inventariosID.ReadOnly = true;
             this.inventariosID.Visible = false;
-            this.inventariosID.Width = 157;
+            this.inventariosID.Width = 158;
             // 
             // nombresProductos
             // 
@@ -220,6 +220,7 @@
             this.TextBusquedas.Name = "TextBusquedas";
             this.TextBusquedas.Size = new System.Drawing.Size(200, 32);
             this.TextBusquedas.TabIndex = 51;
+            this.TextBusquedas.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TextBusquedas_KeyDown);
             // 
             // CboBuscar
             // 

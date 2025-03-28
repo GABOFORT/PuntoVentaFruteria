@@ -195,5 +195,18 @@ namespace PuntoVentaFruteria
                 e.Handled = true;
             }
         }
+        private void TextBusqueda_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                BtnBuscar.PerformClick();
+                e.SuppressKeyPress = true;
+            }
+            else if (e.KeyCode == Keys.Escape)
+            {
+                BtnLimpiarBuscador.PerformClick();
+                e.SuppressKeyPress = true;
+            }
+        }
     }
 }

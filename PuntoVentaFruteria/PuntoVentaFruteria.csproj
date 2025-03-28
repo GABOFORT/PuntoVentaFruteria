@@ -129,6 +129,12 @@
     <Compile Include="FrmVentas.Designer.cs">
       <DependentUpon>FrmVentas.cs</DependentUpon>
     </Compile>
+    <Compile Include="Modales\mdGastosPersonales.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Modales\mdGastosPersonales.Designer.cs">
+      <DependentUpon>mdGastosPersonales.cs</DependentUpon>
+    </Compile>
     <Compile Include="Modales\mdAcercaDe.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -208,6 +214,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FrmVentas.resx">
       <DependentUpon>FrmVentas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Modales\mdGastosPersonales.resx">
+      <DependentUpon>mdGastosPersonales.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Modales\mdAcercaDe.resx">
       <DependentUpon>mdAcercaDe.cs</DependentUpon>
