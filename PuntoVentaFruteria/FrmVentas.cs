@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Drawing.Printing;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Entidades;
@@ -46,44 +47,63 @@ namespace PuntoVentaFruteria
         }
         private void iconBtnAgregarProductos_Click(object sender, EventArgs e)
         {
-            decimal precio = 0;
-            bool producto_existe = false;
             if (int.Parse(TextIDProductos.Text) == 0)
             {
                 MessageBox.Show("Debe seleccionar un producto", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 return;
             }
-            if (!decimal.TryParse(TextPrecioVenta.Text, out precio))
+            if (string.IsNullOrWhiteSpace(TextCantidadyPeso.Text) || decimal.Parse(TextCantidadyPeso.Text) <= 0)
             {
-                MessageBox.Show("Precio - Formato moneda incorrecto", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                TextPrecioVenta.Select();
+                MessageBox.Show("Debe ingresar una cantidad/peso válido mayor a cero", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                TextCantidadyPeso.Focus();
                 return;
             }
+            bool esPorPeso = TextPeso.Text == "Sí";
+            decimal precioUnitario = Convert.ToDecimal(TextPrecioVenta.Text);
+            decimal cantidad = decimal.Parse(TextCantidadyPeso.Text);
+            decimal precioReal = esPorPeso ? Convert.ToDecimal(TextPrecioReal.Text) : precioUnitario;
+            decimal subtotal = esPorPeso ? cantidad * precioReal : cantidad * precioUnitario;
             foreach (DataGridViewRow fila in DgvDataVentas.Rows)
             {
                 if (fila.Cells["productoID"].Value.ToString() == TextIDProductos.Text)
                 {
-                    int cantidadActual = int.Parse(fila.Cells["Cantidad"].Value.ToString());
-                    int nuevaCantidad = cantidadActual + (int)TextCantidad.Value;
-                    fila.Cells["Cantidad"].Value = nuevaCantidad.ToString();
-                    fila.Cells["Sub_Total"].Value = (nuevaCantidad * precio).ToString("0.00");
+                    if (esPorPeso)
+                    {
+                        string pesoStr = fila.Cells["pesos"].Value.ToString().Replace(" kg", "").Replace("N/A", "0");
+                        decimal pesoActual = decimal.Parse(pesoStr);
+                        string nuevoPeso = (pesoActual + cantidad) == 0 ? "N/A" : (pesoActual + cantidad).ToString("0.00") + " kg";
+                        fila.Cells["pesos"].Value = nuevoPeso;
+                    }
+                    else
+                    {
+                        string cantStr = fila.Cells["Cantidad"].Value.ToString().Replace(" un", "").Replace("N/A", "0");
+                        int cantidadActual = int.Parse(cantStr);
+                        string nuevaCantidad = (cantidadActual + (int)cantidad) == 0 ? "N/A" : (cantidadActual + (int)cantidad).ToString() + " un";
+                        fila.Cells["Cantidad"].Value = nuevaCantidad;
+                    }
+                    fila.Cells["Sub_Total"].Value = (Convert.ToDecimal(fila.Cells["Sub_Total"].Value) + subtotal).ToString("0.00");
                     calcularTotal();
                     LimpiarProducto();
                     return;
                 }
             }
-            DgvDataVentas.Rows.Add(new object[] {
-             TextIDProductos.Text,
-             TextNombreProductos.Text,
-             TextDescripcion.Text,
-             precio.ToString("0.00"),
-             TextCantidad.Value.ToString(),
-             (TextCantidad.Value * precio).ToString("0.00")
-         });
-            calcularTotal();
-            LimpiarProducto();
-            TextCodigoProductos.Select();
-        }
+                string cantidadDisplay = esPorPeso ? "N/A" : (cantidad == 0 ? "N/A" : cantidad.ToString("0") + " un");
+                string pesoDisplay = esPorPeso ? (cantidad == 0 ? "N/A" : cantidad.ToString("0.00") + " kg") : "N/A";
+                 DgvDataVentas.Rows.Add(new object[] {
+                 TextIDProductos.Text,
+                 TextNombreProductos.Text,
+                 TextDescripcion.Text,
+                 precioUnitario.ToString("0.00"),
+                 cantidadDisplay,
+                 pesoDisplay,
+                 precioReal.ToString("0.00"),
+                 subtotal.ToString("0.00"),
+                 esPorPeso ? "Sí" : "No"
+             });
+                calcularTotal();
+                LimpiarProducto();
+                TextCodigoProductos.Select();
+            }
         private void LimpiarProducto()
         {
             TextIDProductos.Text = "0";
@@ -91,7 +111,9 @@ namespace PuntoVentaFruteria
             TextNombreProductos.Text = "";
             TextDescripcion.Text = "";
             TextPrecioVenta.Text = "";
-            TextCantidad.Value = 1;
+            TextCantidadyPeso.Text = "";
+            TextPeso.Text = "";
+            TextPrecioReal.Text = "";
         }
         private void calcularTotal()
         {
@@ -116,8 +138,14 @@ namespace PuntoVentaFruteria
                     TextCodigoProductos.Text = modal._Productos.codigos;
                     TextNombreProductos.Text = modal._Productos.nombresProductos;
                     TextDescripcion.Text = modal._Productos.descripciones;
+                    TextPeso.Text = modal._Productos.esPorPeso ? "Sí" : "No";
+                    TextPrecioReal.Text = modal._Productos.precioPorUnidadMedida.ToString("0.00");
                     TextPrecioVenta.Text = modal._Productos.preciosVentas.ToString("0.00");
-                    TextCantidad.Select();
+                    TextCantidadyPeso.Select();
+                    if (modal._Productos.esPorPeso)
+                        TextCantidadyPeso.Select(); 
+                    else
+                        TextCantidadyPeso.Select(); 
                 }
                 else
                 {
@@ -136,7 +164,7 @@ namespace PuntoVentaFruteria
                     TextIDProductos.Text = oProducto.productosID.ToString();
                     TextNombreProductos.Text = oProducto.nombresProductos;
                     TextPrecioVenta.Text = oProducto.preciosVentas.ToString("0.00");
-                    TextCantidad.Select();
+                    TextCantidadyPeso.Select();
                 }
                 else
                 {
@@ -144,7 +172,7 @@ namespace PuntoVentaFruteria
                     TextIDProductos.Text = "0";
                     TextNombreProductos.Text = "";
                     TextPrecioVenta.Text = "";
-                    TextCantidad.Value = 1;
+                    TextCantidadyPeso.Text = "";
                 }
             }
         }
@@ -152,7 +180,7 @@ namespace PuntoVentaFruteria
         {
             if (e.RowIndex < 0)
                 return;
-            if (e.ColumnIndex == 6)
+            if (e.ColumnIndex == 9)
             {
                 e.Paint(e.CellBounds, DataGridViewPaintParts.All);
                 var w = Properties.Resources.select.Width;
@@ -239,21 +267,51 @@ namespace PuntoVentaFruteria
                 MessageBox.Show("Debe ingresar productos en la venta", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 return;
             }
+            if (string.IsNullOrEmpty(TextPagaCon.Text) || Convert.ToDecimal(TextPagaCon.Text) < Convert.ToDecimal(TextTotalPagar.Text))
+            {
+                MessageBox.Show("El monto pagado es insuficiente", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                TextPagaCon.Focus();
+                return;
+            }
             DataTable detalle_venta = new DataTable();
             detalle_venta.Columns.Add("productosID", typeof(int));
             detalle_venta.Columns.Add("preciosVentas", typeof(decimal));
             detalle_venta.Columns.Add("cantidades", typeof(int));
+            detalle_venta.Columns.Add("pesos", typeof(decimal)); 
+            detalle_venta.Columns.Add("precioReal", typeof(decimal));
             detalle_venta.Columns.Add("subTotales", typeof(decimal));
             foreach (DataGridViewRow row in DgvDataVentas.Rows)
             {
-                detalle_venta.Rows.Add(new object[] {
-                row.Cells["productoID"].Value.ToString(),
-                row.Cells["Precio_Compra"].Value.ToString(),
-                row.Cells["Cantidad"].Value.ToString(),
-                row.Cells["Sub_Total"].Value.ToString(),
-            });
+                bool esPorPeso = row.Cells["EsPorPeso"].Value.ToString() == "Sí";
+                int cantidad = 0;
+                decimal peso = 0;
+                if (!esPorPeso)
+                {
+                    string cantidadStr = row.Cells["Cantidad"].Value.ToString().Replace(" un", "").Trim();
+                    if (!int.TryParse(cantidadStr, out cantidad))
+                    {
+                        MessageBox.Show($"Cantidad inválida para el producto: {row.Cells["Nombre"].Value}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
+                }
+                else
+                {
+                    string pesoStr = row.Cells["pesos"].Value.ToString().Replace(" kg", "").Trim();
+                    if (!decimal.TryParse(pesoStr, out peso))
+                    {
+                        MessageBox.Show($"Peso inválido para el producto: {row.Cells["Nombre"].Value}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
+                }
+                detalle_venta.Rows.Add(
+                    Convert.ToInt32(row.Cells["productoID"].Value),
+                    Convert.ToDecimal(row.Cells["Precio_Compra"].Value),
+                    esPorPeso ? 0 : cantidad,
+                    esPorPeso ? peso : 0,
+                    Convert.ToDecimal(row.Cells["precioReal"].Value),
+                    Convert.ToDecimal(row.Cells["Sub_Total"].Value)
+                );
             }
-
             int idcorrelativo = new N_Ventas().ObtenerCorrelativo();
             string numerosVentas = string.Format("{0:00000}", idcorrelativo);
             calcularcambio();
@@ -322,5 +380,16 @@ namespace PuntoVentaFruteria
             ticket.AppendLine("Gracias por su compra!");
             MessageBox.Show(ticket.ToString(), "Ticket Digital", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
+        private void TextCantidadyPeso_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))
+            {
+                e.Handled = true;
+            }
+            if ((e.KeyChar == '.') && ((sender as TextBox).Text.IndexOf('.') > -1))
+            {
+                e.Handled = true;
+            }
         }
+    }
 }

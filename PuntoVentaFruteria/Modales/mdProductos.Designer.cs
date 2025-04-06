@@ -43,8 +43,11 @@
             this.Nombre_Producto = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.descripcion = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Categoria = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.esPorPeso = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.unidadMedida = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Precio_Compra = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Precio_Venta = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.precioPorUnidadMedida = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.DgvDataMDProductos)).BeginInit();
             this.SuspendLayout();
             // 
@@ -59,7 +62,7 @@
             this.BtnLimpiar.IconColor = System.Drawing.Color.Black;
             this.BtnLimpiar.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.BtnLimpiar.IconSize = 25;
-            this.BtnLimpiar.Location = new System.Drawing.Point(584, 56);
+            this.BtnLimpiar.Location = new System.Drawing.Point(744, 62);
             this.BtnLimpiar.Name = "BtnLimpiar";
             this.BtnLimpiar.Size = new System.Drawing.Size(33, 33);
             this.BtnLimpiar.TabIndex = 48;
@@ -77,7 +80,7 @@
             this.BtnBuscar.IconColor = System.Drawing.Color.Black;
             this.BtnBuscar.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.BtnBuscar.IconSize = 25;
-            this.BtnBuscar.Location = new System.Drawing.Point(545, 56);
+            this.BtnBuscar.Location = new System.Drawing.Point(705, 62);
             this.BtnBuscar.Name = "BtnBuscar";
             this.BtnBuscar.Size = new System.Drawing.Size(33, 33);
             this.BtnBuscar.TabIndex = 47;
@@ -87,7 +90,7 @@
             // TextBusquedas
             // 
             this.TextBusquedas.Font = new System.Drawing.Font("Arial Narrow", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TextBusquedas.Location = new System.Drawing.Point(339, 57);
+            this.TextBusquedas.Location = new System.Drawing.Point(499, 63);
             this.TextBusquedas.Name = "TextBusquedas";
             this.TextBusquedas.Size = new System.Drawing.Size(200, 32);
             this.TextBusquedas.TabIndex = 46;
@@ -98,7 +101,7 @@
             this.CboBuscar.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.CboBuscar.Font = new System.Drawing.Font("Arial Narrow", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CboBuscar.FormattingEnabled = true;
-            this.CboBuscar.Location = new System.Drawing.Point(133, 56);
+            this.CboBuscar.Location = new System.Drawing.Point(293, 62);
             this.CboBuscar.Name = "CboBuscar";
             this.CboBuscar.Size = new System.Drawing.Size(200, 33);
             this.CboBuscar.TabIndex = 45;
@@ -108,7 +111,7 @@
             this.label11.AutoSize = true;
             this.label11.BackColor = System.Drawing.Color.White;
             this.label11.Font = new System.Drawing.Font("Arial Narrow", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.Location = new System.Drawing.Point(20, 60);
+            this.label11.Location = new System.Drawing.Point(180, 66);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(117, 25);
             this.label11.TabIndex = 44;
@@ -121,7 +124,7 @@
             this.label10.Font = new System.Drawing.Font("Arial Narrow", 27.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label10.Location = new System.Drawing.Point(0, 0);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(652, 101);
+            this.label10.Size = new System.Drawing.Size(974, 101);
             this.label10.TabIndex = 43;
             this.label10.Text = "Lista de Productos";
             this.label10.TextAlign = System.Drawing.ContentAlignment.TopCenter;
@@ -129,9 +132,6 @@
             // DgvDataMDProductos
             // 
             this.DgvDataMDProductos.AllowUserToAddRows = false;
-            this.DgvDataMDProductos.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.DgvDataMDProductos.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.DgvDataMDProductos.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCellsExceptHeaders;
             this.DgvDataMDProductos.BackgroundColor = System.Drawing.Color.White;
@@ -153,11 +153,15 @@
             this.Nombre_Producto,
             this.descripcion,
             this.Categoria,
+            this.esPorPeso,
+            this.unidadMedida,
             this.Precio_Compra,
-            this.Precio_Venta});
+            this.Precio_Venta,
+            this.precioPorUnidadMedida});
+            this.DgvDataMDProductos.Dock = System.Windows.Forms.DockStyle.Fill;
             this.DgvDataMDProductos.EnableHeadersVisualStyles = false;
             this.DgvDataMDProductos.GridColor = System.Drawing.Color.Black;
-            this.DgvDataMDProductos.Location = new System.Drawing.Point(8, 104);
+            this.DgvDataMDProductos.Location = new System.Drawing.Point(0, 101);
             this.DgvDataMDProductos.MultiSelect = false;
             this.DgvDataMDProductos.Name = "DgvDataMDProductos";
             this.DgvDataMDProductos.ReadOnly = true;
@@ -177,7 +181,7 @@
             this.DgvDataMDProductos.RowTemplate.DividerHeight = 3;
             this.DgvDataMDProductos.RowTemplate.Height = 100;
             this.DgvDataMDProductos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.DgvDataMDProductos.Size = new System.Drawing.Size(632, 476);
+            this.DgvDataMDProductos.Size = new System.Drawing.Size(974, 479);
             this.DgvDataMDProductos.TabIndex = 42;
             this.DgvDataMDProductos.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgvDataMDProductos_CellDoubleClick);
             // 
@@ -187,7 +191,7 @@
             this.ID.Name = "ID";
             this.ID.ReadOnly = true;
             this.ID.Visible = false;
-            this.ID.Width = 62;
+            this.ID.Width = 61;
             // 
             // Codigo
             // 
@@ -198,24 +202,40 @@
             // 
             // Nombre_Producto
             // 
+            this.Nombre_Producto.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.Nombre_Producto.HeaderText = "Nombre Producto";
             this.Nombre_Producto.Name = "Nombre_Producto";
             this.Nombre_Producto.ReadOnly = true;
-            this.Nombre_Producto.Width = 193;
             // 
             // descripcion
             // 
+            this.descripcion.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.descripcion.HeaderText = "Descripción";
             this.descripcion.Name = "descripcion";
             this.descripcion.ReadOnly = true;
-            this.descripcion.Width = 146;
             // 
             // Categoria
             // 
+            this.Categoria.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.Categoria.HeaderText = "Categoria";
             this.Categoria.Name = "Categoria";
             this.Categoria.ReadOnly = true;
-            this.Categoria.Width = 126;
+            // 
+            // esPorPeso
+            // 
+            this.esPorPeso.HeaderText = "esPorPeso";
+            this.esPorPeso.Name = "esPorPeso";
+            this.esPorPeso.ReadOnly = true;
+            this.esPorPeso.Visible = false;
+            this.esPorPeso.Width = 135;
+            // 
+            // unidadMedida
+            // 
+            this.unidadMedida.HeaderText = "unidadMedida";
+            this.unidadMedida.Name = "unidadMedida";
+            this.unidadMedida.ReadOnly = true;
+            this.unidadMedida.Visible = false;
+            this.unidadMedida.Width = 165;
             // 
             // Precio_Compra
             // 
@@ -223,7 +243,7 @@
             this.Precio_Compra.Name = "Precio_Compra";
             this.Precio_Compra.ReadOnly = true;
             this.Precio_Compra.Visible = false;
-            this.Precio_Compra.Width = 175;
+            this.Precio_Compra.Width = 174;
             // 
             // Precio_Venta
             // 
@@ -231,14 +251,22 @@
             this.Precio_Venta.Name = "Precio_Venta";
             this.Precio_Venta.ReadOnly = true;
             this.Precio_Venta.Visible = false;
-            this.Precio_Venta.Width = 157;
+            this.Precio_Venta.Width = 156;
+            // 
+            // precioPorUnidadMedida
+            // 
+            this.precioPorUnidadMedida.HeaderText = "precioPorUnidadMedida";
+            this.precioPorUnidadMedida.Name = "precioPorUnidadMedida";
+            this.precioPorUnidadMedida.ReadOnly = true;
+            this.precioPorUnidadMedida.Visible = false;
+            this.precioPorUnidadMedida.Width = 249;
             // 
             // mdProductos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(652, 580);
+            this.ClientSize = new System.Drawing.Size(974, 580);
             this.Controls.Add(this.DgvDataMDProductos);
             this.Controls.Add(this.BtnLimpiar);
             this.Controls.Add(this.BtnBuscar);
@@ -271,7 +299,10 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Nombre_Producto;
         private System.Windows.Forms.DataGridViewTextBoxColumn descripcion;
         private System.Windows.Forms.DataGridViewTextBoxColumn Categoria;
+        private System.Windows.Forms.DataGridViewTextBoxColumn esPorPeso;
+        private System.Windows.Forms.DataGridViewTextBoxColumn unidadMedida;
         private System.Windows.Forms.DataGridViewTextBoxColumn Precio_Compra;
         private System.Windows.Forms.DataGridViewTextBoxColumn Precio_Venta;
+        private System.Windows.Forms.DataGridViewTextBoxColumn precioPorUnidadMedida;
     }
 }

@@ -13,6 +13,7 @@ namespace Entidades
         public decimal preciosCompras { get; set; }
         public decimal preciosVentas { get; set; }
         public int cantidades { get; set; }
+        public decimal peso { get; set; }
         public decimal montosTotales { get; set; }
         public string fechaRegistros { get; set; }
     }

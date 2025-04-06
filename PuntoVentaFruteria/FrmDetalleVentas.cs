@@ -49,7 +49,6 @@ namespace PuntoVentaFruteria
                 DgvDataVentasDia.Rows.Add(item.Key.ToString("D5"), item.Value.Item1.ToString("C2"), item.Value.Item2); 
             }
         }
-
         private void TextBusquedas_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter) 
@@ -73,11 +72,20 @@ namespace PuntoVentaFruteria
                 DgvDataDetallesVentas.Rows.Clear();
                 foreach (DetallesVentas dv in oVenta.oDetallesVentas)
                 {
-                    DgvDataDetallesVentas.Rows.Add(new object[] { dv.oProductos.nombresProductos, dv.oProductos.descripciones, dv.preciosVentas, dv.cantidades, dv.subTotales });
+                    DgvDataDetallesVentas.Rows.Add(new object[] {
+                        dv.oProductos.nombresProductos,
+                        dv.oProductos.descripciones,
+                        dv.preciosVentas.ToString("C2"),
+                        dv.oProductos.esPorPeso ? dv.peso.ToString("0.00") : dv.cantidades.ToString(),
+                        dv.oProductos.esPorPeso ? dv.precioReal.ToString("C2") : "N/A",
+                        dv.oProductos.unidadMedida,
+                        dv.oProductos.esPorPeso ? "Sí" : "No",
+                        dv.subTotales.ToString("C2")
+            });
                 }
-                TextMontosPagos.Text = oVenta.montosPagos.ToString("0.00");
-                TextMontosCambios.Text = oVenta.montosCambios.ToString("0.00");
-                TextMontosTotales.Text = oVenta.montosTotales.ToString("0.00");
+                    TextMontosPagos.Text = oVenta.montosPagos.ToString("0.00");
+                    TextMontosCambios.Text = oVenta.montosCambios.ToString("0.00");
+                    TextMontosTotales.Text = oVenta.montosTotales.ToString("0.00");
             }
         }
         }

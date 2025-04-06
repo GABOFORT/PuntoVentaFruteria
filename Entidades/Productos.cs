@@ -13,8 +13,11 @@ namespace Entidades
         public string nombresProductos { get; set; }
         public string descripciones { get; set; }
         public Categorias ocategorias { get; set; }
+        public bool esPorPeso {  get; set; } = false;
+        public string unidadMedida { get; set; } = "un";
         public decimal preciosCompras { get; set; }
         public decimal preciosVentas { get; set; }
+        public decimal precioPorUnidadMedida { get; set; }
         public bool estados { get; set; }
         public string fechaRegistros { get; set; }
     }

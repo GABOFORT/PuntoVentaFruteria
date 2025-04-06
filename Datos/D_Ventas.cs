@@ -116,10 +116,11 @@ namespace Datos
                 {
                     conexion.Open();
                     StringBuilder query = new StringBuilder();
-                    query.AppendLine("select p.nombresProductos,p.descripciones,dv.preciosVentas,dv.cantidades,dv.subTotales");
-                    query.AppendLine("from DetallesVentas dv");
-                    query.AppendLine("inner join Productos p on p.productosID = dv.productosID");
-                    query.AppendLine("where dv.ventasID = @ventasID");
+                    query.AppendLine("SELECT p.nombresProductos, p.descripciones, dv.preciosVentas, dv.cantidades,");
+                    query.AppendLine("dv.peso, dv.precioReal, p.esPorPeso, p.unidadMedida, dv.subTotales");
+                    query.AppendLine("FROM DetallesVentas dv");
+                    query.AppendLine("INNER JOIN Productos p ON p.productosID = dv.productosID");
+                    query.AppendLine("WHERE dv.ventasID = @ventasID");
                     SqlCommand cmd = new SqlCommand(query.ToString(), conexion);
                     cmd.Parameters.AddWithValue("@ventasID", ventasID);
                     cmd.CommandType = System.Data.CommandType.Text;
@@ -129,9 +130,18 @@ namespace Datos
                         {
                             oLista.Add(new DetallesVentas()
                             {
-                                oProductos = new Productos() { nombresProductos = dr["nombresProductos"].ToString(), descripciones = dr["descripciones"].ToString() },
+                                oProductos = new Productos()
+                                {
+                                    nombresProductos = dr["nombresProductos"].ToString(),
+                                    descripciones = dr["descripciones"].ToString(),
+                                    esPorPeso = Convert.ToBoolean(dr["esPorPeso"]),
+                                    unidadMedida = dr["unidadMedida"].ToString()
+                                    
+                                },
                                 preciosVentas = Convert.ToDecimal(dr["preciosVentas"].ToString()),
                                 cantidades = Convert.ToInt32(dr["cantidades"].ToString()),
+                                peso = dr["peso"] != DBNull.Value ? Convert.ToDecimal(dr["peso"]) : 0,
+                                precioReal = dr["precioReal"] != DBNull.Value ? Convert.ToDecimal(dr["precioReal"]) : 0,
                                 subTotales = Convert.ToDecimal(dr["subTotales"].ToString()),
                             });
                         }

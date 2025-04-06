@@ -19,8 +19,11 @@ namespace Datos
                 try
                 {
                     StringBuilder query = new StringBuilder();
-                    query.AppendLine("select productosID,codigos,nombresProductos,p.descripciones,c.categoriasID,c.nombresCategorias,preciosCompras,preciosVentas,p.estados from Productos p");
-                    query.AppendLine("inner join Categorias c on c.categoriasID = p.categoriasID");
+                    query.AppendLine("SELECT p.productosID, p.codigos, p.nombresProductos, p.descripciones, p.categoriasID,");
+                    query.AppendLine("c.nombresCategorias, p.esPorPeso, p.unidadMedida, p.preciosCompras, p.preciosVentas,");
+                    query.AppendLine("p.precioPorUnidadMedida, p.estados");
+                    query.AppendLine("FROM Productos p");
+                    query.AppendLine("INNER JOIN Categorias c ON c.categoriasID = p.categoriasID");
                     SqlCommand cmd = new SqlCommand(query.ToString(), oconexion);
                     cmd.CommandType = CommandType.Text;
                     oconexion.Open();
@@ -35,8 +38,11 @@ namespace Datos
                                 nombresProductos = dr["nombresProductos"].ToString(),
                                 descripciones = dr["descripciones"].ToString(),
                                 ocategorias = new Categorias() { categoriasID = Convert.ToInt32(dr["categoriasID"]), nombresCategorias = dr["nombresCategorias"].ToString() },
+                                esPorPeso = Convert.ToBoolean(dr["esPorPeso"]),
+                                unidadMedida = dr["unidadMedida"].ToString(),
                                 preciosCompras = Convert.ToDecimal(dr["preciosCompras"].ToString()),
                                 preciosVentas = Convert.ToDecimal(dr["preciosVentas"].ToString()),
+                                precioPorUnidadMedida = Convert.ToDecimal(dr["precioPorUnidadMedida"].ToString()),
                                 estados = Convert.ToBoolean(dr["estados"]),
                             });
                         }
@@ -62,8 +68,11 @@ namespace Datos
                     cmd.Parameters.AddWithValue("nombresProductos ", obj.nombresProductos);
                     cmd.Parameters.AddWithValue("descripciones", obj.descripciones);
                     cmd.Parameters.AddWithValue("categoriasID", obj.ocategorias.categoriasID);
+                    cmd.Parameters.AddWithValue("esPorPeso", obj.esPorPeso);
+                    cmd.Parameters.AddWithValue("unidadMedida", obj.unidadMedida);
                     cmd.Parameters.AddWithValue("preciosCompras", obj.preciosCompras);
                     cmd.Parameters.AddWithValue("preciosVentas", obj.preciosVentas);
+                    cmd.Parameters.AddWithValue("precioPorUnidadMedida", obj.precioPorUnidadMedida);
                     cmd.Parameters.AddWithValue("estados", obj.estados);
                     cmd.Parameters.Add("Resultados", SqlDbType.Int).Direction = ParameterDirection.Output;
                     cmd.Parameters.Add("mensajes", SqlDbType.VarChar, 500).Direction = ParameterDirection.Output;
@@ -95,8 +104,11 @@ namespace Datos
                     cmd.Parameters.AddWithValue("nombresProductos", obj.nombresProductos);
                     cmd.Parameters.AddWithValue("descripciones", obj.descripciones);
                     cmd.Parameters.AddWithValue("categoriasID", obj.ocategorias.categoriasID);
+                    cmd.Parameters.AddWithValue("esPorPeso", obj.esPorPeso);
+                    cmd.Parameters.AddWithValue("unidadMedida", obj.unidadMedida);
                     cmd.Parameters.AddWithValue("preciosCompras", obj.preciosCompras);
                     cmd.Parameters.AddWithValue("preciosVentas", obj.preciosVentas);
+                    cmd.Parameters.AddWithValue("precioPorUnidadMedida", obj.precioPorUnidadMedida);
                     cmd.Parameters.AddWithValue("estados", obj.estados);
                     cmd.Parameters.Add("Resultados", SqlDbType.Int).Direction = ParameterDirection.Output;
                     cmd.Parameters.Add("mensajes", SqlDbType.VarChar, 500).Direction = ParameterDirection.Output;

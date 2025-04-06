@@ -17,7 +17,7 @@ namespace Datos
                 try
                 {
                     StringBuilder query = new StringBuilder();
-                    query.AppendLine("SELECT g.gastosID, g.usuariosID, u.nombresUsuarios, g.concepto, g.montosTotales, g.fechaRegistros\r\n");
+                    query.AppendLine("SELECT g.gastosID, g.usuariosID, u.nombresUsuarios, g.concepto, g.montosTotales, g.fechaRegistros");
                     query.AppendLine("FROM Gastos g");
                     query.AppendLine("INNER JOIN Usuarios u ON g.usuariosID = u.usuariosID"); 
                     query.AppendLine("ORDER BY g.fechaRegistros DESC");

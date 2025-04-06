@@ -49,17 +49,20 @@
             this.TextMontosCambios = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
             this.DgvDataDetallesVentas = new System.Windows.Forms.DataGridView();
-            this.Producto = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Descricipciones = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Precio_Venta = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Cantidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Sub_Total = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TextMontosTotales = new System.Windows.Forms.TextBox();
             this.DgvDataVentasDia = new System.Windows.Forms.DataGridView();
             this.Numero_Venta = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Monto_Total = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Fecha_Registro = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label3 = new System.Windows.Forms.Label();
+            this.Producto = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Descricipciones = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Precio_Venta = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Cantidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.PrecioPeso = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.UnidadKgGr = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.EsPorPeso = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Sub_Total = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DgvDataDetallesVentas)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DgvDataVentasDia)).BeginInit();
@@ -141,7 +144,7 @@
             this.lblFondo.Font = new System.Drawing.Font("Arial Narrow", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblFondo.Location = new System.Drawing.Point(0, 0);
             this.lblFondo.Name = "lblFondo";
-            this.lblFondo.Size = new System.Drawing.Size(1508, 673);
+            this.lblFondo.Size = new System.Drawing.Size(1531, 673);
             this.lblFondo.TabIndex = 48;
             this.lblFondo.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
@@ -249,8 +252,9 @@
             // DgvDataDetallesVentas
             // 
             this.DgvDataDetallesVentas.AllowUserToAddRows = false;
-            this.DgvDataDetallesVentas.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
+            this.DgvDataDetallesVentas.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.DgvDataDetallesVentas.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.DgvDataDetallesVentas.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCellsExceptHeaders;
             this.DgvDataDetallesVentas.BackgroundColor = System.Drawing.Color.White;
@@ -271,10 +275,13 @@
             this.Descricipciones,
             this.Precio_Venta,
             this.Cantidad,
+            this.PrecioPeso,
+            this.UnidadKgGr,
+            this.EsPorPeso,
             this.Sub_Total});
             this.DgvDataDetallesVentas.EnableHeadersVisualStyles = false;
             this.DgvDataDetallesVentas.GridColor = System.Drawing.Color.Black;
-            this.DgvDataDetallesVentas.Location = new System.Drawing.Point(5, 219);
+            this.DgvDataDetallesVentas.Location = new System.Drawing.Point(183, 246);
             this.DgvDataDetallesVentas.MultiSelect = false;
             this.DgvDataDetallesVentas.Name = "DgvDataDetallesVentas";
             this.DgvDataDetallesVentas.ReadOnly = true;
@@ -291,15 +298,103 @@
             this.DgvDataDetallesVentas.RowsDefaultCellStyle = dataGridViewCellStyle2;
             this.DgvDataDetallesVentas.RowTemplate.DividerHeight = 3;
             this.DgvDataDetallesVentas.RowTemplate.Height = 100;
-            this.DgvDataDetallesVentas.Size = new System.Drawing.Size(889, 448);
+            this.DgvDataDetallesVentas.Size = new System.Drawing.Size(1183, 415);
             this.DgvDataDetallesVentas.TabIndex = 67;
+            // 
+            // TextMontosTotales
+            // 
+            this.TextMontosTotales.Font = new System.Drawing.Font("Arial Narrow", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TextMontosTotales.Location = new System.Drawing.Point(572, 182);
+            this.TextMontosTotales.Name = "TextMontosTotales";
+            this.TextMontosTotales.Size = new System.Drawing.Size(146, 32);
+            this.TextMontosTotales.TabIndex = 60;
+            this.TextMontosTotales.Text = "0";
+            // 
+            // DgvDataVentasDia
+            // 
+            this.DgvDataVentasDia.AllowUserToAddRows = false;
+            this.DgvDataVentasDia.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.DgvDataVentasDia.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
+            this.DgvDataVentasDia.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCellsExceptHeaders;
+            this.DgvDataVentasDia.BackgroundColor = System.Drawing.Color.White;
+            this.DgvDataVentasDia.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.DgvDataVentasDia.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Arial Narrow", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle3.Padding = new System.Windows.Forms.Padding(6);
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.DgvDataVentasDia.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            this.DgvDataVentasDia.ColumnHeadersHeight = 40;
+            this.DgvDataVentasDia.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Numero_Venta,
+            this.Monto_Total,
+            this.Fecha_Registro});
+            this.DgvDataVentasDia.EnableHeadersVisualStyles = false;
+            this.DgvDataVentasDia.GridColor = System.Drawing.Color.Black;
+            this.DgvDataVentasDia.Location = new System.Drawing.Point(977, 58);
+            this.DgvDataVentasDia.MultiSelect = false;
+            this.DgvDataVentasDia.Name = "DgvDataVentasDia";
+            this.DgvDataVentasDia.ReadOnly = true;
+            this.DgvDataVentasDia.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Sunken;
+            this.DgvDataVentasDia.RowHeadersVisible = false;
+            this.DgvDataVentasDia.RowHeadersWidth = 50;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Arial Narrow", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle4.Padding = new System.Windows.Forms.Padding(6);
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.Black;
+            this.DgvDataVentasDia.RowsDefaultCellStyle = dataGridViewCellStyle4;
+            this.DgvDataVentasDia.RowTemplate.DividerHeight = 3;
+            this.DgvDataVentasDia.RowTemplate.Height = 100;
+            this.DgvDataVentasDia.Size = new System.Drawing.Size(554, 171);
+            this.DgvDataVentasDia.TabIndex = 68;
+            // 
+            // Numero_Venta
+            // 
+            this.Numero_Venta.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Numero_Venta.HeaderText = "Numero Venta";
+            this.Numero_Venta.Name = "Numero_Venta";
+            this.Numero_Venta.ReadOnly = true;
+            // 
+            // Monto_Total
+            // 
+            this.Monto_Total.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Monto_Total.HeaderText = "Monto Total";
+            this.Monto_Total.Name = "Monto_Total";
+            this.Monto_Total.ReadOnly = true;
+            // 
+            // Fecha_Registro
+            // 
+            this.Fecha_Registro.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Fecha_Registro.HeaderText = "Fecha Registro";
+            this.Fecha_Registro.Name = "Fecha_Registro";
+            this.Fecha_Registro.ReadOnly = true;
+            // 
+            // label3
+            // 
+            this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label3.AutoSize = true;
+            this.label3.BackColor = System.Drawing.Color.White;
+            this.label3.Font = new System.Drawing.Font("Arial Narrow", 27.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(1116, 9);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(271, 43);
+            this.label3.TabIndex = 69;
+            this.label3.Text = "VENTAS DEL DIA";
             // 
             // Producto
             // 
-            this.Producto.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Producto.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.Producto.HeaderText = "Producto";
             this.Producto.Name = "Producto";
             this.Producto.ReadOnly = true;
+            this.Producto.Width = 126;
             // 
             // Descricipciones
             // 
@@ -322,6 +417,27 @@
             this.Cantidad.ReadOnly = true;
             this.Cantidad.Width = 124;
             // 
+            // PrecioPeso
+            // 
+            this.PrecioPeso.HeaderText = "Precio Peso";
+            this.PrecioPeso.Name = "PrecioPeso";
+            this.PrecioPeso.ReadOnly = true;
+            this.PrecioPeso.Width = 149;
+            // 
+            // UnidadKgGr
+            // 
+            this.UnidadKgGr.HeaderText = "Unidad, Kg y Gr";
+            this.UnidadKgGr.Name = "UnidadKgGr";
+            this.UnidadKgGr.ReadOnly = true;
+            this.UnidadKgGr.Width = 181;
+            // 
+            // EsPorPeso
+            // 
+            this.EsPorPeso.HeaderText = "Por Peso";
+            this.EsPorPeso.Name = "EsPorPeso";
+            this.EsPorPeso.ReadOnly = true;
+            this.EsPorPeso.Width = 124;
+            // 
             // Sub_Total
             // 
             this.Sub_Total.HeaderText = "Sub Total";
@@ -329,98 +445,11 @@
             this.Sub_Total.ReadOnly = true;
             this.Sub_Total.Width = 129;
             // 
-            // TextMontosTotales
-            // 
-            this.TextMontosTotales.Font = new System.Drawing.Font("Arial Narrow", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TextMontosTotales.Location = new System.Drawing.Point(572, 182);
-            this.TextMontosTotales.Name = "TextMontosTotales";
-            this.TextMontosTotales.Size = new System.Drawing.Size(146, 32);
-            this.TextMontosTotales.TabIndex = 60;
-            this.TextMontosTotales.Text = "0";
-            // 
-            // DgvDataVentasDia
-            // 
-            this.DgvDataVentasDia.AllowUserToAddRows = false;
-            this.DgvDataVentasDia.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
-            this.DgvDataVentasDia.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
-            this.DgvDataVentasDia.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCellsExceptHeaders;
-            this.DgvDataVentasDia.BackgroundColor = System.Drawing.Color.White;
-            this.DgvDataVentasDia.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.DgvDataVentasDia.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Arial Narrow", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle3.Padding = new System.Windows.Forms.Padding(6);
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.DgvDataVentasDia.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
-            this.DgvDataVentasDia.ColumnHeadersHeight = 40;
-            this.DgvDataVentasDia.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Numero_Venta,
-            this.Monto_Total,
-            this.Fecha_Registro});
-            this.DgvDataVentasDia.EnableHeadersVisualStyles = false;
-            this.DgvDataVentasDia.GridColor = System.Drawing.Color.Black;
-            this.DgvDataVentasDia.Location = new System.Drawing.Point(900, 58);
-            this.DgvDataVentasDia.MultiSelect = false;
-            this.DgvDataVentasDia.Name = "DgvDataVentasDia";
-            this.DgvDataVentasDia.ReadOnly = true;
-            this.DgvDataVentasDia.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Sunken;
-            this.DgvDataVentasDia.RowHeadersVisible = false;
-            this.DgvDataVentasDia.RowHeadersWidth = 50;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Arial Narrow", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle4.Padding = new System.Windows.Forms.Padding(6);
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.Black;
-            this.DgvDataVentasDia.RowsDefaultCellStyle = dataGridViewCellStyle4;
-            this.DgvDataVentasDia.RowTemplate.DividerHeight = 3;
-            this.DgvDataVentasDia.RowTemplate.Height = 100;
-            this.DgvDataVentasDia.Size = new System.Drawing.Size(554, 615);
-            this.DgvDataVentasDia.TabIndex = 68;
-            // 
-            // Numero_Venta
-            // 
-            this.Numero_Venta.HeaderText = "Numero Venta";
-            this.Numero_Venta.Name = "Numero_Venta";
-            this.Numero_Venta.ReadOnly = true;
-            this.Numero_Venta.Width = 167;
-            // 
-            // Monto_Total
-            // 
-            this.Monto_Total.HeaderText = "Monto Total";
-            this.Monto_Total.Name = "Monto_Total";
-            this.Monto_Total.ReadOnly = true;
-            this.Monto_Total.Width = 150;
-            // 
-            // Fecha_Registro
-            // 
-            this.Fecha_Registro.HeaderText = "Fecha Registro";
-            this.Fecha_Registro.Name = "Fecha_Registro";
-            this.Fecha_Registro.ReadOnly = true;
-            this.Fecha_Registro.Width = 177;
-            // 
-            // label3
-            // 
-            this.label3.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.label3.AutoSize = true;
-            this.label3.BackColor = System.Drawing.Color.White;
-            this.label3.Font = new System.Drawing.Font("Arial Narrow", 27.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(1016, 9);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(271, 43);
-            this.label3.TabIndex = 69;
-            this.label3.Text = "VENTAS DEL DIA";
-            // 
             // FrmDetalleVentas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1508, 673);
+            this.ClientSize = new System.Drawing.Size(1531, 673);
             this.Controls.Add(this.DgvDataVentasDia);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label8);
@@ -478,6 +507,9 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Descricipciones;
         private System.Windows.Forms.DataGridViewTextBoxColumn Precio_Venta;
         private System.Windows.Forms.DataGridViewTextBoxColumn Cantidad;
+        private System.Windows.Forms.DataGridViewTextBoxColumn PrecioPeso;
+        private System.Windows.Forms.DataGridViewTextBoxColumn UnidadKgGr;
+        private System.Windows.Forms.DataGridViewTextBoxColumn EsPorPeso;
         private System.Windows.Forms.DataGridViewTextBoxColumn Sub_Total;
     }
 }

@@ -41,8 +41,11 @@ namespace PuntoVentaFruteria.Modales
                         item.nombresProductos,
                         item.descripciones,
                         item.ocategorias.nombresCategorias,
+                        item.esPorPeso,
+                        item.unidadMedida,
                         item.preciosCompras,
                         item.preciosVentas,
+                        item.precioPorUnidadMedida,
             });
             }
         }
@@ -80,8 +83,11 @@ namespace PuntoVentaFruteria.Modales
                     codigos = DgvDataMDProductos.Rows[iRow].Cells["Codigo"].Value.ToString(),
                     nombresProductos = DgvDataMDProductos.Rows[iRow].Cells["Nombre_Producto"].Value.ToString(),
                     descripciones = DgvDataMDProductos.Rows[iRow].Cells["descripcion"].Value.ToString(),
+                    esPorPeso = Convert.ToBoolean(DgvDataMDProductos.Rows[iRow].Cells["esPorPeso"].Value.ToString()),
+                    unidadMedida = DgvDataMDProductos.Rows[iRow].Cells["unidadMedida"].Value.ToString(),
                     preciosCompras = Convert.ToDecimal(DgvDataMDProductos.Rows[iRow].Cells["Precio_Compra"].Value.ToString()),
                     preciosVentas = Convert.ToDecimal(DgvDataMDProductos.Rows[iRow].Cells["Precio_Venta"].Value.ToString()),
+                    precioPorUnidadMedida = Convert.ToDecimal(DgvDataMDProductos.Rows[iRow].Cells["precioPorUnidadMedida"].Value.ToString()),
                 };
                 this.DialogResult = DialogResult.OK;
                 this.Close();

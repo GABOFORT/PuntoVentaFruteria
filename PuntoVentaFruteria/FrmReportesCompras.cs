@@ -54,27 +54,30 @@ namespace PuntoVentaFruteria
             decimal totalCompras = 0;
             foreach (ReportesCompras rc in lista)
             {
+                string cantidadDisplay = rc.cantidades == 0 ? "N/A" : $"{rc.cantidades} un";
+                string pesoDisplay = rc.peso == 0 ? "N/A" : $"{rc.peso:0.00} {rc.unidadMedida}";
+                string porPesoDisplay = rc.esPorPeso ? "Sí" : "No";
                 DgvDataReportesCompra.Rows.Add(new object[]
                 {
                     rc.FechaRegistros,
-                    rc.numerosCompras,
-                    rc.montosTotales,
-                    rc.UsuariosRegistros,
-                    rc.clavesProveedores,
-                    rc.nombresProveedores,
-                    rc.CodigosProductos,
-                    rc.NombresProductos,
-                    rc.Descripciones,
-                    rc.NombresCategorias,
-                    rc.preciosCompras,
-                    rc.preciosVentas,
-                    rc.cantidades,
-                    rc.SubTotales,
+                        rc.numerosCompras,
+                        rc.montosTotales.ToString("C2"),
+                        rc.UsuariosRegistros,
+                        rc.clavesProveedores,
+                        rc.nombresProveedores,
+                        rc.CodigosProductos,
+                        rc.NombresProductos,
+                        rc.Descripciones,
+                        rc.NombresCategorias,
+                        rc.preciosCompras.ToString("C2"),
+                        rc.preciosVentas.ToString("C2"),
+                        cantidadDisplay,  
+                        pesoDisplay,    
+                        porPesoDisplay,  
+                        rc.unidadMedida,
+                        rc.SubTotales.ToString("C2"),
                 });
-                if (decimal.TryParse(rc.SubTotales, out decimal monto))
-                {
-                    totalCompras += monto;
-                }
+                    totalCompras += rc.SubTotales;
             }
             TextMontoCompra.Text = totalCompras.ToString("F2");
         }

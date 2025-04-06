@@ -62,24 +62,30 @@ namespace PuntoVentaFruteria
             decimal totalVentas = 0;  
             foreach (ReportesVentas rc in lista)
             {
+                string cantidadDisplay = rc.cantidades == 0 ? "N/A" : $"{rc.cantidades} un";
+                string pesoDisplay = rc.peso == 0 ? "N/A" : $"{rc.peso:0.00} {rc.unidadMedida}";
+                string porPesoDisplay = rc.esPorPeso ? "Sí" : "No";
+                string precioVentaDisplay = rc.preciosVentas == 0 ? "N/A" : $"{rc.preciosVentas:C2}";
+                string precioUnidadDisplay = rc.precioPorUnidadMedida == 0 ? "N/A" : $"{rc.precioPorUnidadMedida:C2}";
                 DgvDataReportesVentas.Rows.Add(new object[]
                 {
                         rc.FechaRegistros,
                         rc.numerosVentas,
-                        rc.montosTotales,
+                        rc.montosTotales.ToString("C2"),          
                         rc.UsuariosRegistros,
                         rc.CodigosProductos,
                         rc.NombresProductos,
                         rc.Descripciones,
                         rc.NombresCategorias,
-                        rc.preciosVentas,
-                        rc.cantidades,
-                        rc.SubTotales,
+                        precioVentaDisplay,
+                        cantidadDisplay,
+                        pesoDisplay,
+                        precioUnidadDisplay,
+                        porPesoDisplay,
+                        rc.unidadMedida,
+                        rc.SubTotales.ToString("C2"),
                 });
-                if (decimal.TryParse(rc.SubTotales, out decimal monto))
-                {
-                    totalVentas += monto;
-                }
+                    totalVentas += rc.SubTotales;
             }
             TextMontoVenta.Text = totalVentas.ToString("F2");
         }

@@ -114,9 +114,11 @@ namespace Datos
                 {
                     conexion.Open();
                     StringBuilder query = new StringBuilder();
-                    query.AppendLine("select p.nombresProductos,p.descripciones,dc.preciosCompras,dc.cantidades,dc.montosTotales from DetallesCompras dc");
-                    query.AppendLine("inner join Productos p on p.productosID = dc.productosID");
-                    query.AppendLine("where dc.comprasID = @comprasID");
+                    query.AppendLine("SELECT p.nombresProductos, p.descripciones, p.unidadMedida, p.esPorPeso,");
+                    query.AppendLine("dc.preciosCompras, dc.preciosVentas, dc.cantidades, dc.peso, dc.montosTotales");
+                    query.AppendLine("FROM DetallesCompras dc");
+                    query.AppendLine("INNER JOIN Productos p ON p.productosID = dc.productosID");
+                    query.AppendLine("WHERE dc.comprasID = @comprasID");
                     SqlCommand cmd = new SqlCommand(query.ToString(), conexion);
                     cmd.Parameters.AddWithValue("@comprasID", comprasID);
                     cmd.CommandType = System.Data.CommandType.Text;
@@ -126,9 +128,16 @@ namespace Datos
                         {
                             oLista.Add(new DetallesCompras()
                             {
-                                oProductos = new Productos() { nombresProductos = dr["nombresProductos"].ToString(), descripciones = dr["descripciones"].ToString() },
+                                oProductos = new Productos()
+                                {
+                                    nombresProductos = dr["nombresProductos"].ToString(),
+                                    descripciones = dr["descripciones"].ToString(),
+                                    unidadMedida = dr["unidadMedida"].ToString(),
+                                    esPorPeso = Convert.ToBoolean(dr["esPorPeso"])
+                                },
                                 preciosCompras = Convert.ToDecimal(dr["preciosCompras"].ToString()),
                                 cantidades = Convert.ToInt32(dr["cantidades"].ToString()),
+                                peso = Convert.ToDecimal(dr["peso"]),
                                 montosTotales = Convert.ToDecimal(dr["montosTotales"].ToString()),
                             });
                         }

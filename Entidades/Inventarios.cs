@@ -10,8 +10,8 @@ namespace Entidades
     {
         public int inventariosID { get; set; } 
         public Productos oProductosID { get; set; }
-        public int stockActual { get; set; } 
-        public int stockMinimo { get; set; } 
+        public decimal stockActual { get; set; } 
+        public decimal stockMinimo { get; set; } 
         public DateTime fechaActualizacion { get; set; }
     }
 }

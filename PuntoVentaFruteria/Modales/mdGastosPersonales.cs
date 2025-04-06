@@ -98,15 +98,17 @@ namespace PuntoVentaFruteria.Modales
                 montosTotales = Convert.ToDecimal(TextMontoTotal.Text),
                 fechaRegistros = DateTime.Now
             };
+            if (Convert.ToInt32(TextID.Text) > 0)
+            {
+                objgastos.gastosID = Convert.ToInt32(TextID.Text);
+            }
+
             if (objgastos.gastosID == 0)
             {
                 int gastosIDGenerado = new N_Gastos().GuardarGastos(objgastos, out Mensaje);
                 if (gastosIDGenerado != 0)
                 {
-                    DgvDataGastosPersonales.Rows.Add(new object[] {
-                "", gastosIDGenerado, TextNombreUsuario, TextConcepto.Text, TextMontoTotal.Text, DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss")
-            });
-                    cargarGastos();
+                    cargarGastos(); 
                     Limpiar();
                 }
                 else
@@ -123,12 +125,6 @@ namespace PuntoVentaFruteria.Modales
                     bool resultado = new N_Gastos().EditarGastos(objgastos, out Mensaje);
                     if (resultado)
                     {
-                        DataGridViewRow row = DgvDataGastosPersonales.Rows[Convert.ToInt32(TextIndice.Text)];
-                        row.Cells["gastosID"].Value = TextID.Text;
-                        row.Cells["usuariosID"].Value = TextNombreUsuario.Text;
-                        row.Cells["concepto"].Value = TextConcepto.Text;
-                        row.Cells["montosTotales"].Value = TextMontoTotal.Text;
-                        row.Cells["fechaRegistros"].Value = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
                         cargarGastos();
                         Limpiar();
                     }

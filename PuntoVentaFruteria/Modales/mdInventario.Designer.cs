@@ -38,6 +38,8 @@
             this.inventariosID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nombresProductos = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.descripciones = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.esPorPeso = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.unidadMedida = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.stockActual = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.stockMinimo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.fechaActualizacion = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -58,6 +60,9 @@
             this.DgvDataMDInventarios.AllowUserToAddRows = false;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             this.DgvDataMDInventarios.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            this.DgvDataMDInventarios.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.DgvDataMDInventarios.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.DgvDataMDInventarios.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCellsExceptHeaders;
             this.DgvDataMDInventarios.BackgroundColor = System.Drawing.Color.White;
@@ -77,6 +82,8 @@
             this.inventariosID,
             this.nombresProductos,
             this.descripciones,
+            this.esPorPeso,
+            this.unidadMedida,
             this.stockActual,
             this.stockMinimo,
             this.fechaActualizacion});
@@ -119,7 +126,7 @@
             this.DgvDataMDInventarios.RowTemplate.DividerHeight = 3;
             this.DgvDataMDInventarios.RowTemplate.Height = 100;
             this.DgvDataMDInventarios.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.DgvDataMDInventarios.Size = new System.Drawing.Size(989, 550);
+            this.DgvDataMDInventarios.Size = new System.Drawing.Size(1284, 550);
             this.DgvDataMDInventarios.TabIndex = 43;
             // 
             // inventariosID
@@ -143,6 +150,20 @@
             this.descripciones.Name = "descripciones";
             this.descripciones.ReadOnly = true;
             this.descripciones.Width = 166;
+            // 
+            // esPorPeso
+            // 
+            this.esPorPeso.HeaderText = "Por Peso";
+            this.esPorPeso.Name = "esPorPeso";
+            this.esPorPeso.ReadOnly = true;
+            this.esPorPeso.Width = 120;
+            // 
+            // unidadMedida
+            // 
+            this.unidadMedida.HeaderText = "Unidad Medida";
+            this.unidadMedida.Name = "unidadMedida";
+            this.unidadMedida.ReadOnly = true;
+            this.unidadMedida.Width = 171;
             // 
             // stockActual
             // 
@@ -172,13 +193,14 @@
             this.label10.Font = new System.Drawing.Font("Arial Narrow", 27.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label10.Location = new System.Drawing.Point(0, 0);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(1166, 101);
+            this.label10.Size = new System.Drawing.Size(1461, 101);
             this.label10.TabIndex = 44;
             this.label10.Text = "Inventario";
             this.label10.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // BtnLimpiar
             // 
+            this.BtnLimpiar.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.BtnLimpiar.BackColor = System.Drawing.Color.Red;
             this.BtnLimpiar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.BtnLimpiar.FlatAppearance.BorderColor = System.Drawing.Color.Black;
@@ -188,7 +210,7 @@
             this.BtnLimpiar.IconColor = System.Drawing.Color.Black;
             this.BtnLimpiar.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.BtnLimpiar.IconSize = 25;
-            this.BtnLimpiar.Location = new System.Drawing.Point(848, 62);
+            this.BtnLimpiar.Location = new System.Drawing.Point(940, 62);
             this.BtnLimpiar.Name = "BtnLimpiar";
             this.BtnLimpiar.Size = new System.Drawing.Size(33, 33);
             this.BtnLimpiar.TabIndex = 53;
@@ -197,6 +219,7 @@
             // 
             // BtnBuscar
             // 
+            this.BtnBuscar.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.BtnBuscar.BackColor = System.Drawing.Color.Green;
             this.BtnBuscar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.BtnBuscar.FlatAppearance.BorderColor = System.Drawing.Color.Black;
@@ -206,7 +229,7 @@
             this.BtnBuscar.IconColor = System.Drawing.Color.Black;
             this.BtnBuscar.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.BtnBuscar.IconSize = 25;
-            this.BtnBuscar.Location = new System.Drawing.Point(809, 62);
+            this.BtnBuscar.Location = new System.Drawing.Point(901, 62);
             this.BtnBuscar.Name = "BtnBuscar";
             this.BtnBuscar.Size = new System.Drawing.Size(33, 33);
             this.BtnBuscar.TabIndex = 52;
@@ -215,8 +238,9 @@
             // 
             // TextBusquedas
             // 
+            this.TextBusquedas.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.TextBusquedas.Font = new System.Drawing.Font("Arial Narrow", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TextBusquedas.Location = new System.Drawing.Point(603, 63);
+            this.TextBusquedas.Location = new System.Drawing.Point(695, 63);
             this.TextBusquedas.Name = "TextBusquedas";
             this.TextBusquedas.Size = new System.Drawing.Size(200, 32);
             this.TextBusquedas.TabIndex = 51;
@@ -224,20 +248,22 @@
             // 
             // CboBuscar
             // 
+            this.CboBuscar.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.CboBuscar.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.CboBuscar.Font = new System.Drawing.Font("Arial Narrow", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CboBuscar.FormattingEnabled = true;
-            this.CboBuscar.Location = new System.Drawing.Point(397, 62);
+            this.CboBuscar.Location = new System.Drawing.Point(489, 62);
             this.CboBuscar.Name = "CboBuscar";
             this.CboBuscar.Size = new System.Drawing.Size(200, 33);
             this.CboBuscar.TabIndex = 50;
             // 
             // label11
             // 
+            this.label11.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label11.AutoSize = true;
             this.label11.BackColor = System.Drawing.Color.White;
             this.label11.Font = new System.Drawing.Font("Arial Narrow", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.Location = new System.Drawing.Point(284, 66);
+            this.label11.Location = new System.Drawing.Point(376, 66);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(117, 25);
             this.label11.TabIndex = 49;
@@ -256,7 +282,6 @@
             // 
             // iconBtnAgregarProductos
             // 
-            this.iconBtnAgregarProductos.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.iconBtnAgregarProductos.AutoSize = true;
             this.iconBtnAgregarProductos.BackColor = System.Drawing.Color.LightCoral;
             this.iconBtnAgregarProductos.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
@@ -266,7 +291,7 @@
             this.iconBtnAgregarProductos.IconColor = System.Drawing.Color.Black;
             this.iconBtnAgregarProductos.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.iconBtnAgregarProductos.IconSize = 70;
-            this.iconBtnAgregarProductos.Location = new System.Drawing.Point(23, 183);
+            this.iconBtnAgregarProductos.Location = new System.Drawing.Point(29, 159);
             this.iconBtnAgregarProductos.Name = "iconBtnAgregarProductos";
             this.iconBtnAgregarProductos.Size = new System.Drawing.Size(126, 155);
             this.iconBtnAgregarProductos.TabIndex = 65;
@@ -277,7 +302,6 @@
             // 
             // iconBtnEliminarProductos
             // 
-            this.iconBtnEliminarProductos.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.iconBtnEliminarProductos.AutoSize = true;
             this.iconBtnEliminarProductos.BackColor = System.Drawing.Color.LightCoral;
             this.iconBtnEliminarProductos.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
@@ -287,7 +311,7 @@
             this.iconBtnEliminarProductos.IconColor = System.Drawing.Color.Black;
             this.iconBtnEliminarProductos.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.iconBtnEliminarProductos.IconSize = 70;
-            this.iconBtnEliminarProductos.Location = new System.Drawing.Point(23, 361);
+            this.iconBtnEliminarProductos.Location = new System.Drawing.Point(29, 331);
             this.iconBtnEliminarProductos.Name = "iconBtnEliminarProductos";
             this.iconBtnEliminarProductos.Size = new System.Drawing.Size(126, 155);
             this.iconBtnEliminarProductos.TabIndex = 66;
@@ -301,7 +325,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1166, 651);
+            this.ClientSize = new System.Drawing.Size(1461, 651);
             this.Controls.Add(this.iconBtnEliminarProductos);
             this.Controls.Add(this.iconBtnAgregarProductos);
             this.Controls.Add(this.label1);
@@ -332,14 +356,16 @@
         private System.Windows.Forms.TextBox TextBusquedas;
         private System.Windows.Forms.ComboBox CboBuscar;
         private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.DataGridViewTextBoxColumn inventariosID;
-        private System.Windows.Forms.DataGridViewTextBoxColumn nombresProductos;
-        private System.Windows.Forms.DataGridViewTextBoxColumn descripciones;
-        private System.Windows.Forms.DataGridViewTextBoxColumn stockActual;
-        private System.Windows.Forms.DataGridViewTextBoxColumn stockMinimo;
-        private System.Windows.Forms.DataGridViewTextBoxColumn fechaActualizacion;
         private System.Windows.Forms.Label label1;
         private FontAwesome.Sharp.IconButton iconBtnAgregarProductos;
         private FontAwesome.Sharp.IconButton iconBtnEliminarProductos;
+        private System.Windows.Forms.DataGridViewTextBoxColumn inventariosID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn nombresProductos;
+        private System.Windows.Forms.DataGridViewTextBoxColumn descripciones;
+        private System.Windows.Forms.DataGridViewTextBoxColumn esPorPeso;
+        private System.Windows.Forms.DataGridViewTextBoxColumn unidadMedida;
+        private System.Windows.Forms.DataGridViewTextBoxColumn stockActual;
+        private System.Windows.Forms.DataGridViewTextBoxColumn stockMinimo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn fechaActualizacion;
     }
 }

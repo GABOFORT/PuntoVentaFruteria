@@ -50,6 +50,22 @@ namespace PuntoVentaFruteria
             cboBuscar.DisplayMember = "Texto";
             cboBuscar.ValueMember = "Valor";
             cboBuscar.SelectedIndex = 0;
+
+            CboUnidadMedida.Items.Clear();
+            CboUnidadMedida.Items.Add(new OpcionCombo() { Valor = "un", Texto = "Unidad" });
+            CboUnidadMedida.Items.Add(new OpcionCombo() { Valor = "kg", Texto = "Kilogramo" });
+            CboUnidadMedida.Items.Add(new OpcionCombo() { Valor = "gr", Texto = "Gramo" });
+            CboUnidadMedida.DisplayMember = "Texto";
+            CboUnidadMedida.ValueMember = "Valor";
+            CboUnidadMedida.SelectedIndex = 0;
+
+            CboPorPeso.Items.Clear();
+            CboPorPeso.Items.Add(new OpcionCombo() { Valor = 1, Texto = "Por Peso" }); 
+            CboPorPeso.Items.Add(new OpcionCombo() { Valor = 0, Texto = "Por Unidad" });
+            CboPorPeso.DisplayMember = "Texto";
+            CboPorPeso.ValueMember = "Valor";
+            CboPorPeso.SelectedIndex = 0;
+
             List<Productos> listaProducto = new N_Productos().Listar();
             foreach (Productos item in listaProducto)
             {
@@ -61,8 +77,12 @@ namespace PuntoVentaFruteria
                         item.descripciones,
                         item.ocategorias.categoriasID,
                         item.ocategorias.nombresCategorias,
+                        item.esPorPeso == true ? 1 : 0,
+                        item.esPorPeso == true ? "Peso" : "Unidad",
+                        item.unidadMedida,
                         item.preciosCompras,
                         item.preciosVentas,
+                        item.precioPorUnidadMedida,
                         item.estados == true ? 1 : 0,
                         item.estados == true ? "Activo" : "No Activo"
             });
@@ -78,8 +98,11 @@ namespace PuntoVentaFruteria
                 nombresProductos = TextNombreProducto.Text,
                 descripciones = TextDescripciones.Text,
                 ocategorias = new Categorias() { categoriasID = Convert.ToInt32(((OpcionCombo)CboCategorias.SelectedItem).Valor) },
+                esPorPeso = Convert.ToInt32(((OpcionCombo)CboPorPeso.SelectedItem).Valor) == 1 ? true : false,
+                unidadMedida = Convert.ToString(((OpcionCombo)CboUnidadMedida.SelectedItem).Valor.ToString()),
                 preciosCompras = Convert.ToDecimal(TextPrecioCompra.Text),
                 preciosVentas = Convert.ToDecimal(TextPrecioVenta.Text),
+                precioPorUnidadMedida = Convert.ToDecimal(TextPrecioUnidadMedida.Text),
                 estados = Convert.ToInt32(((OpcionCombo)CboEstados.SelectedItem).Valor) == 1 ? true : false
             };
             if (objproducto.productosID == 0)
@@ -108,10 +131,16 @@ namespace PuntoVentaFruteria
                     row.Cells["Descripcion"].Value = TextDescripciones.Text;
                     row.Cells["categoriasID"].Value = ((OpcionCombo)CboCategorias.SelectedItem).Valor.ToString();
                     row.Cells["Categoria"].Value = ((OpcionCombo)CboCategorias.SelectedItem).Texto.ToString();
+                    row.Cells["Por_Peso"].Value = ((OpcionCombo)CboPorPeso.SelectedItem).Texto.ToString();
+                    row.Cells["esPorPeso"].Value = ((OpcionCombo)CboPorPeso.SelectedItem).Texto.ToString();
+                    row.Cells["unidadMedida"].Value = ((OpcionCombo)CboUnidadMedida.SelectedItem).Texto.ToString();
                     row.Cells["PrecioCompra"].Value = objproducto.preciosCompras.ToString("F2");  
                     row.Cells["PrecioVenta"].Value = objproducto.preciosVentas.ToString("F2");    
+                    row.Cells["precioPorUnidadMedida"].Value = objproducto.precioPorUnidadMedida.ToString("F2");
                     row.Cells["Estado_Valor"].Value = ((OpcionCombo)CboEstados.SelectedItem).Valor.ToString();
                     row.Cells["Estado"].Value = ((OpcionCombo)CboEstados.SelectedItem).Texto.ToString();
+                    DgvDataProductos.Rows.Clear();
+                    FrmProductos_Load(null, EventArgs.Empty);
                     Limpiar();
                 }
                 else
@@ -131,6 +160,9 @@ namespace PuntoVentaFruteria
             TextPrecioCompra.Text = "";
             TextPrecioVenta.Text = "";
             CboEstados.SelectedIndex = 0;
+            CboPorPeso.SelectedIndex = 0;
+            CboUnidadMedida.SelectedIndex = 0;
+            TextPrecioUnidadMedida.Text = "";
             TextCodigos.Select();
         }
         private void DgvDataProductos_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -154,6 +186,24 @@ namespace PuntoVentaFruteria
                             break;
                         }
                     }
+                    foreach (OpcionCombo oc in CboPorPeso.Items)
+                    {
+                        if (Convert.ToInt32(oc.Valor) == Convert.ToInt32(DgvDataProductos.Rows[indice].Cells["Por_Peso"].Value))
+                        {
+                            int indice_combo = CboPorPeso.Items.IndexOf(oc);
+                            CboPorPeso.SelectedIndex = indice_combo;
+                            break;
+                        }
+                    }
+                    foreach (OpcionCombo oc in CboUnidadMedida.Items)
+                    {
+                        if (Convert.ToString(oc.Valor) == Convert.ToString(DgvDataProductos.Rows[indice].Cells["unidadMedida"].Value))
+                        {
+                            int indice_combo = CboUnidadMedida.Items.IndexOf(oc);
+                            CboUnidadMedida.SelectedIndex = indice_combo;
+                            break;
+                        }
+                    }
                     TextPrecioCompra.Text = DgvDataProductos.Rows[indice].Cells["PrecioCompra"].Value.ToString();
                     TextPrecioVenta.Text = DgvDataProductos.Rows[indice].Cells["PrecioVenta"].Value.ToString();
                     foreach (OpcionCombo oc in CboEstados.Items)
@@ -165,6 +215,7 @@ namespace PuntoVentaFruteria
                             break;
                         }
                     }
+                    TextPrecioUnidadMedida.Text = DgvDataProductos.Rows[indice].Cells["precioPorUnidadMedida"].Value.ToString();
                 }
             }
         }

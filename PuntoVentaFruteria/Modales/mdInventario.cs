@@ -40,14 +40,25 @@ namespace PuntoVentaFruteria.Modales
             List<Inventarios> listaInventarios = new N_Inventarios().Listar();
             foreach (Inventarios item in listaInventarios)
             {
+                bool esPorPeso = item.oProductosID.esPorPeso;
+                string tipoProducto = esPorPeso ? "Peso" : "Unidad";
+                string unidad = item.oProductosID.unidadMedida ?? (esPorPeso ? "Kg" : "Un");
+                string stockActual = esPorPeso ?
+                    $"{item.stockActual:0.00} {unidad}" : 
+                    $"{item.stockActual:0} {unidad}";      
+                string stockMinimo = esPorPeso ?
+                    $"{item.stockMinimo:0.00} {unidad}" :
+                    $"{item.stockMinimo:0} {unidad}";
                 DgvDataMDInventarios.Rows.Add(new object[] {
-                    item.inventariosID,
-                    item.oProductosID.nombresProductos,
-                    item.oProductosID.descripciones,
-                    item.stockActual,
-                    item.stockMinimo,
-                    item.fechaActualizacion.ToString("yyyy-MM-dd HH:mm:ss")
-                });
+                item.inventariosID,
+                item.oProductosID.nombresProductos,
+                item.oProductosID.descripciones,
+                tipoProducto,
+                unidad,
+                stockActual,
+                stockMinimo,  
+                item.fechaActualizacion.ToString("yyyy-MM-dd HH:mm:ss")
+            });
             }
         }
         private void BtnLimpiar_Click(object sender, EventArgs e)
@@ -90,15 +101,17 @@ namespace PuntoVentaFruteria.Modales
                             stockMinimo = stockMinimo,
                             fechaActualizacion = DateTime.Now
                         };
-                        bool insertado = new N_Inventarios().Insertar(nuevoInventario);
-                        if (insertado)
+                        string mensaje;
+                        bool resultado = new N_Inventarios().Insertar(nuevoInventario, out mensaje);
+
+                        if (resultado)
                         {
-                            MessageBox.Show("Producto agregado al inventario correctamente", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            CargarInventarios();
+                            MessageBox.Show(mensaje, "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            CargarInventarios(); 
                         }
                         else
                         {
-                            MessageBox.Show("Error al agregar el producto al inventario", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            MessageBox.Show(mensaje, "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                         }
                     }
                 }

@@ -36,17 +36,6 @@
             this.CboBuscar = new System.Windows.Forms.ComboBox();
             this.label6 = new System.Windows.Forms.Label();
             this.DgvDataReportesVentas = new System.Windows.Forms.DataGridView();
-            this.Fecha_Registro = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Numero_Documento = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Monto_Total = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Usuario_Registro = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Codigo_Producto = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Nombre_Producto = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.descripcion = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Categoria = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Precio_Venta = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Cantidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Sub_Total = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.BtnBuscarFechas = new FontAwesome.Sharp.IconButton();
             this.DateTimePicker2 = new System.Windows.Forms.DateTimePicker();
             this.label4 = new System.Windows.Forms.Label();
@@ -58,6 +47,21 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.BtnVerMasVendidos = new FontAwesome.Sharp.IconButton();
+            this.Fecha_Registro = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Numero_Documento = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Monto_Total = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Usuario_Registro = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Codigo_Producto = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Nombre_Producto = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.descripcion = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Categoria = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Precio_Venta = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Cantidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.peso = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.precioPorUnidadMedida = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.esPorPeso = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.unidadMedida = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Sub_Total = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.DgvDataReportesVentas)).BeginInit();
             this.SuspendLayout();
             // 
@@ -164,6 +168,10 @@
             this.Categoria,
             this.Precio_Venta,
             this.Cantidad,
+            this.peso,
+            this.precioPorUnidadMedida,
+            this.esPorPeso,
+            this.unidadMedida,
             this.Sub_Total});
             this.DgvDataReportesVentas.EnableHeadersVisualStyles = false;
             this.DgvDataReportesVentas.GridColor = System.Drawing.Color.Black;
@@ -186,83 +194,6 @@
             this.DgvDataReportesVentas.RowTemplate.Height = 100;
             this.DgvDataReportesVentas.Size = new System.Drawing.Size(1574, 566);
             this.DgvDataReportesVentas.TabIndex = 67;
-            // 
-            // Fecha_Registro
-            // 
-            this.Fecha_Registro.HeaderText = "Fecha Registro";
-            this.Fecha_Registro.Name = "Fecha_Registro";
-            this.Fecha_Registro.ReadOnly = true;
-            this.Fecha_Registro.Width = 177;
-            // 
-            // Numero_Documento
-            // 
-            this.Numero_Documento.HeaderText = "Numero Venta";
-            this.Numero_Documento.Name = "Numero_Documento";
-            this.Numero_Documento.ReadOnly = true;
-            this.Numero_Documento.Width = 167;
-            // 
-            // Monto_Total
-            // 
-            this.Monto_Total.HeaderText = "Monto Total";
-            this.Monto_Total.Name = "Monto_Total";
-            this.Monto_Total.ReadOnly = true;
-            this.Monto_Total.Width = 150;
-            // 
-            // Usuario_Registro
-            // 
-            this.Usuario_Registro.HeaderText = "Usuario Registro";
-            this.Usuario_Registro.Name = "Usuario_Registro";
-            this.Usuario_Registro.ReadOnly = true;
-            this.Usuario_Registro.Width = 191;
-            // 
-            // Codigo_Producto
-            // 
-            this.Codigo_Producto.HeaderText = "Codigo Producto";
-            this.Codigo_Producto.Name = "Codigo_Producto";
-            this.Codigo_Producto.ReadOnly = true;
-            this.Codigo_Producto.Width = 192;
-            // 
-            // Nombre_Producto
-            // 
-            this.Nombre_Producto.HeaderText = "Producto";
-            this.Nombre_Producto.Name = "Nombre_Producto";
-            this.Nombre_Producto.ReadOnly = true;
-            this.Nombre_Producto.Width = 126;
-            // 
-            // descripcion
-            // 
-            this.descripcion.HeaderText = "Descripción";
-            this.descripcion.Name = "descripcion";
-            this.descripcion.ReadOnly = true;
-            this.descripcion.Width = 150;
-            // 
-            // Categoria
-            // 
-            this.Categoria.HeaderText = "Categoria";
-            this.Categoria.Name = "Categoria";
-            this.Categoria.ReadOnly = true;
-            this.Categoria.Width = 130;
-            // 
-            // Precio_Venta
-            // 
-            this.Precio_Venta.HeaderText = "Precio Venta";
-            this.Precio_Venta.Name = "Precio_Venta";
-            this.Precio_Venta.ReadOnly = true;
-            this.Precio_Venta.Width = 155;
-            // 
-            // Cantidad
-            // 
-            this.Cantidad.HeaderText = "Cantidad";
-            this.Cantidad.Name = "Cantidad";
-            this.Cantidad.ReadOnly = true;
-            this.Cantidad.Width = 124;
-            // 
-            // Sub_Total
-            // 
-            this.Sub_Total.HeaderText = "Sub Total";
-            this.Sub_Total.Name = "Sub_Total";
-            this.Sub_Total.ReadOnly = true;
-            this.Sub_Total.Width = 129;
             // 
             // BtnBuscarFechas
             // 
@@ -405,6 +336,111 @@
             this.BtnVerMasVendidos.UseVisualStyleBackColor = false;
             this.BtnVerMasVendidos.Click += new System.EventHandler(this.BtnVerMasVendidos_Click);
             // 
+            // Fecha_Registro
+            // 
+            this.Fecha_Registro.HeaderText = "Fecha Registro";
+            this.Fecha_Registro.Name = "Fecha_Registro";
+            this.Fecha_Registro.ReadOnly = true;
+            this.Fecha_Registro.Width = 177;
+            // 
+            // Numero_Documento
+            // 
+            this.Numero_Documento.HeaderText = "Numero Venta";
+            this.Numero_Documento.Name = "Numero_Documento";
+            this.Numero_Documento.ReadOnly = true;
+            this.Numero_Documento.Width = 167;
+            // 
+            // Monto_Total
+            // 
+            this.Monto_Total.HeaderText = "Monto Total";
+            this.Monto_Total.Name = "Monto_Total";
+            this.Monto_Total.ReadOnly = true;
+            this.Monto_Total.Width = 150;
+            // 
+            // Usuario_Registro
+            // 
+            this.Usuario_Registro.HeaderText = "Usuario Registro";
+            this.Usuario_Registro.Name = "Usuario_Registro";
+            this.Usuario_Registro.ReadOnly = true;
+            this.Usuario_Registro.Width = 191;
+            // 
+            // Codigo_Producto
+            // 
+            this.Codigo_Producto.HeaderText = "Codigo Producto";
+            this.Codigo_Producto.Name = "Codigo_Producto";
+            this.Codigo_Producto.ReadOnly = true;
+            this.Codigo_Producto.Width = 192;
+            // 
+            // Nombre_Producto
+            // 
+            this.Nombre_Producto.HeaderText = "Producto";
+            this.Nombre_Producto.Name = "Nombre_Producto";
+            this.Nombre_Producto.ReadOnly = true;
+            this.Nombre_Producto.Width = 126;
+            // 
+            // descripcion
+            // 
+            this.descripcion.HeaderText = "Descripción";
+            this.descripcion.Name = "descripcion";
+            this.descripcion.ReadOnly = true;
+            this.descripcion.Width = 150;
+            // 
+            // Categoria
+            // 
+            this.Categoria.HeaderText = "Categoria";
+            this.Categoria.Name = "Categoria";
+            this.Categoria.ReadOnly = true;
+            this.Categoria.Width = 130;
+            // 
+            // Precio_Venta
+            // 
+            this.Precio_Venta.HeaderText = "Precio Venta";
+            this.Precio_Venta.Name = "Precio_Venta";
+            this.Precio_Venta.ReadOnly = true;
+            this.Precio_Venta.Width = 155;
+            // 
+            // Cantidad
+            // 
+            this.Cantidad.HeaderText = "Cantidad";
+            this.Cantidad.Name = "Cantidad";
+            this.Cantidad.ReadOnly = true;
+            this.Cantidad.Width = 124;
+            // 
+            // peso
+            // 
+            this.peso.HeaderText = "Peso";
+            this.peso.Name = "peso";
+            this.peso.ReadOnly = true;
+            this.peso.Width = 90;
+            // 
+            // precioPorUnidadMedida
+            // 
+            this.precioPorUnidadMedida.HeaderText = "Precio Unidad Medida";
+            this.precioPorUnidadMedida.Name = "precioPorUnidadMedida";
+            this.precioPorUnidadMedida.ReadOnly = true;
+            this.precioPorUnidadMedida.Width = 234;
+            // 
+            // esPorPeso
+            // 
+            this.esPorPeso.HeaderText = "Por Peso";
+            this.esPorPeso.Name = "esPorPeso";
+            this.esPorPeso.ReadOnly = true;
+            this.esPorPeso.Width = 124;
+            // 
+            // unidadMedida
+            // 
+            this.unidadMedida.HeaderText = "Unidad Medida";
+            this.unidadMedida.Name = "unidadMedida";
+            this.unidadMedida.ReadOnly = true;
+            this.unidadMedida.Width = 175;
+            // 
+            // Sub_Total
+            // 
+            this.Sub_Total.HeaderText = "Sub Total";
+            this.Sub_Total.Name = "Sub_Total";
+            this.Sub_Total.ReadOnly = true;
+            this.Sub_Total.Width = 129;
+            // 
             // FrmReportesVentas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -465,6 +501,10 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Categoria;
         private System.Windows.Forms.DataGridViewTextBoxColumn Precio_Venta;
         private System.Windows.Forms.DataGridViewTextBoxColumn Cantidad;
+        private System.Windows.Forms.DataGridViewTextBoxColumn peso;
+        private System.Windows.Forms.DataGridViewTextBoxColumn precioPorUnidadMedida;
+        private System.Windows.Forms.DataGridViewTextBoxColumn esPorPeso;
+        private System.Windows.Forms.DataGridViewTextBoxColumn unidadMedida;
         private System.Windows.Forms.DataGridViewTextBoxColumn Sub_Total;
     }
 }

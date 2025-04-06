@@ -42,13 +42,6 @@
             this.BtnEliminar = new FontAwesome.Sharp.IconButton();
             this.BtnLimpiar = new FontAwesome.Sharp.IconButton();
             this.DgvDataProveedores = new System.Windows.Forms.DataGridView();
-            this.btnSeleccionar = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Clave_Proveedor = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Nombre_Proveedor = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Telefono = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Estado_Valor = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Estado = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.BtnGuardar = new FontAwesome.Sharp.IconButton();
             this.label8 = new System.Windows.Forms.Label();
             this.CboEstado = new System.Windows.Forms.ComboBox();
@@ -58,6 +51,13 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
+            this.btnSeleccionar = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Clave_Proveedor = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Nombre_Proveedor = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Telefono = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Estado_Valor = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Estado = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.DgvDataProveedores)).BeginInit();
             this.SuspendLayout();
             // 
@@ -245,7 +245,7 @@
             this.Estado});
             this.DgvDataProveedores.EnableHeadersVisualStyles = false;
             this.DgvDataProveedores.GridColor = System.Drawing.Color.Black;
-            this.DgvDataProveedores.Location = new System.Drawing.Point(476, 127);
+            this.DgvDataProveedores.Location = new System.Drawing.Point(574, 127);
             this.DgvDataProveedores.MultiSelect = false;
             this.DgvDataProveedores.Name = "DgvDataProveedores";
             this.DgvDataProveedores.ReadOnly = true;
@@ -263,61 +263,10 @@
             this.DgvDataProveedores.RowsDefaultCellStyle = dataGridViewCellStyle2;
             this.DgvDataProveedores.RowTemplate.DividerHeight = 3;
             this.DgvDataProveedores.RowTemplate.Height = 100;
-            this.DgvDataProveedores.Size = new System.Drawing.Size(717, 546);
+            this.DgvDataProveedores.Size = new System.Drawing.Size(619, 546);
             this.DgvDataProveedores.TabIndex = 67;
             this.DgvDataProveedores.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgvDataProveedores_CellContentClick);
             this.DgvDataProveedores.CellPainting += new System.Windows.Forms.DataGridViewCellPaintingEventHandler(this.DgvDataProveedores_CellPainting);
-            // 
-            // btnSeleccionar
-            // 
-            this.btnSeleccionar.HeaderText = "";
-            this.btnSeleccionar.Name = "btnSeleccionar";
-            this.btnSeleccionar.ReadOnly = true;
-            this.btnSeleccionar.Width = 14;
-            // 
-            // ID
-            // 
-            this.ID.HeaderText = "ID";
-            this.ID.Name = "ID";
-            this.ID.ReadOnly = true;
-            this.ID.Visible = false;
-            this.ID.Width = 66;
-            // 
-            // Clave_Proveedor
-            // 
-            this.Clave_Proveedor.HeaderText = "Clave Proveedor";
-            this.Clave_Proveedor.Name = "Clave_Proveedor";
-            this.Clave_Proveedor.ReadOnly = true;
-            this.Clave_Proveedor.Width = 188;
-            // 
-            // Nombre_Proveedor
-            // 
-            this.Nombre_Proveedor.HeaderText = "Proveedor";
-            this.Nombre_Proveedor.Name = "Nombre_Proveedor";
-            this.Nombre_Proveedor.ReadOnly = true;
-            this.Nombre_Proveedor.Width = 136;
-            // 
-            // Telefono
-            // 
-            this.Telefono.HeaderText = "Telefono";
-            this.Telefono.Name = "Telefono";
-            this.Telefono.ReadOnly = true;
-            this.Telefono.Width = 123;
-            // 
-            // Estado_Valor
-            // 
-            this.Estado_Valor.HeaderText = "Estado_Valor";
-            this.Estado_Valor.Name = "Estado_Valor";
-            this.Estado_Valor.ReadOnly = true;
-            this.Estado_Valor.Visible = false;
-            this.Estado_Valor.Width = 162;
-            // 
-            // Estado
-            // 
-            this.Estado.HeaderText = "Estado";
-            this.Estado.Name = "Estado";
-            this.Estado.ReadOnly = true;
-            this.Estado.Width = 107;
             // 
             // BtnGuardar
             // 
@@ -421,6 +370,57 @@
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(241, 546);
             this.label2.TabIndex = 55;
+            // 
+            // btnSeleccionar
+            // 
+            this.btnSeleccionar.HeaderText = "";
+            this.btnSeleccionar.Name = "btnSeleccionar";
+            this.btnSeleccionar.ReadOnly = true;
+            this.btnSeleccionar.Width = 14;
+            // 
+            // ID
+            // 
+            this.ID.HeaderText = "ID";
+            this.ID.Name = "ID";
+            this.ID.ReadOnly = true;
+            this.ID.Visible = false;
+            this.ID.Width = 65;
+            // 
+            // Clave_Proveedor
+            // 
+            this.Clave_Proveedor.HeaderText = "Clave Proveedor";
+            this.Clave_Proveedor.Name = "Clave_Proveedor";
+            this.Clave_Proveedor.ReadOnly = true;
+            this.Clave_Proveedor.Width = 188;
+            // 
+            // Nombre_Proveedor
+            // 
+            this.Nombre_Proveedor.HeaderText = "Proveedor";
+            this.Nombre_Proveedor.Name = "Nombre_Proveedor";
+            this.Nombre_Proveedor.ReadOnly = true;
+            this.Nombre_Proveedor.Width = 136;
+            // 
+            // Telefono
+            // 
+            this.Telefono.HeaderText = "Telefono";
+            this.Telefono.Name = "Telefono";
+            this.Telefono.ReadOnly = true;
+            this.Telefono.Width = 123;
+            // 
+            // Estado_Valor
+            // 
+            this.Estado_Valor.HeaderText = "Estado_Valor";
+            this.Estado_Valor.Name = "Estado_Valor";
+            this.Estado_Valor.ReadOnly = true;
+            this.Estado_Valor.Visible = false;
+            this.Estado_Valor.Width = 161;
+            // 
+            // Estado
+            // 
+            this.Estado.HeaderText = "Estado";
+            this.Estado.Name = "Estado";
+            this.Estado.ReadOnly = true;
+            this.Estado.Width = 107;
             // 
             // FrmProveedores
             // 

@@ -33,7 +33,7 @@ namespace Datos
                             {
                                 FechaRegistros = dr["FechaRegistros"].ToString(),
                                 numerosCompras = dr["numerosCompras"].ToString(),
-                                montosTotales = dr["montosTotales"].ToString(),
+                                montosTotales = Convert.ToInt32(dr["montosTotales"]),
                                 UsuariosRegistros = dr["UsuariosRegistros"].ToString(),
                                 clavesProveedores = dr["clavesProveedores"].ToString(),
                                 nombresProveedores = dr["nombresProveedores"].ToString(),
@@ -41,10 +41,13 @@ namespace Datos
                                 NombresProductos = dr["NombresProductos"].ToString(),
                                 Descripciones = dr["Descripciones"].ToString(),
                                 NombresCategorias = dr["NombresCategorias"].ToString(),
-                                preciosCompras = dr["preciosCompras"].ToString(),
-                                preciosVentas = dr["preciosVentas"].ToString(),
-                                cantidades = dr["cantidades"].ToString(),
-                                SubTotales = dr["SubTotales"].ToString(),
+                                preciosCompras = Convert.ToInt32(dr["preciosCompras"]),
+                                preciosVentas = Convert.ToInt32(dr["preciosVentas"]),
+                                cantidades = Convert.ToInt32(dr["cantidades"]),
+                                peso = Convert.ToDecimal(dr["peso"]),
+                                esPorPeso = Convert.ToBoolean(dr["esPorPeso"]),
+                                unidadMedida = dr["unidadMedida"].ToString(),
+                                SubTotales = Convert.ToDecimal(dr["SubTotales"]),
                             });
                         }
                     }
@@ -77,15 +80,19 @@ namespace Datos
                             {
                                 FechaRegistros = dr["FechaRegistros"].ToString(),
                                 numerosVentas = dr["numerosVentas"].ToString(),
-                                montosTotales = dr["montosTotales"].ToString(),
+                                montosTotales = Convert.ToInt32(dr["montosTotales"]),
                                 UsuariosRegistros = dr["UsuariosRegistros"].ToString(),
                                 CodigosProductos = dr["CodigosProductos"].ToString(),
                                 NombresProductos = dr["NombresProductos"].ToString(),
                                 Descripciones = dr["Descripciones"].ToString(),
                                 NombresCategorias = dr["NombresCategorias"].ToString(),
-                                preciosVentas = dr["preciosVentas"].ToString(),
-                                cantidades = dr["cantidades"].ToString(),
-                                SubTotales = dr["subTotales"].ToString(),
+                                preciosVentas = Convert.ToInt32(dr["preciosVentas"]),
+                                cantidades = Convert.ToInt32(dr["cantidades"]),
+                                peso = Convert.ToDecimal(dr["peso"]),
+                                precioPorUnidadMedida = Convert.ToDecimal(dr["precioPorUnidadMedida"]),
+                                esPorPeso = Convert.ToBoolean(dr["esPorPeso"]),
+                                unidadMedida = dr["unidadMedida"].ToString(),
+                                SubTotales = Convert.ToDecimal(dr["subTotales"]),
                             });
                         }
                     }

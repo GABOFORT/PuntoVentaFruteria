@@ -15,9 +15,9 @@ namespace Negocios
         {
             return objcd_inventarios.Listar();
         }
-        public bool Insertar(Inventarios inventario)
+        public bool Insertar(Inventarios inventario, out string mensaje)
         {
-            return objcd_inventarios.Insertar(inventario);
+            return objcd_inventarios.Insertar(inventario, out mensaje);
         }
         public bool Eliminar(int inventarioID)
         {

@@ -47,11 +47,6 @@
             this.TextUsuario = new System.Windows.Forms.TextBox();
             this.TextFecha = new System.Windows.Forms.TextBox();
             this.DgvDataDetallesCompras = new System.Windows.Forms.DataGridView();
-            this.Producto = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Descripciones = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Precio_Compra = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Cantidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Sub_Total = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.BtnLimpiarBuscador = new FontAwesome.Sharp.IconButton();
             this.BtnBuscar = new FontAwesome.Sharp.IconButton();
             this.label11 = new System.Windows.Forms.Label();
@@ -62,6 +57,14 @@
             this.Monto_Total = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Fecha_Registro = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label3 = new System.Windows.Forms.Label();
+            this.Producto = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Descripciones = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Precio_Compra = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Cantidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.peso = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.unidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.porpeso = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Sub_Total = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DgvDataDetallesCompras)).BeginInit();
@@ -211,8 +214,9 @@
             // DgvDataDetallesCompras
             // 
             this.DgvDataDetallesCompras.AllowUserToAddRows = false;
-            this.DgvDataDetallesCompras.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
+            this.DgvDataDetallesCompras.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.DgvDataDetallesCompras.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.DgvDataDetallesCompras.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCellsExceptHeaders;
             this.DgvDataDetallesCompras.BackgroundColor = System.Drawing.Color.White;
@@ -233,10 +237,13 @@
             this.Descripciones,
             this.Precio_Compra,
             this.Cantidad,
+            this.peso,
+            this.unidad,
+            this.porpeso,
             this.Sub_Total});
             this.DgvDataDetallesCompras.EnableHeadersVisualStyles = false;
             this.DgvDataDetallesCompras.GridColor = System.Drawing.Color.Black;
-            this.DgvDataDetallesCompras.Location = new System.Drawing.Point(12, 333);
+            this.DgvDataDetallesCompras.Location = new System.Drawing.Point(242, 333);
             this.DgvDataDetallesCompras.MultiSelect = false;
             this.DgvDataDetallesCompras.Name = "DgvDataDetallesCompras";
             this.DgvDataDetallesCompras.ReadOnly = true;
@@ -253,43 +260,8 @@
             this.DgvDataDetallesCompras.RowsDefaultCellStyle = dataGridViewCellStyle2;
             this.DgvDataDetallesCompras.RowTemplate.DividerHeight = 3;
             this.DgvDataDetallesCompras.RowTemplate.Height = 100;
-            this.DgvDataDetallesCompras.Size = new System.Drawing.Size(889, 340);
+            this.DgvDataDetallesCompras.Size = new System.Drawing.Size(1052, 328);
             this.DgvDataDetallesCompras.TabIndex = 50;
-            // 
-            // Producto
-            // 
-            this.Producto.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Producto.HeaderText = "Producto";
-            this.Producto.Name = "Producto";
-            this.Producto.ReadOnly = true;
-            // 
-            // Descripciones
-            // 
-            this.Descripciones.HeaderText = "Descripciones";
-            this.Descripciones.Name = "Descripciones";
-            this.Descripciones.ReadOnly = true;
-            this.Descripciones.Width = 170;
-            // 
-            // Precio_Compra
-            // 
-            this.Precio_Compra.HeaderText = "Precio Compra";
-            this.Precio_Compra.Name = "Precio_Compra";
-            this.Precio_Compra.ReadOnly = true;
-            this.Precio_Compra.Width = 173;
-            // 
-            // Cantidad
-            // 
-            this.Cantidad.HeaderText = "Cantidad";
-            this.Cantidad.Name = "Cantidad";
-            this.Cantidad.ReadOnly = true;
-            this.Cantidad.Width = 124;
-            // 
-            // Sub_Total
-            // 
-            this.Sub_Total.HeaderText = "Sub Total";
-            this.Sub_Total.Name = "Sub_Total";
-            this.Sub_Total.ReadOnly = true;
-            this.Sub_Total.Width = 129;
             // 
             // BtnLimpiarBuscador
             // 
@@ -356,14 +328,14 @@
             this.lblFondo.Font = new System.Drawing.Font("Arial Narrow", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblFondo.Location = new System.Drawing.Point(0, 0);
             this.lblFondo.Name = "lblFondo";
-            this.lblFondo.Size = new System.Drawing.Size(1508, 673);
+            this.lblFondo.Size = new System.Drawing.Size(1531, 673);
             this.lblFondo.TabIndex = 42;
             this.lblFondo.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // DgvDataComprasDia
             // 
             this.DgvDataComprasDia.AllowUserToAddRows = false;
-            this.DgvDataComprasDia.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
+            this.DgvDataComprasDia.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.DgvDataComprasDia.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.DgvDataComprasDia.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCellsExceptHeaders;
             this.DgvDataComprasDia.BackgroundColor = System.Drawing.Color.White;
@@ -385,7 +357,7 @@
             this.Fecha_Registro});
             this.DgvDataComprasDia.EnableHeadersVisualStyles = false;
             this.DgvDataComprasDia.GridColor = System.Drawing.Color.Black;
-            this.DgvDataComprasDia.Location = new System.Drawing.Point(931, 55);
+            this.DgvDataComprasDia.Location = new System.Drawing.Point(976, 55);
             this.DgvDataComprasDia.MultiSelect = false;
             this.DgvDataComprasDia.Name = "DgvDataComprasDia";
             this.DgvDataComprasDia.ReadOnly = true;
@@ -402,47 +374,108 @@
             this.DgvDataComprasDia.RowsDefaultCellStyle = dataGridViewCellStyle4;
             this.DgvDataComprasDia.RowTemplate.DividerHeight = 3;
             this.DgvDataComprasDia.RowTemplate.Height = 100;
-            this.DgvDataComprasDia.Size = new System.Drawing.Size(555, 618);
+            this.DgvDataComprasDia.Size = new System.Drawing.Size(555, 260);
             this.DgvDataComprasDia.TabIndex = 70;
             // 
             // Numero_Compra
             // 
+            this.Numero_Compra.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.Numero_Compra.HeaderText = "Numero Compra";
             this.Numero_Compra.Name = "Numero_Compra";
             this.Numero_Compra.ReadOnly = true;
-            this.Numero_Compra.Width = 185;
             // 
             // Monto_Total
             // 
+            this.Monto_Total.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.Monto_Total.HeaderText = "Monto Total";
             this.Monto_Total.Name = "Monto_Total";
             this.Monto_Total.ReadOnly = true;
-            this.Monto_Total.Width = 150;
             // 
             // Fecha_Registro
             // 
+            this.Fecha_Registro.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.Fecha_Registro.HeaderText = "Fecha Registro";
             this.Fecha_Registro.Name = "Fecha_Registro";
             this.Fecha_Registro.ReadOnly = true;
-            this.Fecha_Registro.Width = 177;
             // 
             // label3
             // 
-            this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
+            this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label3.AutoSize = true;
             this.label3.BackColor = System.Drawing.Color.White;
             this.label3.Font = new System.Drawing.Font("Arial Narrow", 27.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(1029, 9);
+            this.label3.Location = new System.Drawing.Point(1094, 9);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(303, 43);
             this.label3.TabIndex = 71;
             this.label3.Text = "COMPRAS DEL DIA";
             // 
+            // Producto
+            // 
+            this.Producto.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.Producto.HeaderText = "Producto";
+            this.Producto.Name = "Producto";
+            this.Producto.ReadOnly = true;
+            this.Producto.Width = 126;
+            // 
+            // Descripciones
+            // 
+            this.Descripciones.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.Descripciones.HeaderText = "Descripciones";
+            this.Descripciones.Name = "Descripciones";
+            this.Descripciones.ReadOnly = true;
+            this.Descripciones.Width = 170;
+            // 
+            // Precio_Compra
+            // 
+            this.Precio_Compra.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.Precio_Compra.HeaderText = "Precio Compra";
+            this.Precio_Compra.Name = "Precio_Compra";
+            this.Precio_Compra.ReadOnly = true;
+            this.Precio_Compra.Width = 173;
+            // 
+            // Cantidad
+            // 
+            this.Cantidad.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.Cantidad.HeaderText = "Cantidad";
+            this.Cantidad.Name = "Cantidad";
+            this.Cantidad.ReadOnly = true;
+            this.Cantidad.Width = 124;
+            // 
+            // peso
+            // 
+            this.peso.HeaderText = "Peso";
+            this.peso.Name = "peso";
+            this.peso.ReadOnly = true;
+            this.peso.Width = 90;
+            // 
+            // unidad
+            // 
+            this.unidad.HeaderText = "Unidad";
+            this.unidad.Name = "unidad";
+            this.unidad.ReadOnly = true;
+            this.unidad.Width = 108;
+            // 
+            // porpeso
+            // 
+            this.porpeso.HeaderText = "Por Peso";
+            this.porpeso.Name = "porpeso";
+            this.porpeso.ReadOnly = true;
+            this.porpeso.Width = 124;
+            // 
+            // Sub_Total
+            // 
+            this.Sub_Total.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.Sub_Total.HeaderText = "Sub Total";
+            this.Sub_Total.Name = "Sub_Total";
+            this.Sub_Total.ReadOnly = true;
+            this.Sub_Total.Width = 129;
+            // 
             // FrmDetalleCompras
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1508, 673);
+            this.ClientSize = new System.Drawing.Size(1531, 673);
             this.Controls.Add(this.DgvDataComprasDia);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.TextProveedor);
@@ -501,6 +534,9 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Descripciones;
         private System.Windows.Forms.DataGridViewTextBoxColumn Precio_Compra;
         private System.Windows.Forms.DataGridViewTextBoxColumn Cantidad;
+        private System.Windows.Forms.DataGridViewTextBoxColumn peso;
+        private System.Windows.Forms.DataGridViewTextBoxColumn unidad;
+        private System.Windows.Forms.DataGridViewTextBoxColumn porpeso;
         private System.Windows.Forms.DataGridViewTextBoxColumn Sub_Total;
     }
 }

@@ -45,6 +45,10 @@
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.DgvDataReportesCompra = new System.Windows.Forms.DataGridView();
+            this.label1 = new System.Windows.Forms.Label();
+            this.TextMontoCompra = new System.Windows.Forms.TextBox();
+            this.BtnVerMasVendidos = new FontAwesome.Sharp.IconButton();
+            this.label7 = new System.Windows.Forms.Label();
             this.Fecha_Registro = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Numero_Documento = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Monto_Total = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -58,11 +62,10 @@
             this.Precio_Compra = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Precio_Venta = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Cantidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.peso = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.esPorPeso = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.unidadMedida = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Sub_Total = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.label1 = new System.Windows.Forms.Label();
-            this.TextMontoCompra = new System.Windows.Forms.TextBox();
-            this.BtnVerMasVendidos = new FontAwesome.Sharp.IconButton();
-            this.label7 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.DgvDataReportesCompra)).BeginInit();
             this.SuspendLayout();
             // 
@@ -290,6 +293,9 @@
             this.Precio_Compra,
             this.Precio_Venta,
             this.Cantidad,
+            this.peso,
+            this.esPorPeso,
+            this.unidadMedida,
             this.Sub_Total});
             this.DgvDataReportesCompra.EnableHeadersVisualStyles = false;
             this.DgvDataReportesCompra.GridColor = System.Drawing.Color.Black;
@@ -312,6 +318,56 @@
             this.DgvDataReportesCompra.RowTemplate.Height = 100;
             this.DgvDataReportesCompra.Size = new System.Drawing.Size(1574, 566);
             this.DgvDataReportesCompra.TabIndex = 43;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.Color.White;
+            this.label1.Font = new System.Drawing.Font("Arial Narrow", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(12, 33);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(165, 25);
+            this.label1.TabIndex = 76;
+            this.label1.Text = "Monto Comprado:";
+            // 
+            // TextMontoCompra
+            // 
+            this.TextMontoCompra.Font = new System.Drawing.Font("Arial Narrow", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TextMontoCompra.Location = new System.Drawing.Point(174, 30);
+            this.TextMontoCompra.Name = "TextMontoCompra";
+            this.TextMontoCompra.Size = new System.Drawing.Size(207, 32);
+            this.TextMontoCompra.TabIndex = 75;
+            // 
+            // BtnVerMasVendidos
+            // 
+            this.BtnVerMasVendidos.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.BtnVerMasVendidos.BackColor = System.Drawing.Color.Green;
+            this.BtnVerMasVendidos.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.BtnVerMasVendidos.FlatAppearance.BorderColor = System.Drawing.Color.Black;
+            this.BtnVerMasVendidos.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BtnVerMasVendidos.ForeColor = System.Drawing.Color.White;
+            this.BtnVerMasVendidos.IconChar = FontAwesome.Sharp.IconChar.Eye;
+            this.BtnVerMasVendidos.IconColor = System.Drawing.Color.Black;
+            this.BtnVerMasVendidos.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.BtnVerMasVendidos.IconSize = 30;
+            this.BtnVerMasVendidos.Location = new System.Drawing.Point(1508, 36);
+            this.BtnVerMasVendidos.Name = "BtnVerMasVendidos";
+            this.BtnVerMasVendidos.Size = new System.Drawing.Size(32, 32);
+            this.BtnVerMasVendidos.TabIndex = 78;
+            this.BtnVerMasVendidos.UseVisualStyleBackColor = false;
+            this.BtnVerMasVendidos.Click += new System.EventHandler(this.BtnVerMasVendidos_Click);
+            // 
+            // label7
+            // 
+            this.label7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label7.AutoSize = true;
+            this.label7.BackColor = System.Drawing.Color.White;
+            this.label7.Font = new System.Drawing.Font("Arial Narrow", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Location = new System.Drawing.Point(1259, 37);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(243, 25);
+            this.label7.TabIndex = 77;
+            this.label7.Text = "Productos Mas Comprados";
             // 
             // Fecha_Registro
             // 
@@ -404,62 +460,33 @@
             this.Cantidad.ReadOnly = true;
             this.Cantidad.Width = 124;
             // 
+            // peso
+            // 
+            this.peso.HeaderText = "Peso";
+            this.peso.Name = "peso";
+            this.peso.ReadOnly = true;
+            this.peso.Width = 90;
+            // 
+            // esPorPeso
+            // 
+            this.esPorPeso.HeaderText = "Por Peso";
+            this.esPorPeso.Name = "esPorPeso";
+            this.esPorPeso.ReadOnly = true;
+            this.esPorPeso.Width = 124;
+            // 
+            // unidadMedida
+            // 
+            this.unidadMedida.HeaderText = "Unidad Medida";
+            this.unidadMedida.Name = "unidadMedida";
+            this.unidadMedida.ReadOnly = true;
+            this.unidadMedida.Width = 175;
+            // 
             // Sub_Total
             // 
             this.Sub_Total.HeaderText = "Sub Total";
             this.Sub_Total.Name = "Sub_Total";
             this.Sub_Total.ReadOnly = true;
             this.Sub_Total.Width = 129;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.BackColor = System.Drawing.Color.White;
-            this.label1.Font = new System.Drawing.Font("Arial Narrow", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(12, 33);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(165, 25);
-            this.label1.TabIndex = 76;
-            this.label1.Text = "Monto Comprado:";
-            // 
-            // TextMontoCompra
-            // 
-            this.TextMontoCompra.Font = new System.Drawing.Font("Arial Narrow", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TextMontoCompra.Location = new System.Drawing.Point(174, 30);
-            this.TextMontoCompra.Name = "TextMontoCompra";
-            this.TextMontoCompra.Size = new System.Drawing.Size(207, 32);
-            this.TextMontoCompra.TabIndex = 75;
-            // 
-            // BtnVerMasVendidos
-            // 
-            this.BtnVerMasVendidos.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.BtnVerMasVendidos.BackColor = System.Drawing.Color.Green;
-            this.BtnVerMasVendidos.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.BtnVerMasVendidos.FlatAppearance.BorderColor = System.Drawing.Color.Black;
-            this.BtnVerMasVendidos.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.BtnVerMasVendidos.ForeColor = System.Drawing.Color.White;
-            this.BtnVerMasVendidos.IconChar = FontAwesome.Sharp.IconChar.Eye;
-            this.BtnVerMasVendidos.IconColor = System.Drawing.Color.Black;
-            this.BtnVerMasVendidos.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.BtnVerMasVendidos.IconSize = 30;
-            this.BtnVerMasVendidos.Location = new System.Drawing.Point(1508, 36);
-            this.BtnVerMasVendidos.Name = "BtnVerMasVendidos";
-            this.BtnVerMasVendidos.Size = new System.Drawing.Size(32, 32);
-            this.BtnVerMasVendidos.TabIndex = 78;
-            this.BtnVerMasVendidos.UseVisualStyleBackColor = false;
-            this.BtnVerMasVendidos.Click += new System.EventHandler(this.BtnVerMasVendidos_Click);
-            // 
-            // label7
-            // 
-            this.label7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label7.AutoSize = true;
-            this.label7.BackColor = System.Drawing.Color.White;
-            this.label7.Font = new System.Drawing.Font("Arial Narrow", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(1259, 37);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(243, 25);
-            this.label7.TabIndex = 77;
-            this.label7.Text = "Productos Mas Comprados";
             // 
             // FrmReportesCompras
             // 
@@ -511,6 +538,10 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.DataGridView DgvDataReportesCompra;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TextBox TextMontoCompra;
+        private FontAwesome.Sharp.IconButton BtnVerMasVendidos;
+        private System.Windows.Forms.Label label7;
         private System.Windows.Forms.DataGridViewTextBoxColumn Fecha_Registro;
         private System.Windows.Forms.DataGridViewTextBoxColumn Numero_Documento;
         private System.Windows.Forms.DataGridViewTextBoxColumn Monto_Total;
@@ -524,10 +555,9 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Precio_Compra;
         private System.Windows.Forms.DataGridViewTextBoxColumn Precio_Venta;
         private System.Windows.Forms.DataGridViewTextBoxColumn Cantidad;
+        private System.Windows.Forms.DataGridViewTextBoxColumn peso;
+        private System.Windows.Forms.DataGridViewTextBoxColumn esPorPeso;
+        private System.Windows.Forms.DataGridViewTextBoxColumn unidadMedida;
         private System.Windows.Forms.DataGridViewTextBoxColumn Sub_Total;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox TextMontoCompra;
-        private FontAwesome.Sharp.IconButton BtnVerMasVendidos;
-        private System.Windows.Forms.Label label7;
     }
 }

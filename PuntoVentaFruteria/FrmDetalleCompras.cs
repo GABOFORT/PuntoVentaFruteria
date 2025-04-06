@@ -73,7 +73,18 @@ namespace PuntoVentaFruteria
                 DgvDataDetallesCompras.Rows.Clear();
                 foreach (DetallesCompras dc in oCompra.oDetallesCompras)
                 {
-                    DgvDataDetallesCompras.Rows.Add(new object[] { dc.oProductos.nombresProductos, dc.oProductos.descripciones, dc.preciosCompras, dc.cantidades, dc.montosTotales });
+
+                    DgvDataDetallesCompras.Rows.Add(new object[]
+                    {
+                        dc.oProductos.nombresProductos,  
+                        dc.oProductos.descripciones,  
+                        dc.preciosCompras.ToString("C2"),  
+                        dc.oProductos.esPorPeso ? "N/A" : $"{dc.cantidades} un",
+                        dc.oProductos.esPorPeso ? (dc.peso == 0 ? "N/A" : $"{dc.peso:0.00} kg") : "N/A",    
+                        dc.oProductos.unidadMedida,  
+                        dc.oProductos.esPorPeso ? "Sí" : "No",  
+                        dc.montosTotales.ToString("C2")  
+                    });
                 }
                 textMontoTotal.Text = oCompra.montosTotales.ToString("0.00");
             }

@@ -19,7 +19,9 @@ namespace Datos
                 try
                 {
                     StringBuilder query = new StringBuilder();
-                    query.AppendLine("SELECT p.productosID, p.nombresProductos, p.descripciones, i.inventariosID, i.stockActual, i.stockMinimo, i.fechaActualizacion FROM Productos p");
+                    query.AppendLine("SELECT p.productosID, p.nombresProductos, p.descripciones, p.esPorPeso, p.unidadMedida,");
+                    query.AppendLine("i.inventariosID, i.stockActual, i.stockMinimo, i.fechaActualizacion");
+                    query.AppendLine("FROM Productos p");
                     query.AppendLine("JOIN Inventarios i ON p.productosID = i.productosID");
                     query.AppendLine("ORDER BY i.stockActual ASC");
                     SqlCommand cmd = new SqlCommand(query.ToString(), oconexion);
@@ -36,10 +38,12 @@ namespace Datos
                                 {
                                     productosID = Convert.ToInt32(dr["productosID"]),
                                     nombresProductos = dr["nombresProductos"].ToString(),
-                                    descripciones = dr["descripciones"].ToString()
+                                    descripciones = dr["descripciones"].ToString(),
+                                    esPorPeso = Convert.ToBoolean(dr["esPorPeso"]),
+                                    unidadMedida = dr["unidadMedida"].ToString()
                                 },
-                                stockActual = Convert.ToInt32(dr["stockActual"]),
-                                stockMinimo = Convert.ToInt32(dr["stockMinimo"]),
+                                stockActual = Convert.ToDecimal(dr["stockActual"]),
+                                stockMinimo = Convert.ToDecimal(dr["stockMinimo"]),
                                 fechaActualizacion = Convert.ToDateTime(dr["fechaActualizacion"])
                             });
                         }
@@ -52,28 +56,42 @@ namespace Datos
             }
             return lista;
         }
-        public bool Insertar(Inventarios inventario)
+        public bool Insertar(Inventarios inventario, out string mensaje)
         {
             bool respuesta = false;
-
+            mensaje = string.Empty;
             using (SqlConnection oconexion = new SqlConnection(Conexion.cadena))
             {
                 try
                 {
-                    string query = "INSERT INTO Inventarios (productosID, stockActual, stockMinimo, fechaActualizacion) " + "VALUES (@productosID, @stockActual, @stockMinimo, @fechaActualizacion)";
-                    SqlCommand cmd = new SqlCommand(query, oconexion);
-                    cmd.Parameters.AddWithValue("@productosID", inventario.oProductosID.productosID);
-                    cmd.Parameters.AddWithValue("@stockActual", inventario.stockActual);
-                    cmd.Parameters.AddWithValue("@stockMinimo", inventario.stockMinimo);
-                    cmd.Parameters.AddWithValue("@fechaActualizacion", inventario.fechaActualizacion);
+                    string queryVerificar = "SELECT COUNT(1) FROM Inventarios WHERE productosID = @productosID";
+                    SqlCommand cmdVerificar = new SqlCommand(queryVerificar, oconexion);
+                    cmdVerificar.Parameters.AddWithValue("@productosID", inventario.oProductosID.productosID);
                     oconexion.Open();
-                    int filasAfectadas = cmd.ExecuteNonQuery();
-                    if (filasAfectadas > 0)
-                        respuesta = true;
+                    int existe = Convert.ToInt32(cmdVerificar.ExecuteScalar());
+                    if (existe > 0)
+                    {
+                        mensaje = "Este producto ya está registrado en el inventario";
+                        return false;
+                    }
+                    string queryInsert = @"INSERT INTO Inventarios (productosID, stockActual, stockMinimo, fechaActualizacion) 
+                                           VALUES (@productosID, @stockActual, @stockMinimo, @fechaActualizacion)";
+                    SqlCommand cmdInsert = new SqlCommand(queryInsert, oconexion);
+                    cmdInsert.Parameters.AddWithValue("@productosID", inventario.oProductosID.productosID);
+                    cmdInsert.Parameters.AddWithValue("@stockActual", inventario.stockActual);
+                    cmdInsert.Parameters.AddWithValue("@stockMinimo", inventario.stockMinimo);
+                    cmdInsert.Parameters.AddWithValue("@fechaActualizacion", inventario.fechaActualizacion);
+                    int filasAfectadas = cmdInsert.ExecuteNonQuery();
+                    respuesta = filasAfectadas > 0;
+
+                    if (respuesta)
+                        mensaje = "Producto agregado al inventario correctamente";
+                    else
+                        mensaje = "No se pudo agregar el producto al inventario";
                 }
                 catch (Exception ex)
                 {
-                    Console.WriteLine("Error al insertar en Inventarios: " + ex.Message);
+                    mensaje = "Error al insertar en Inventarios: " + ex.Message;
                 }
             }
             return respuesta;
