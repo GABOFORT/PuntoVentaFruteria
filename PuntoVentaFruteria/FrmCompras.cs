@@ -148,13 +148,13 @@ namespace PuntoVentaFruteria
                 TextIDProducto.Text,
                 TextNombreProductos.Text,
                 TextDescripcion.Text,
-                preciocompra.ToString("0.00"),
-                precioventa.ToString("0.00"),
-                esPorPeso ? "N/A" : $"{cantidadPeso.ToString("0") } un", 
+                "$" + preciocompra.ToString("0.00"),  
+                "$" + precioventa.ToString("0.00"),  
+                esPorPeso ? "N/A" : $"{cantidadPeso.ToString("0")} un",
                 esPorPeso ? $"{cantidadPeso.ToString("0.00")} kg" : "N/A",
                 esPorPeso ? "Sí" : "No",
-                subtotal.ToString("0.00"), 
-        });
+                "$" + subtotal.ToString("0.00")      
+            });
                 calcularTotal();
                 LimpiarProducto();
                 TextCodigoProductos.Select();
@@ -173,18 +173,18 @@ namespace PuntoVentaFruteria
             TextPeso.Text = "";
         }        
             private void calcularTotal()
-        {
+            {
             decimal total = 0;
             if (DgvDataCompras.Rows.Count > 0)
             {
                 foreach (DataGridViewRow row in DgvDataCompras.Rows)
                 {
-                    total += Convert.ToDecimal(row.Cells["Sub_Total"].Value.ToString());
+                    string subtotalStr = row.Cells["Sub_Total"].Value.ToString().Replace("$", "");
+                    total += Convert.ToDecimal(subtotalStr);
                 }
-                TextTotalPagar.Text = total.ToString("0.00");
-            
+                TextTotalPagar.Text = "$" + total.ToString("0.00");
+            }
         }
-    }
         private void DgvDataCompras_CellPainting(object sender, DataGridViewCellPaintingEventArgs e)
         {
             if (e.RowIndex < 0)
@@ -279,42 +279,43 @@ namespace PuntoVentaFruteria
                     string cantidadTexto = row.Cells["Cantidad"].Value.ToString().Replace(" un", "");
                     decimal.TryParse(cantidadTexto, out cantidad);
                 }
+                string precioCompraStr = row.Cells["Precio_Compra"].Value.ToString().Replace("$", "").Trim();
+                string precioVentaStr = row.Cells["Precio_Venta"].Value.ToString().Replace("$", "").Trim();
+                string subTotalStr = row.Cells["Sub_Total"].Value.ToString().Replace("$", "").Trim();
                 detalle_compra.Rows.Add(
                     new object[] {
-                Convert.ToInt32(row.Cells["productoID"].Value.ToString()),
-                Convert.ToDecimal(row.Cells["Precio_Compra"].Value.ToString()),
-                Convert.ToDecimal(row.Cells["Precio_Venta"].Value.ToString()),
-                esPorPeso ? 0 : cantidad,  
-                esPorPeso ? peso : 0,     
-                Convert.ToDecimal(row.Cells["Sub_Total"].Value.ToString())
+                    Convert.ToInt32(row.Cells["productoID"].Value.ToString()),
+                    Convert.ToDecimal(precioCompraStr),  
+                    Convert.ToDecimal(precioVentaStr),   
+                    esPorPeso ? 0 : cantidad,
+                    esPorPeso ? peso : 0,
+                    Convert.ToDecimal(subTotalStr)       
                     });
             }
-            int idcorrelativo = new N_Compras().ObtenerCorrelativo();
-            string numerocompras = string.Format("{0:00000}", idcorrelativo);
+            string totalPagarStr = TextTotalPagar.Text.Replace("$", "").Trim();
             Compras oCompra = new Compras()
             {
                 oUsuarios = new Usuarios() { usuariosID = _Usuario.usuariosID },
                 oProveedores = new Proveedores() { proveedoresID = Convert.ToInt32(TextIDProveedor.Text) },
-                numerosCompras = numerocompras,
-                montosTotales = Convert.ToDecimal(TextTotalPagar.Text)
+                numerosCompras = string.Format("{0:00000}", new N_Compras().ObtenerCorrelativo()),
+                montosTotales = Convert.ToDecimal(totalPagarStr)
             };
             string mensaje = string.Empty;
             bool respuesta = new N_Compras().Registrar(oCompra, detalle_compra, out mensaje);
-
             if (respuesta)
             {
-                var result = MessageBox.Show($"Compra registrada exitosamente!\nNúmero: {numerocompras}\nTotal: {TextTotalPagar.Text}\n\n¿Desea copiar el número al portapapeles?",
+                var result = MessageBox.Show($"Compra registrada exitosamente!\nNúmero: {oCompra.numerosCompras}\nTotal: {TextTotalPagar.Text}\n\n¿Desea copiar el número al portapapeles?",
                                             "Compra Registrada",
                                             MessageBoxButtons.YesNo,
                                             MessageBoxIcon.Information);
                 if (result == DialogResult.Yes)
                 {
-                    Clipboard.SetText(numerocompras);
+                    Clipboard.SetText(oCompra.numerosCompras);
                     TextIDProveedor.Text = "0";
                     TextClaveProveedor.Text = "";
                     TextNombreProveedor.Text = "";
                     DgvDataCompras.Rows.Clear();
-                    calcularTotal();
+                    TextTotalPagar.Text = "$0.00";
                 }
                 else
                 {

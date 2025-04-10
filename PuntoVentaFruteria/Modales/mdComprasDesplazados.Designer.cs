@@ -51,7 +51,7 @@
             this.label3.AutoSize = true;
             this.label3.BackColor = System.Drawing.Color.White;
             this.label3.Font = new System.Drawing.Font("Arial Narrow", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(339, 63);
+            this.label3.Location = new System.Drawing.Point(361, 64);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(96, 25);
             this.label3.TabIndex = 75;
@@ -62,7 +62,7 @@
             this.label4.AutoSize = true;
             this.label4.BackColor = System.Drawing.Color.White;
             this.label4.Font = new System.Drawing.Font("Arial Narrow", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(68, 63);
+            this.label4.Location = new System.Drawing.Point(90, 64);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(116, 25);
             this.label4.TabIndex = 74;
@@ -79,7 +79,7 @@
             this.BtnBuscarFechas.IconColor = System.Drawing.Color.Black;
             this.BtnBuscarFechas.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.BtnBuscarFechas.IconSize = 25;
-            this.BtnBuscarFechas.Location = new System.Drawing.Point(577, 64);
+            this.BtnBuscarFechas.Location = new System.Drawing.Point(599, 65);
             this.BtnBuscarFechas.Name = "BtnBuscarFechas";
             this.BtnBuscarFechas.Size = new System.Drawing.Size(33, 33);
             this.BtnBuscarFechas.TabIndex = 73;
@@ -96,7 +96,7 @@
             this.DateTimePicker2.CustomFormat = "yyyy/MM/dd";
             this.DateTimePicker2.Font = new System.Drawing.Font("Arial Narrow", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.DateTimePicker2.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.DateTimePicker2.Location = new System.Drawing.Point(441, 64);
+            this.DateTimePicker2.Location = new System.Drawing.Point(463, 65);
             this.DateTimePicker2.Name = "DateTimePicker2";
             this.DateTimePicker2.Size = new System.Drawing.Size(130, 32);
             this.DateTimePicker2.TabIndex = 72;
@@ -111,7 +111,7 @@
             this.DateTimePicker1.CustomFormat = "yyyy/MM/dd";
             this.DateTimePicker1.Font = new System.Drawing.Font("Arial Narrow", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.DateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.DateTimePicker1.Location = new System.Drawing.Point(190, 64);
+            this.DateTimePicker1.Location = new System.Drawing.Point(212, 65);
             this.DateTimePicker1.Name = "DateTimePicker1";
             this.DateTimePicker1.Size = new System.Drawing.Size(130, 32);
             this.DateTimePicker1.TabIndex = 71;
@@ -163,7 +163,7 @@
             this.DgvDataMDMasComprados.RowTemplate.DividerHeight = 3;
             this.DgvDataMDMasComprados.RowTemplate.Height = 100;
             this.DgvDataMDMasComprados.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.DgvDataMDMasComprados.Size = new System.Drawing.Size(726, 492);
+            this.DgvDataMDMasComprados.Size = new System.Drawing.Size(730, 492);
             this.DgvDataMDMasComprados.TabIndex = 70;
             // 
             // label10
@@ -173,7 +173,7 @@
             this.label10.Font = new System.Drawing.Font("Arial Narrow", 27.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label10.Location = new System.Drawing.Point(0, 0);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(726, 103);
+            this.label10.Size = new System.Drawing.Size(730, 103);
             this.label10.TabIndex = 69;
             this.label10.Text = "Productos Mas Comprados";
             this.label10.TextAlign = System.Drawing.ContentAlignment.TopCenter;
@@ -218,7 +218,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(726, 595);
+            this.ClientSize = new System.Drawing.Size(730, 595);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.BtnBuscarFechas);

@@ -126,7 +126,9 @@ namespace Datos
                                 ProductosID = Convert.ToInt32(dr["productosID"]),
                                 nombresProductos = dr["nombresProductos"].ToString(),
                                 descripciones = dr["descripciones"].ToString(),
-                                totalVendido = Convert.ToInt32(dr["totalVendido"])
+                                totalVendido = Convert.ToDecimal(dr["totalVendido"]),
+                                esPorPeso = Convert.ToBoolean(dr["esPorPeso"]),
+                                totalDinero = Convert.ToDecimal(dr["totalDinero"])
                             });
                         }
                     }
@@ -143,8 +145,11 @@ namespace Datos
             List<ProductosDesplazados> listaProductosDesplazados = new List<ProductosDesplazados>();
             using (SqlConnection conexion = new SqlConnection(Conexion.cadena))
             {
-                string consulta = @" SELECT dv.productosID, p.nombresProductos, p.descripciones, SUM(dv.cantidades) AS totalVendido FROM DetallesVentas dv INNER JOIN Ventas v ON dv.ventasID = v.ventasID
-                INNER JOIN Productos p ON dv.productosID = p.productosID GROUP BY dv.productosID, p.nombresProductos, p.descripciones ORDER BY totalVendido DESC;";
+                string consulta = @" SELECT dv.productosID, p.nombresProductos, p.descripciones, p.esPorPeso,
+                SUM(CASE WHEN p.esPorPeso = 1 THEN dv.peso ELSE dv.cantidades END) AS totalVendido,
+                SUM(dv.subTotales) AS totalDinero
+                FROM DetallesVentas dv INNER JOIN Ventas v ON dv.ventasID = v.ventasID INNER JOIN Productos p ON dv.productosID = p.productosID
+                GROUP BY dv.productosID, p.nombresProductos, p.descripciones, p.esPorPeso ORDER BY totalVendido DESC;";
                 SqlCommand cmd = new SqlCommand(consulta, conexion);
                 conexion.Open();
                 SqlDataReader reader = cmd.ExecuteReader();
@@ -155,7 +160,9 @@ namespace Datos
                         ProductosID = Convert.ToInt32(reader["productosID"]),
                         nombresProductos = reader["nombresProductos"].ToString(),
                         descripciones = reader["descripciones"].ToString(),
-                        totalVendido = Convert.ToInt32(reader["totalVendido"])
+                        totalVendido = Convert.ToDecimal(reader["totalVendido"]),
+                        esPorPeso = Convert.ToBoolean(reader["esPorPeso"]),
+                        totalDinero = Convert.ToDecimal(reader["totalDinero"])
                     });
                 }
             }
@@ -167,12 +174,14 @@ namespace Datos
 
             using (SqlConnection conexion = new SqlConnection(Conexion.cadena))
             {
-                string consulta = @" SELECT dc.productosID, p.nombresProductos, p.descripciones, SUM(dc.cantidades) AS totalComprado, SUM(dc.cantidades * dc.preciosCompras) AS totalCosto FROM DetallesCompras dc 
-                INNER JOIN Compras c ON dc.comprasID = c.comprasID INNER JOIN Productos p ON dc.productosID = p.productosID GROUP BY dc.productosID, p.nombresProductos, p.descripciones ORDER BY totalComprado DESC;";
+                string consulta = @" SELECT dc.productosID, p.nombresProductos, p.descripciones, p.esPorPeso,
+                SUM(CASE WHEN p.esPorPeso = 1 THEN dc.peso ELSE dc.cantidades END) AS totalComprado,
+                SUM(dc.montosTotales) AS totalCosto
+                FROM DetallesCompras dc INNER JOIN Productos p ON dc.productosID = p.productosID
+                GROUP BY dc.productosID, p.nombresProductos, p.descripciones, p.esPorPeso ORDER BY totalComprado DESC;";
                 SqlCommand cmd = new SqlCommand(consulta, conexion);
                 conexion.Open();
                 SqlDataReader reader = cmd.ExecuteReader();
-
                 while (reader.Read())
                 {
                     listaProductosDesplazados.Add(new ProductosComprados
@@ -180,7 +189,8 @@ namespace Datos
                         ProductosID = Convert.ToInt32(reader["productosID"]),
                         nombresProductos = reader["nombresProductos"].ToString(),
                         descripciones = reader["descripciones"].ToString(),
-                        totalComprado = Convert.ToInt32(reader["totalComprado"]), 
+                        totalComprado = Convert.ToDecimal(reader["totalComprado"]),
+                        esPorPeso = Convert.ToBoolean(reader["esPorPeso"]),
                         totalCosto = Convert.ToDecimal(reader["totalCosto"])    
                     });
                 }
@@ -209,7 +219,8 @@ namespace Datos
                                 ProductosID = Convert.ToInt32(dr["productosID"]),
                                 nombresProductos = dr["nombresProductos"].ToString(),
                                 descripciones = dr["descripciones"].ToString(),
-                                totalComprado = Convert.ToInt32(dr["totalComprado"]),
+                                totalComprado = Convert.ToDecimal(dr["totalComprado"]),
+                                esPorPeso = Convert.ToBoolean(dr["esPorPeso"]),
                                 totalCosto = Convert.ToDecimal(dr["totalCosto"])
                             });
                         }
@@ -222,5 +233,30 @@ namespace Datos
             }
             return lista;
         }
+        public decimal ObtenerTotalVentasHoy(out string mensajeError)
+        {
+            decimal totalVentas = 0;
+            mensajeError = string.Empty;
+            using (SqlConnection oconexion = new SqlConnection(Conexion.cadena))
+            {
+                try
+                {
+                    SqlCommand cmd = new SqlCommand("OBTENERTOTALVENTASHOY", oconexion);
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    oconexion.Open();
+                    object result = cmd.ExecuteScalar();
+                    if (result != null && result != DBNull.Value)
+                    {
+                        totalVentas = Convert.ToDecimal(result);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    mensajeError = $"Error al obtener ventas: {ex.Message}";
+                }
+            }
+
+            return totalVentas;
         }
+    }
 }

@@ -42,6 +42,7 @@
             this.Nombre_Producto = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.descripcion = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Total_Vendido = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.totalDinero = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.DgvDataMDMasVendidos)).BeginInit();
             this.SuspendLayout();
             // 
@@ -52,7 +53,7 @@
             this.label10.Font = new System.Drawing.Font("Arial Narrow", 27.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label10.Location = new System.Drawing.Point(0, 0);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(565, 103);
+            this.label10.Size = new System.Drawing.Size(729, 103);
             this.label10.TabIndex = 44;
             this.label10.Text = "Productos Mas Vendidos";
             this.label10.TextAlign = System.Drawing.ContentAlignment.TopCenter;
@@ -79,7 +80,8 @@
             this.ID,
             this.Nombre_Producto,
             this.descripcion,
-            this.Total_Vendido});
+            this.Total_Vendido,
+            this.totalDinero});
             this.DgvDataMDMasVendidos.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.DgvDataMDMasVendidos.EnableHeadersVisualStyles = false;
             this.DgvDataMDMasVendidos.GridColor = System.Drawing.Color.Black;
@@ -103,7 +105,7 @@
             this.DgvDataMDMasVendidos.RowTemplate.DividerHeight = 3;
             this.DgvDataMDMasVendidos.RowTemplate.Height = 100;
             this.DgvDataMDMasVendidos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.DgvDataMDMasVendidos.Size = new System.Drawing.Size(565, 492);
+            this.DgvDataMDMasVendidos.Size = new System.Drawing.Size(729, 492);
             this.DgvDataMDMasVendidos.TabIndex = 45;
             // 
             // DateTimePicker1
@@ -116,7 +118,7 @@
             this.DateTimePicker1.CustomFormat = "yyyy/MM/dd";
             this.DateTimePicker1.Font = new System.Drawing.Font("Arial Narrow", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.DateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.DateTimePicker1.Location = new System.Drawing.Point(125, 65);
+            this.DateTimePicker1.Location = new System.Drawing.Point(214, 65);
             this.DateTimePicker1.Name = "DateTimePicker1";
             this.DateTimePicker1.Size = new System.Drawing.Size(130, 32);
             this.DateTimePicker1.TabIndex = 60;
@@ -131,7 +133,7 @@
             this.DateTimePicker2.CustomFormat = "yyyy/MM/dd";
             this.DateTimePicker2.Font = new System.Drawing.Font("Arial Narrow", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.DateTimePicker2.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.DateTimePicker2.Location = new System.Drawing.Point(376, 65);
+            this.DateTimePicker2.Location = new System.Drawing.Point(465, 65);
             this.DateTimePicker2.Name = "DateTimePicker2";
             this.DateTimePicker2.Size = new System.Drawing.Size(130, 32);
             this.DateTimePicker2.TabIndex = 65;
@@ -147,7 +149,7 @@
             this.BtnBuscarFechas.IconColor = System.Drawing.Color.Black;
             this.BtnBuscarFechas.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.BtnBuscarFechas.IconSize = 25;
-            this.BtnBuscarFechas.Location = new System.Drawing.Point(512, 65);
+            this.BtnBuscarFechas.Location = new System.Drawing.Point(601, 65);
             this.BtnBuscarFechas.Name = "BtnBuscarFechas";
             this.BtnBuscarFechas.Size = new System.Drawing.Size(33, 33);
             this.BtnBuscarFechas.TabIndex = 66;
@@ -159,7 +161,7 @@
             this.label4.AutoSize = true;
             this.label4.BackColor = System.Drawing.Color.White;
             this.label4.Font = new System.Drawing.Font("Arial Narrow", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(3, 64);
+            this.label4.Location = new System.Drawing.Point(92, 64);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(116, 25);
             this.label4.TabIndex = 67;
@@ -170,7 +172,7 @@
             this.label3.AutoSize = true;
             this.label3.BackColor = System.Drawing.Color.White;
             this.label3.Font = new System.Drawing.Font("Arial Narrow", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(274, 64);
+            this.label3.Location = new System.Drawing.Point(363, 64);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(96, 25);
             this.label3.TabIndex = 68;
@@ -205,12 +207,19 @@
             this.Total_Vendido.ReadOnly = true;
             this.Total_Vendido.Width = 162;
             // 
+            // totalDinero
+            // 
+            this.totalDinero.HeaderText = "Total Dinero ";
+            this.totalDinero.Name = "totalDinero";
+            this.totalDinero.ReadOnly = true;
+            this.totalDinero.Width = 153;
+            // 
             // mdProductosDesplazados
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(565, 595);
+            this.ClientSize = new System.Drawing.Size(729, 595);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.BtnBuscarFechas);
@@ -242,5 +251,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Nombre_Producto;
         private System.Windows.Forms.DataGridViewTextBoxColumn descripcion;
         private System.Windows.Forms.DataGridViewTextBoxColumn Total_Vendido;
+        private System.Windows.Forms.DataGridViewTextBoxColumn totalDinero;
     }
 }

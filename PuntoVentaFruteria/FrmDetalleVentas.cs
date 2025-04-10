@@ -72,22 +72,30 @@ namespace PuntoVentaFruteria
                 DgvDataDetallesVentas.Rows.Clear();
                 foreach (DetallesVentas dv in oVenta.oDetallesVentas)
                 {
+                        string cantidadMostrar = dv.oProductos.esPorPeso ?
+                        dv.peso.ToString("0.00") + " kg" :
+                        dv.cantidades.ToString() + " un";
+                        string precioVentaMostrar = dv.preciosVentas == 0 ? "N/A" :
+                        dv.preciosVentas.ToString("C2");
+                        string precioRealMostrar = dv.oProductos.esPorPeso ?
+                        dv.precioReal.ToString("C2") :
+                        "N/A";
                     DgvDataDetallesVentas.Rows.Add(new object[] {
-                        dv.oProductos.nombresProductos,
-                        dv.oProductos.descripciones,
-                        dv.preciosVentas.ToString("C2"),
-                        dv.oProductos.esPorPeso ? dv.peso.ToString("0.00") : dv.cantidades.ToString(),
-                        dv.oProductos.esPorPeso ? dv.precioReal.ToString("C2") : "N/A",
-                        dv.oProductos.unidadMedida,
-                        dv.oProductos.esPorPeso ? "Sí" : "No",
-                        dv.subTotales.ToString("C2")
-            });
+                    dv.oProductos.nombresProductos,
+                    dv.oProductos.descripciones,
+                    precioVentaMostrar,  
+                    cantidadMostrar,     
+                    precioRealMostrar,   
+                    dv.oProductos.unidadMedida,
+                    dv.oProductos.esPorPeso ? "Sí" : "No",
+                    dv.subTotales.ToString("C2")
+                 });
                 }
                     TextMontosPagos.Text = oVenta.montosPagos.ToString("0.00");
                     TextMontosCambios.Text = oVenta.montosCambios.ToString("0.00");
                     TextMontosTotales.Text = oVenta.montosTotales.ToString("0.00");
-            }
-        }
+                }
+             }
         }
 }
 

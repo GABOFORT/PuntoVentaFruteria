@@ -60,6 +60,7 @@
             this.Producto = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Descripciones = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Precio_Compra = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.precioVenta = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Cantidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.peso = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.unidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -236,6 +237,7 @@
             this.Producto,
             this.Descripciones,
             this.Precio_Compra,
+            this.precioVenta,
             this.Cantidad,
             this.peso,
             this.unidad,
@@ -243,7 +245,7 @@
             this.Sub_Total});
             this.DgvDataDetallesCompras.EnableHeadersVisualStyles = false;
             this.DgvDataDetallesCompras.GridColor = System.Drawing.Color.Black;
-            this.DgvDataDetallesCompras.Location = new System.Drawing.Point(242, 333);
+            this.DgvDataDetallesCompras.Location = new System.Drawing.Point(121, 333);
             this.DgvDataDetallesCompras.MultiSelect = false;
             this.DgvDataDetallesCompras.Name = "DgvDataDetallesCompras";
             this.DgvDataDetallesCompras.ReadOnly = true;
@@ -260,7 +262,7 @@
             this.DgvDataDetallesCompras.RowsDefaultCellStyle = dataGridViewCellStyle2;
             this.DgvDataDetallesCompras.RowTemplate.DividerHeight = 3;
             this.DgvDataDetallesCompras.RowTemplate.Height = 100;
-            this.DgvDataDetallesCompras.Size = new System.Drawing.Size(1052, 328);
+            this.DgvDataDetallesCompras.Size = new System.Drawing.Size(1289, 328);
             this.DgvDataDetallesCompras.TabIndex = 50;
             // 
             // BtnLimpiarBuscador
@@ -412,19 +414,17 @@
             // 
             // Producto
             // 
-            this.Producto.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.Producto.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.Producto.HeaderText = "Producto";
             this.Producto.Name = "Producto";
             this.Producto.ReadOnly = true;
-            this.Producto.Width = 126;
             // 
             // Descripciones
             // 
-            this.Descripciones.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.Descripciones.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.Descripciones.HeaderText = "Descripciones";
             this.Descripciones.Name = "Descripciones";
             this.Descripciones.ReadOnly = true;
-            this.Descripciones.Width = 170;
             // 
             // Precio_Compra
             // 
@@ -433,6 +433,14 @@
             this.Precio_Compra.Name = "Precio_Compra";
             this.Precio_Compra.ReadOnly = true;
             this.Precio_Compra.Width = 173;
+            // 
+            // precioVenta
+            // 
+            this.precioVenta.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.precioVenta.HeaderText = "Precio Venta";
+            this.precioVenta.Name = "precioVenta";
+            this.precioVenta.ReadOnly = true;
+            this.precioVenta.Width = 155;
             // 
             // Cantidad
             // 
@@ -444,6 +452,7 @@
             // 
             // peso
             // 
+            this.peso.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.peso.HeaderText = "Peso";
             this.peso.Name = "peso";
             this.peso.ReadOnly = true;
@@ -451,6 +460,7 @@
             // 
             // unidad
             // 
+            this.unidad.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.unidad.HeaderText = "Unidad";
             this.unidad.Name = "unidad";
             this.unidad.ReadOnly = true;
@@ -458,6 +468,7 @@
             // 
             // porpeso
             // 
+            this.porpeso.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.porpeso.HeaderText = "Por Peso";
             this.porpeso.Name = "porpeso";
             this.porpeso.ReadOnly = true;
@@ -533,6 +544,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Producto;
         private System.Windows.Forms.DataGridViewTextBoxColumn Descripciones;
         private System.Windows.Forms.DataGridViewTextBoxColumn Precio_Compra;
+        private System.Windows.Forms.DataGridViewTextBoxColumn precioVenta;
         private System.Windows.Forms.DataGridViewTextBoxColumn Cantidad;
         private System.Windows.Forms.DataGridViewTextBoxColumn peso;
         private System.Windows.Forms.DataGridViewTextBoxColumn unidad;

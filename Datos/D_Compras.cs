@@ -136,6 +136,7 @@ namespace Datos
                                     esPorPeso = Convert.ToBoolean(dr["esPorPeso"])
                                 },
                                 preciosCompras = Convert.ToDecimal(dr["preciosCompras"].ToString()),
+                                preciosVentas = Convert.ToDecimal(dr["preciosVentas"].ToString()),
                                 cantidades = Convert.ToInt32(dr["cantidades"].ToString()),
                                 peso = Convert.ToDecimal(dr["peso"]),
                                 montosTotales = Convert.ToDecimal(dr["montosTotales"].ToString()),

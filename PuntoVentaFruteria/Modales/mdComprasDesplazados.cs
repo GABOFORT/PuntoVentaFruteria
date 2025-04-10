@@ -24,16 +24,17 @@ namespace PuntoVentaFruteria.Modales
             List<ProductosComprados> listaProducto = new N_Reportes().ObtenerProductosMasComprados();
             foreach (ProductosComprados item in listaProducto)
             {
+                string cantidadConUnidad = item.totalComprado > 0
+                ? $"{item.totalComprado:0.00} {(item.esPorPeso ? "kg" : "un")}" : "N/A";
                 DgvDataMDMasComprados.Rows.Add(new object[] {
                     item.ProductosID,
                     item.nombresProductos,
                     item.descripciones,
-                    item.totalComprado,
-                    item.totalCosto
+                    cantidadConUnidad,
+                    item.totalCosto.ToString("C2")
                 });
             }
         }
-
         private void BtnBuscarFechas_Click(object sender, EventArgs e)
         {
             string fechaInicio = DateTimePicker1.Value.ToString("yyyy-MM-dd");
@@ -42,12 +43,15 @@ namespace PuntoVentaFruteria.Modales
             DgvDataMDMasComprados.Rows.Clear();
             foreach (ProductosComprados item in listaProducto)
             {
+                string cantidadFormateada = item.totalComprado > 0
+                ? $"{(item.esPorPeso ? item.totalComprado.ToString("0.00") : item.totalComprado.ToString("0"))} {(item.esPorPeso ? "kg" : "un")}" : "N/A";
+                string costoFormateado = item.totalCosto > 0 ? $"${item.totalCosto:0.00}" : "N/A";
                 DgvDataMDMasComprados.Rows.Add(new object[] {
                 item.ProductosID,
                 item.nombresProductos,
                 item.descripciones,
-                item.totalComprado,
-                item.totalCosto
+                cantidadFormateada,
+                costoFormateado
              });
             }
         }

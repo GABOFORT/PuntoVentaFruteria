@@ -281,7 +281,7 @@
             this.Sub_Total});
             this.DgvDataDetallesVentas.EnableHeadersVisualStyles = false;
             this.DgvDataDetallesVentas.GridColor = System.Drawing.Color.Black;
-            this.DgvDataDetallesVentas.Location = new System.Drawing.Point(183, 246);
+            this.DgvDataDetallesVentas.Location = new System.Drawing.Point(108, 235);
             this.DgvDataDetallesVentas.MultiSelect = false;
             this.DgvDataDetallesVentas.Name = "DgvDataDetallesVentas";
             this.DgvDataDetallesVentas.ReadOnly = true;
@@ -298,7 +298,7 @@
             this.DgvDataDetallesVentas.RowsDefaultCellStyle = dataGridViewCellStyle2;
             this.DgvDataDetallesVentas.RowTemplate.DividerHeight = 3;
             this.DgvDataDetallesVentas.RowTemplate.Height = 100;
-            this.DgvDataDetallesVentas.Size = new System.Drawing.Size(1183, 415);
+            this.DgvDataDetallesVentas.Size = new System.Drawing.Size(1315, 426);
             this.DgvDataDetallesVentas.TabIndex = 67;
             // 
             // TextMontosTotales
@@ -390,21 +390,21 @@
             // 
             // Producto
             // 
-            this.Producto.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.Producto.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.Producto.HeaderText = "Producto";
             this.Producto.Name = "Producto";
             this.Producto.ReadOnly = true;
-            this.Producto.Width = 126;
             // 
             // Descricipciones
             // 
+            this.Descricipciones.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.Descricipciones.HeaderText = "Descricipciones";
             this.Descricipciones.Name = "Descricipciones";
             this.Descricipciones.ReadOnly = true;
-            this.Descricipciones.Width = 185;
             // 
             // Precio_Venta
             // 
+            this.Precio_Venta.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.Precio_Venta.HeaderText = "Precio Venta";
             this.Precio_Venta.Name = "Precio_Venta";
             this.Precio_Venta.ReadOnly = true;
@@ -412,6 +412,7 @@
             // 
             // Cantidad
             // 
+            this.Cantidad.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.Cantidad.HeaderText = "Cantidad";
             this.Cantidad.Name = "Cantidad";
             this.Cantidad.ReadOnly = true;
@@ -419,6 +420,7 @@
             // 
             // PrecioPeso
             // 
+            this.PrecioPeso.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.PrecioPeso.HeaderText = "Precio Peso";
             this.PrecioPeso.Name = "PrecioPeso";
             this.PrecioPeso.ReadOnly = true;
@@ -426,6 +428,7 @@
             // 
             // UnidadKgGr
             // 
+            this.UnidadKgGr.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.UnidadKgGr.HeaderText = "Unidad, Kg y Gr";
             this.UnidadKgGr.Name = "UnidadKgGr";
             this.UnidadKgGr.ReadOnly = true;
@@ -433,6 +436,7 @@
             // 
             // EsPorPeso
             // 
+            this.EsPorPeso.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.EsPorPeso.HeaderText = "Por Peso";
             this.EsPorPeso.Name = "EsPorPeso";
             this.EsPorPeso.ReadOnly = true;
@@ -440,6 +444,7 @@
             // 
             // Sub_Total
             // 
+            this.Sub_Total.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.Sub_Total.HeaderText = "Sub Total";
             this.Sub_Total.Name = "Sub_Total";
             this.Sub_Total.ReadOnly = true;

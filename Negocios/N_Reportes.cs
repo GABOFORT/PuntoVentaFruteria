@@ -35,5 +35,9 @@ namespace Negocios
         {
             return objcd_reportes.ProductosMasCompradosPorFechas(fechaInicio, fechaFin);
         }
+        public decimal ObtenerTotalVentasHoy(out string mensajeError)
+        {
+            return objcd_reportes.ObtenerTotalVentasHoy(out mensajeError);
+        }
     }
 }

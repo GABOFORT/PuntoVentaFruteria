@@ -252,5 +252,13 @@ namespace PuntoVentaFruteria
                 e.SuppressKeyPress = true;
             }
         }
+
+        private void iconButton1_Click(object sender, EventArgs e)
+        {
+            using (var modal = new mdCierre())
+            {
+                var result = modal.ShowDialog();
+            }
+        }
     }
 }

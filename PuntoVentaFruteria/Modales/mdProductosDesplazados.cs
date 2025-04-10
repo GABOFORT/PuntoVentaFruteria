@@ -19,18 +19,22 @@ namespace PuntoVentaFruteria.Modales
         {
             InitializeComponent();
         }
-
         private void mdProductosDesplazados_Load(object sender, EventArgs e)
         {
             List<ProductosDesplazados> listaProducto = new N_Reportes().ObtenerProductosMasVendidos();
 
             foreach (ProductosDesplazados item in listaProducto)
             {
-                    DgvDataMDMasVendidos.Rows.Add(new object[] {
+                string totalFormateado = item.esPorPeso
+                ? $"{item.totalVendido:0.00} kg"  
+                : $"{item.totalVendido:0} un";
+                string totalDineroFormateado = item.totalDinero.ToString("C2");
+                DgvDataMDMasVendidos.Rows.Add(new object[] {
                     item.ProductosID,
                     item.nombresProductos,
                     item.descripciones,
-                    item.totalVendido
+                    totalFormateado,
+                    totalDineroFormateado
                 });
              }
         }
@@ -42,11 +46,15 @@ namespace PuntoVentaFruteria.Modales
             DgvDataMDMasVendidos.Rows.Clear();
             foreach (ProductosDesplazados item in listaProducto)
             {
+                string totalFormateado = item.totalVendido == 0 ? "N/A"
+                : (item.esPorPeso ? $"{item.totalVendido:0.00} kg" : $"{item.totalVendido:0} un");
+                string totalDineroFormateado = item.totalDinero.ToString("C2");
                 DgvDataMDMasVendidos.Rows.Add(new object[] {
                 item.ProductosID,
                 item.nombresProductos,
                 item.descripciones,
-                item.totalVendido
+                totalFormateado,
+                totalDineroFormateado
              });
             }
         }

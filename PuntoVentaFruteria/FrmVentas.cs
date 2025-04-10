@@ -29,8 +29,8 @@ namespace PuntoVentaFruteria
         {
             TextFecha.Text = DateTime.Now.ToString("dd/MM/yyyy");
             TextIDProductos.Text = "0";
-            TextPagaCon.Text = "";
-            TextCambio.Text = "";
+            TextPagaCon.Text = "$0.00";
+            TextCambio.Text = "$0.00";
             TextTotalPagar.Text = "0";
         }
         private void DgvDataVentas_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -63,10 +63,12 @@ namespace PuntoVentaFruteria
             decimal cantidad = decimal.Parse(TextCantidadyPeso.Text);
             decimal precioReal = esPorPeso ? Convert.ToDecimal(TextPrecioReal.Text) : precioUnitario;
             decimal subtotal = esPorPeso ? cantidad * precioReal : cantidad * precioUnitario;
+            bool producto_existe = false;
             foreach (DataGridViewRow fila in DgvDataVentas.Rows)
             {
                 if (fila.Cells["productoID"].Value.ToString() == TextIDProductos.Text)
                 {
+                    producto_existe = true;
                     if (esPorPeso)
                     {
                         string pesoStr = fila.Cells["pesos"].Value.ToString().Replace(" kg", "").Replace("N/A", "0");
@@ -81,29 +83,37 @@ namespace PuntoVentaFruteria
                         string nuevaCantidad = (cantidadActual + (int)cantidad) == 0 ? "N/A" : (cantidadActual + (int)cantidad).ToString() + " un";
                         fila.Cells["Cantidad"].Value = nuevaCantidad;
                     }
-                    fila.Cells["Sub_Total"].Value = (Convert.ToDecimal(fila.Cells["Sub_Total"].Value) + subtotal).ToString("0.00");
+                    decimal subtotalActual = Convert.ToDecimal(fila.Cells["Sub_Total"].Value.ToString().Replace("$", ""));
+                    fila.Cells["Sub_Total"].Value = "$" + (subtotalActual + subtotal).ToString("0.00");
+
                     calcularTotal();
                     LimpiarProducto();
                     return;
                 }
             }
-                string cantidadDisplay = esPorPeso ? "N/A" : (cantidad == 0 ? "N/A" : cantidad.ToString("0") + " un");
-                string pesoDisplay = esPorPeso ? (cantidad == 0 ? "N/A" : cantidad.ToString("0.00") + " kg") : "N/A";
-                 DgvDataVentas.Rows.Add(new object[] {
-                 TextIDProductos.Text,
-                 TextNombreProductos.Text,
-                 TextDescripcion.Text,
-                 precioUnitario.ToString("0.00"),
-                 cantidadDisplay,
-                 pesoDisplay,
-                 precioReal.ToString("0.00"),
-                 subtotal.ToString("0.00"),
-                 esPorPeso ? "Sí" : "No"
-             });
+            if (!producto_existe)
+            {
+                string cantidadDisplay = esPorPeso ? "N/A" : cantidad.ToString("0") + " un";
+                string pesoDisplay = esPorPeso ? cantidad.ToString("0.00") + " kg" : "N/A";
+                string precioVentaDisplay = precioUnitario == 0 ? "N/A" : "$" + precioUnitario.ToString("0.00");
+                string precioRealDisplay = precioReal == 0 ? "N/A" : "$" + precioReal.ToString("0.00");
+                string subtotalDisplay = "$" + subtotal.ToString("0.00");
+                DgvDataVentas.Rows.Add(new object[] {
+                    TextIDProductos.Text,
+                    TextNombreProductos.Text,
+                    TextDescripcion.Text,
+                    precioVentaDisplay,    
+                    cantidadDisplay,     
+                    pesoDisplay,          
+                    precioRealDisplay,    
+                    subtotalDisplay,     
+                    esPorPeso ? "Sí" : "No"
+                });
                 calcularTotal();
                 LimpiarProducto();
                 TextCodigoProductos.Select();
             }
+        }
         private void LimpiarProducto()
         {
             TextIDProductos.Text = "0";
@@ -122,9 +132,14 @@ namespace PuntoVentaFruteria
             {
                 foreach (DataGridViewRow row in DgvDataVentas.Rows)
                 {
-                    total += Convert.ToDecimal(row.Cells["Sub_Total"].Value.ToString());
+                    string subtotalStr = row.Cells["Sub_Total"].Value.ToString().Replace("$", "");
+                    total += Convert.ToDecimal(subtotalStr);
                 }
-                TextTotalPagar.Text = total.ToString("0.00");
+                TextTotalPagar.Text = "$" + total.ToString("0.00");
+            }
+            else
+            {
+                TextTotalPagar.Text = "$0.00";
             }
         }
         private void btnBuscarProducto_Click(object sender, EventArgs e)
@@ -214,49 +229,53 @@ namespace PuntoVentaFruteria
         }
         private void TextPagaCon_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (char.IsDigit(e.KeyChar))
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))
             {
-                e.Handled = false;
+                e.Handled = true;
             }
-            else if (e.KeyChar == '.' && !TextPagaCon.Text.Contains("."))
-            {
-                e.Handled = false;
-            }
-            else if (e.KeyChar == (char)Keys.Back)
-            {
-                e.Handled = false;
-            }
-            else
+            if ((e.KeyChar == '.') && ((sender as TextBox).Text.IndexOf('.') > -1))
             {
                 e.Handled = true;
             }
         }
         private void calcularcambio()
         {
-            if (TextTotalPagar.Text.Trim() == "")
+
+            if (string.IsNullOrWhiteSpace(TextTotalPagar.Text))
             {
                 MessageBox.Show("No existe productos en la venta", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 return;
             }
-            decimal pagacon;
-            decimal total = Convert.ToDecimal(TextTotalPagar.Text);
-            if (decimal.TryParse(TextPagaCon.Text.Trim(), out pagacon))
+            string totalPagarStr = TextTotalPagar.Text.Replace("$", "").Trim();
+            string pagaConStr = TextPagaCon.Text.Replace("$", "").Trim();
+            if (decimal.TryParse(totalPagarStr, out decimal total) &&
+                decimal.TryParse(pagaConStr, out decimal pagacon))
             {
                 if (pagacon < total)
                 {
-                    TextCambio.Text = "0.00";
+                    TextCambio.Text = "$0.00";
                 }
                 else
                 {
                     decimal cambio = pagacon - total;
-                    TextCambio.Text = cambio.ToString("0.00");
+                    TextCambio.Text = "$" + cambio.ToString("0.00");
                 }
+            }
+            else
+            {
+                TextCambio.Text = "$0.00";
+                MessageBox.Show("Ingrese valores numéricos válidos", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
         private void TextPagaCon_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyData == Keys.Enter)
             {
+                if (string.IsNullOrWhiteSpace(TextPagaCon.Text))
+                {
+                    MessageBox.Show("Ingrese el monto con el que paga el cliente", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    return;
+                }
                 calcularcambio();
             }
         }
@@ -267,7 +286,15 @@ namespace PuntoVentaFruteria
                 MessageBox.Show("Debe ingresar productos en la venta", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 return;
             }
-            if (string.IsNullOrEmpty(TextPagaCon.Text) || Convert.ToDecimal(TextPagaCon.Text) < Convert.ToDecimal(TextTotalPagar.Text))
+            string pagaConStr = TextPagaCon.Text.Replace("$", "").Trim();
+            string totalPagarStr = TextTotalPagar.Text.Replace("$", "").Trim();
+            if (!decimal.TryParse(pagaConStr, out decimal montoPagado) ||
+                !decimal.TryParse(totalPagarStr, out decimal totalPagar))
+            {
+                MessageBox.Show("Ingrese montos válidos", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            if (montoPagado < totalPagar)
             {
                 MessageBox.Show("El monto pagado es insuficiente", "Mensaje", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 TextPagaCon.Focus();
@@ -277,7 +304,7 @@ namespace PuntoVentaFruteria
             detalle_venta.Columns.Add("productosID", typeof(int));
             detalle_venta.Columns.Add("preciosVentas", typeof(decimal));
             detalle_venta.Columns.Add("cantidades", typeof(int));
-            detalle_venta.Columns.Add("pesos", typeof(decimal)); 
+            detalle_venta.Columns.Add("pesos", typeof(decimal));
             detalle_venta.Columns.Add("precioReal", typeof(decimal));
             detalle_venta.Columns.Add("subTotales", typeof(decimal));
             foreach (DataGridViewRow row in DgvDataVentas.Rows)
@@ -287,7 +314,7 @@ namespace PuntoVentaFruteria
                 decimal peso = 0;
                 if (!esPorPeso)
                 {
-                    string cantidadStr = row.Cells["Cantidad"].Value.ToString().Replace(" un", "").Trim();
+                    string cantidadStr = row.Cells["Cantidad"].Value.ToString().Replace(" un", "").Replace("N/A", "0").Trim();
                     if (!int.TryParse(cantidadStr, out cantidad))
                     {
                         MessageBox.Show($"Cantidad inválida para el producto: {row.Cells["Nombre"].Value}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -296,40 +323,50 @@ namespace PuntoVentaFruteria
                 }
                 else
                 {
-                    string pesoStr = row.Cells["pesos"].Value.ToString().Replace(" kg", "").Trim();
+                    string pesoStr = row.Cells["pesos"].Value.ToString().Replace(" kg", "").Replace("N/A", "0").Trim();
                     if (!decimal.TryParse(pesoStr, out peso))
                     {
                         MessageBox.Show($"Peso inválido para el producto: {row.Cells["Nombre"].Value}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         return;
                     }
                 }
+                string precioVentaStr = row.Cells["Precio_Compra"].Value.ToString().Replace("$", "").Replace("N/A", "0").Trim();
+                string precioRealStr = row.Cells["precioReal"].Value.ToString().Replace("$", "").Replace("N/A", "0").Trim();
+                string subtotalStr = row.Cells["Sub_Total"].Value.ToString().Replace("$", "").Trim();
+                if (!decimal.TryParse(precioVentaStr, out decimal precioVenta) ||
+                    !decimal.TryParse(precioRealStr, out decimal precioReal) ||
+                    !decimal.TryParse(subtotalStr, out decimal subtotal))
+                {
+                    MessageBox.Show($"Valores monetarios inválidos para el producto: {row.Cells["Nombre"].Value}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
                 detalle_venta.Rows.Add(
                     Convert.ToInt32(row.Cells["productoID"].Value),
-                    Convert.ToDecimal(row.Cells["Precio_Compra"].Value),
+                    precioVenta,
                     esPorPeso ? 0 : cantidad,
                     esPorPeso ? peso : 0,
-                    Convert.ToDecimal(row.Cells["precioReal"].Value),
-                    Convert.ToDecimal(row.Cells["Sub_Total"].Value)
+                    precioReal,
+                    subtotal
                 );
             }
             int idcorrelativo = new N_Ventas().ObtenerCorrelativo();
             string numerosVentas = string.Format("{0:00000}", idcorrelativo);
-            calcularcambio();
+            string cambioStr = TextCambio.Text.Replace("$", "").Trim();
+            decimal.TryParse(cambioStr, out decimal cambio);
             Ventas oVentas = new Ventas()
             {
                 oUsuarios = new Usuarios() { usuariosID = _Usuarios.usuariosID },
                 numerosVentas = numerosVentas,
-                montosPagos = Convert.ToDecimal(TextPagaCon.Text),
-                montosCambios = Convert.ToDecimal(TextCambio.Text),
-                montosTotales = Convert.ToDecimal(TextTotalPagar.Text),
+                montosPagos = montoPagado,
+                montosCambios = cambio,
+                montosTotales = totalPagar,
             };
             string mensaje = string.Empty;
             bool respuesta = new N_Ventas().Registrar(oVentas, detalle_venta, out mensaje);
             if (respuesta)
             {
-                var result = MessageBox.Show("Numero de venta generada:\n" + numerosVentas + "\n\n¿Desea copiar al portapapeles?", "Mensaje",
+                var result = MessageBox.Show("Número de venta generada:\n" + numerosVentas + "\n\n¿Desea copiar al portapapeles?", "Mensaje",
                     MessageBoxButtons.YesNo, MessageBoxIcon.Information);
-
                 if (result == DialogResult.Yes)
                 {
                     Clipboard.SetText(numerosVentas);
@@ -342,8 +379,8 @@ namespace PuntoVentaFruteria
                 }
                 DgvDataVentas.Rows.Clear();
                 calcularTotal();
-                TextPagaCon.Text = "";
-                TextCambio.Text = "";
+                TextPagaCon.Text = "$0.00";
+                TextCambio.Text = "$0.00";
             }
             else
             {
@@ -353,32 +390,91 @@ namespace PuntoVentaFruteria
         private void GenerarTicketDigital(string numeroVenta, DataTable detalleVenta)
         {
             StringBuilder ticket = new StringBuilder();
-            ticket.AppendLine("********** TICKET DE VENTA **********");
-            ticket.AppendLine($"Venta No: {numeroVenta}");
-            ticket.AppendLine($"Fecha: {DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss")}");
-            ticket.AppendLine("====================================");
-            ticket.AppendLine($"{"Producto",-15} {"Descripción",-12} {"Cantidad",-10} {"Precio",-10} {"SubTotal",-10}");
-            ticket.AppendLine("====================================");
-
+            int anchoTotal = 90;
+            int colProducto = 18;
+            int colDescripcion = 18;
+            int colUM = 5;
+            int colCantPeso = 15;
+            int colPrecio = 15;
+            int colSubtotal = 15;
+            ticket.AppendLine("+" + new string('-', anchoTotal - 2) + "+");
+            ticket.AppendLine("|" + " TICKET DE VENTA ".PadLeft((anchoTotal + 14) / 2).PadRight(anchoTotal - 2) + "|");
+            ticket.AppendLine("+" + new string('-', anchoTotal - 2) + "+");
+            ticket.AppendLine($"| N° Venta: {numeroVenta.PadRight(anchoTotal - 13)}|");
+            ticket.AppendLine($"| Fecha:   {DateTime.Now:dd/MM/yyyy HH:mm:ss}".PadRight(anchoTotal - 1) + "|");
+            ticket.AppendLine("+" + new string('-', anchoTotal - 2) + "+");
+            ticket.AppendLine(
+                "| " +
+                Truncar("Producto", colProducto) +
+                Truncar("Descripción", colDescripcion) +
+                "UM".PadRight(colUM) +
+                "Cant/Peso".PadLeft(colCantPeso) +
+                "P.Unit".PadLeft(colPrecio) +
+                "Subtotal".PadLeft(colSubtotal) +
+                " |"
+            );
+            ticket.AppendLine("+" + new string('-', anchoTotal - 2) + "+");
             foreach (DataGridViewRow row in DgvDataVentas.Rows)
             {
-                string producto = row.Cells["producto"].Value?.ToString() ?? "Producto sin nombre";
-                string descripcion = row.Cells["Descripciones"].Value?.ToString() ?? "Sin descripción";
-                int cantidad = Convert.ToInt32(row.Cells["Cantidad"].Value);
-                decimal precio = Convert.ToDecimal(row.Cells["Precio_Compra"].Value);
-                decimal subtotal = Convert.ToDecimal(row.Cells["Sub_Total"].Value);
-                ticket.AppendLine($"{producto,-15} {descripcion,-12} {cantidad,-10} {precio,10:C} {subtotal,10:C}");
+                bool esPorPeso = row.Cells["EsPorPeso"].Value.ToString() == "Sí";
+                string unidadMedida = esPorPeso ? "kg" : "un";
+                decimal precioUnitario = esPorPeso
+                    ? Convert.ToDecimal(row.Cells["precioReal"].Value.ToString().Replace("$", ""))
+                    : Convert.ToDecimal(row.Cells["Precio_Compra"].Value.ToString().Replace("$", ""));
+                string cantidadPeso = esPorPeso
+                    ? $"{row.Cells["pesos"].Value.ToString().Replace(" kg", "").Trim()} kg"
+                    : $"{row.Cells["Cantidad"].Value.ToString().Replace(" un", "").Trim()} un";
+                string producto = Truncar(row.Cells["Producto"].Value?.ToString(), colProducto);
+                string descripcion = Truncar(row.Cells["Descripciones"].Value?.ToString(), colDescripcion);
+                decimal subtotal = Convert.ToDecimal(row.Cells["Sub_Total"].Value.ToString().Replace("$", ""));
+                ticket.AppendLine(
+                    "| " +
+                    producto +
+                    descripcion +
+                    unidadMedida.PadRight(colUM) +
+                    cantidadPeso.PadLeft(colCantPeso) +
+                    precioUnitario.ToString("$#,##0.00").PadLeft(colPrecio) +
+                    subtotal.ToString("$#,##0.00").PadLeft(colSubtotal) +
+                    " |" 
+                );
             }
-            decimal totalPagar = Convert.ToDecimal(TextTotalPagar.Text);
-            decimal montoPagado = Convert.ToDecimal(TextPagaCon.Text);
-            decimal cambio = Convert.ToDecimal(TextCambio.Text);
-            ticket.AppendLine("====================================");
-            ticket.AppendLine($"Total a Pagar: {totalPagar,10:C}");
-            ticket.AppendLine($"Monto Pagado: {montoPagado,10:C}");
-            ticket.AppendLine($"Cambio: {cambio,10:C}");
-            ticket.AppendLine("====================================");
-            ticket.AppendLine("Gracias por su compra!");
-            MessageBox.Show(ticket.ToString(), "Ticket Digital", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            decimal totalPagar = Convert.ToDecimal(TextTotalPagar.Text.Replace("$", ""));
+            decimal montoPagado = Convert.ToDecimal(TextPagaCon.Text.Replace("$", ""));
+            decimal cambio = Convert.ToDecimal(TextCambio.Text.Replace("$", ""));
+            ticket.AppendLine("+" + new string('-', anchoTotal - 2) + "+");
+            ticket.AppendLine($"| {"TOTAL A PAGAR:",-58}{totalPagar.ToString("$#,##0.00").PadLeft(28)} |");
+            ticket.AppendLine($"| {"MONTO PAGADO:",-58}{montoPagado.ToString("$#,##0.00").PadLeft(28)} |");
+            ticket.AppendLine($"| {"CAMBIO:",-58}{cambio.ToString("$#,##0.00").PadLeft(28)} |");
+            ticket.AppendLine("+" + new string('-', anchoTotal - 2) + "+");
+            ticket.AppendLine("|" + "¡Gracias por su compra!".PadLeft(anchoTotal - 3) + " |");
+            ticket.AppendLine("+" + new string('-', anchoTotal - 2) + "+");
+            using (var form = new Form())
+            using (var textBox = new TextBox()
+            {
+                Multiline = true,
+                Font = new Font("Consolas", 10),
+                ReadOnly = true,
+                ScrollBars = ScrollBars.Vertical,
+                Text = ticket.ToString(),
+                Dock = DockStyle.Fill,
+                BackColor = Color.White
+            })
+            {
+                form.Text = "Ticket Digital";
+                form.Size = new Size(680, 400);
+                form.BackColor = Color.White;
+                form.StartPosition = FormStartPosition.CenterScreen;
+                form.Controls.Add(textBox);
+                form.ShowDialog();
+            }
+            string Truncar(string texto, int maxLength)
+            {
+                if (string.IsNullOrEmpty(texto)) return new string(' ', maxLength);
+                texto = texto.Trim();
+                return texto.Length <= maxLength
+                    ? texto.PadRight(maxLength)
+                    : texto.Substring(0, maxLength - 3) + "...";
+            }
         }
         private void TextCantidadyPeso_KeyPress(object sender, KeyPressEventArgs e)
         {
